@@ -38,6 +38,20 @@ Clover_safery/
    Skema tidak memuat `CREATE DATABASE`/`USE` dan tidak memakai foreign key, supaya aman di semua versi TiDB.
 3. _(Opsional, TiDB v8.5+)_ jalankan `sql/foreign-keys.sql` untuk menambah foreign key.
 
+## Fitur akun: profil, kontak tepercaya, chat admin
+
+> **Wajib:** jalankan ulang seluruh `sql/schema.sql` di database yang sudah ada (aman, hanya `CREATE TABLE IF NOT EXISTS`). Tanpa tabel baru (`user_profiles`, `user_avatars`, `trusted_contacts`, `chat_messages`), login akan gagal karena sesi kini membaca `user_profiles`.
+
+| Jalur | Keterangan |
+| --- | --- |
+| `/profile` | Nama, telepon, bio, **foto profil** (dipotong persegi 256px di browser), ganti kata sandi |
+| `/kontak` | **Kontak tepercaya** — hanya pemilik yang bisa melihat/menambah/ubah/hapus (maks. 20); tidak ada endpoint admin |
+| `/chat` | Chat pengguna ↔ admin (hanya percakapan sendiri) |
+| `/admin-chat` | Admin melihat daftar percakapan dan membalas |
+| `/belajar#/bantuan` & alarm | Menampilkan kontak tepercaya akun (bila login) dengan tombol telepon |
+
+API baru: `api/profile.js`, `api/contacts.js`, `api/chat.js`, `api/admin/chat.js` (total 11 Functions, masih di bawah batas 12 paket Hobby Vercel). Foto divalidasi di server (tipe, ukuran, magic bytes) dan hanya bisa diambil pemilik atau admin. Chat memakai polling 5 detik, bukan realtime.
+
 ## Deploy ke Vercel
 
 1. Impor repositori ini ke Vercel (Framework Preset: **Other**; tanpa build command).

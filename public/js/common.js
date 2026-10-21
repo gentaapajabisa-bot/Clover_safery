@@ -39,6 +39,49 @@ function message(text, type = "error") {
   el.className = "msg " + type;
   el.textContent = text;
   el.hidden = !text;
+  if (text) el.scrollIntoView({ block: "nearest", behavior: "smooth" });
+}
+
+/** URL foto profil (kosong bila belum ada). `v` memaksa browser memuat ulang saat foto diganti. */
+function avatarSrc(user) {
+  return user && Number(user.avatar_version) > 0
+    ? `/api/profile?avatar=${Number(user.id)}&v=${Number(user.avatar_version)}`
+    : "";
+}
+
+/** HTML avatar: foto bila ada, jika tidak huruf awal nama. Semua nilai di-escape. */
+function avatarHtml(user, size = "") {
+  const cls = `avatar ${size}`.trim();
+  const src = avatarSrc(user);
+  if (src) return `<span class="${cls}"><img src="${esc(src)}" alt="" loading="lazy" /></span>`;
+  const initial = (String(user?.name || "?").trim()[0] || "?").toUpperCase();
+  return `<span class="${cls}" aria-hidden="true">${esc(initial)}</span>`;
+}
+
+/** Mengisi chip profil di topbar dan lencana pesan belum dibaca di sidebar. */
+function initChrome(user) {
+  const chip = $("#me-chip");
+  if (chip) {
+    chip.innerHTML = `${avatarHtml(user)}<span class="me-name">${esc(user.name)}</span>`;
+    chip.hidden = false;
+  }
+  const badge = $("[data-chat-badge]");
+  if (badge) {
+    const url = user.role === "admin" && badge.dataset.chatBadge === "admin" ? "/api/admin/chat?count=1" : "/api/chat?count=1";
+    api(url, null, "GET")
+      .then(({ unread }) => {
+        if (unread > 0) {
+          badge.textContent = unread > 99 ? "99+" : String(unread);
+          badge.hidden = false;
+        }
+      })
+      .catch(() => {});
+  }
+}
+
+/** Format jam singkat untuk gelembung chat. */
+function fmtTime(value) {
+  return fmtDate(value);
 }
 
 async function requireSession(admin = false) {
@@ -52,6 +95,7 @@ async function requireSession(admin = false) {
       location.replace("/dashboard");
       return null;
     }
+    initChrome(user);
     return user;
   } catch {
     message("Backend belum siap. Periksa konfigurasi DATABASE_URL dan deployment.");

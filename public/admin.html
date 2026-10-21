@@ -14,6 +14,7 @@
       href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap"
     />
     <link rel="stylesheet" href="/css/auth.css" />
+    <link rel="stylesheet" href="/css/features.css" />
     <script src="/js/common.js" defer></script>
     <script src="/js/admin-page.js" defer></script>
   </head>
@@ -26,15 +27,20 @@
           <small>ADMINISTRATION CONSOLE</small>
         </span>
       </a>
-      <button class="logout" id="logout" type="button">Keluar</button>
+      <div class="top-right">
+        <a class="me-chip" id="me-chip" href="/profile" hidden aria-label="Profil saya"></a>
+        <button class="logout" id="logout" type="button">Keluar</button>
+      </div>
     </header>
 
     <div class="app-layout">
       <aside class="sidebar">
         <div class="side-label">ADMINISTRASI</div>
         <a class="navitem active" href="/admin">▦ Ringkasan admin</a>
+        <a class="navitem" href="/admin-chat">✉ Chat pengguna <span class="badge" data-chat-badge="admin" hidden></span></a>
         <a class="navitem" href="/dashboard">◫ Dashboard pengguna</a>
         <a class="navitem" href="/belajar">✦ Materi edukasi</a>
+        <a class="navitem" href="/profile">◎ Profil</a>
       </aside>
 
       <main class="mainarea">

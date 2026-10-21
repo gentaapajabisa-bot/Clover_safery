@@ -59,3 +59,57 @@ CREATE TABLE IF NOT EXISTS security_reports (
 
 -- Akun admin pertama: daftar lewat /register seperti pengguna biasa, lalu jalankan
 -- UPDATE users SET role = 'admin' WHERE email = 'email-admin-kamu@example.com';
+
+-- ---------------------------------------------------------------------------
+-- Profil, kontak tepercaya, dan chat dengan admin.
+-- Bagian ini hanya memakai CREATE TABLE IF NOT EXISTS, jadi aman dijalankan
+-- ulang di database yang sudah berisi tabel di atas.
+-- ---------------------------------------------------------------------------
+
+-- Profil tambahan pengguna. Foto disimpan terpisah (user_avatars) agar query profil tetap ringan.
+CREATE TABLE IF NOT EXISTS user_profiles (
+  user_id        BIGINT UNSIGNED NOT NULL,
+  phone          VARCHAR(30)     NULL,
+  bio            VARCHAR(300)    NULL,
+  avatar_version INT UNSIGNED    NOT NULL DEFAULT 0,
+  updated_at     DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (user_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Foto profil (gambar sudah diperkecil di browser), disimpan sebagai base64.
+CREATE TABLE IF NOT EXISTS user_avatars (
+  user_id    BIGINT UNSIGNED NOT NULL,
+  mime       VARCHAR(20)     NOT NULL,
+  data_b64   MEDIUMTEXT      NOT NULL,
+  updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (user_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Kontak orang tepercaya. Setiap query di backend selalu memakai user_id sesi,
+-- sehingga hanya pemilik yang dapat melihat dan menambahkan datanya (admin pun tidak).
+CREATE TABLE IF NOT EXISTS trusted_contacts (
+  id           BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  user_id      BIGINT UNSIGNED NOT NULL,
+  name         VARCHAR(100)    NOT NULL,
+  relationship VARCHAR(60)     NOT NULL,
+  phone        VARCHAR(30)     NULL,
+  note         VARCHAR(200)    NULL,
+  created_at   DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at   DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  KEY idx_contact_user (user_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Chat pengguna <-> admin. Satu percakapan per pengguna (thread_user_id = pemilik percakapan).
+CREATE TABLE IF NOT EXISTS chat_messages (
+  id             BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  thread_user_id BIGINT UNSIGNED NOT NULL,
+  sender_id      BIGINT UNSIGNED NOT NULL,
+  sender_role    ENUM('user','admin') NOT NULL,
+  body           VARCHAR(2000)   NOT NULL,
+  read_at        DATETIME        NULL,
+  created_at     DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  KEY idx_chat_thread (thread_user_id, id),
+  KEY idx_chat_unread (sender_role, read_at)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

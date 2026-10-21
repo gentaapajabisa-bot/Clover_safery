@@ -10,3 +10,15 @@ ALTER TABLE activity_logs
 
 ALTER TABLE security_reports
   ADD CONSTRAINT fk_report_user FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE;
+
+ALTER TABLE user_profiles
+  ADD CONSTRAINT fk_profile_user FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE;
+
+ALTER TABLE user_avatars
+  ADD CONSTRAINT fk_avatar_user FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE;
+
+ALTER TABLE trusted_contacts
+  ADD CONSTRAINT fk_contact_user FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE;
+
+ALTER TABLE chat_messages
+  ADD CONSTRAINT fk_chat_thread_user FOREIGN KEY (thread_user_id) REFERENCES users (id) ON DELETE CASCADE;

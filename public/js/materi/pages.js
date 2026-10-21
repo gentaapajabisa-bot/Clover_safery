@@ -272,7 +272,8 @@ function pageHelp() {
   <h2 style="margin-top:28px">Kontak tepercaya</h2>
   <div class="grid g2">
     <div class="card"><ul class="clean" style="margin:0"><li>Guru BK atau wali kelas</li><li>Orang tua atau wali (jika aman untuk dihubungi)</li><li>Anggota keluarga dewasa atau orang dewasa tepercaya lainnya</li><li><strong>SAPA 129</strong> — bantuan terkait kekerasan terhadap perempuan dan anak di Indonesia (<a href="tel:129">129</a>; <a href="${OFFICIAL_URL}" target="_blank" rel="noopener noreferrer">laman resmi ↗</a>)</li></ul></div>
-    <div class="card"><h3>Peta orang tepercayaku</h3>
+    <div class="card" style="grid-column:1/-1"><h3>Kontak tepercayaku (tersimpan di akunmu)</h3><div id="srv-trusted"><p class="hint">Memuat…</p></div></div>
+    <div class="card"><h3>Catatan sementara</h3>
       <p class="hint">Catatan ini hanya ada di layar ini: tidak disimpan dan tidak dikirim. Tulis peran dan cara bertemunya saja (misalnya “Bu Sari — guru BK — ruang BK saat istirahat”).</p>
       ${S.trusted.map((t, i) => `<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:8px 0"><input type="text" aria-label="Orang tepercaya ${i + 1}: peran" data-tr="${i}" data-f="r" placeholder="Siapa / perannya" maxlength="40" value="${esc(t.r)}"><input type="text" aria-label="Orang tepercaya ${i + 1}: cara menemui" data-tr="${i}" data-f="c" placeholder="Cara menemui" maxlength="60" value="${esc(t.c)}"></div>`).join("")}
       <button type="button" class="btn btn-small" data-act="tr-copy">Salin daftar</button></div>
@@ -286,7 +287,7 @@ function pageAbout() {
   <p class="lead">Clover Safety adalah media edukasi pendamping puzzle tentang pencegahan child grooming untuk siswa SMP.</p>
   <div class="grid g2">
     <section class="card"><h3>Data apa yang tersimpan?</h3>
-      <ul class="clean"><li><strong>Tanpa akun:</strong> tidak ada data pribadi yang disimpan. Hanya pengaturan tampilan (tema, ukuran huruf) yang diingat di perangkat ini.</li><li><strong>Dengan akun:</strong> hanya nama panggilan, nama pengguna, peran, sidik kata sandi (hash), dan daftar halaman materi yang sudah dibuka. Semuanya tersimpan <strong>di browser perangkat ini saja</strong>.</li><li><strong>Tidak pernah disimpan:</strong> jawaban refleksi, centang checklist, pilihan skenario, atau isi “peta orang tepercaya”.</li><li>Tidak ada data yang dikirim ke server mana pun.</li></ul></section>
+      <ul class="clean"><li><strong>Tanpa akun:</strong> tidak ada data pribadi yang disimpan. Hanya pengaturan tampilan (tema, ukuran huruf) yang diingat di perangkat ini.</li><li><strong>Dengan akun:</strong> hanya nama panggilan, nama pengguna, peran, sidik kata sandi (hash), dan daftar halaman materi yang sudah dibuka. Semuanya tersimpan <strong>di browser perangkat ini saja</strong>.</li><li><strong>Tidak pernah disimpan:</strong> jawaban refleksi, centang checklist, pilihan skenario, atau isi “peta orang tepercaya”.</li><li>Kontak tepercaya yang kamu simpan di halaman Kontak, serta profil dan pesan ke admin, tersimpan di server dan <strong>hanya bisa dibuka oleh akunmu</strong> (pesan juga bisa dibaca admin yang kamu hubungi).</li></ul></section>
     <section class="card"><h3>Batasan akun</h3>
       <ul class="clean"><li>Akun hanya berlaku di perangkat dan browser yang sama; tidak bisa dipakai di perangkat lain.</li><li>Membersihkan data browser akan menghapus akun.</li><li>Sesi login berakhir saat tab ditutup, agar aman di komputer bersama.</li><li>Karena tidak memakai server, ini bukan sistem keamanan tingkat lembaga. Peran Guru BK dibuka dengan kode yang bisa dilihat siapa pun yang membuka kode sumber.</li></ul></section>
     <section class="card"><h3>Batasan alarm</h3>

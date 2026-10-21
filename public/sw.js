@@ -1,6 +1,6 @@
 /* Service worker Clover Safety: halaman & aset dicache untuk pemakaian offline.
    Naikkan CACHE_VERSION setiap kali daftar atau isi aset berubah. */
-const CACHE_VERSION = "clover-safety-v8";
+const CACHE_VERSION = "clover-safety-v9";
 
 const PRECACHE = [
   "/",
@@ -9,9 +9,14 @@ const PRECACHE = [
   "/register",
   "/dashboard",
   "/admin",
+  "/profile",
+  "/kontak",
+  "/chat",
+  "/admin-chat",
   "/css/styles.css",
   "/css/extra.css",
   "/css/auth.css",
+  "/css/features.css",
   "/css/beranda.css",
   "/js/theme.js",
   "/js/materi-guard.js",
@@ -19,6 +24,7 @@ const PRECACHE = [
   "/js/materi/core.js",
   "/js/materi/local-auth.js",
   "/js/materi/state.js",
+  "/js/materi/trusted-server.js",
   "/js/materi/alarm.js",
   "/js/materi/content.js",
   "/js/materi/components.js",
@@ -37,6 +43,10 @@ const PRECACHE = [
   "/js/auth-form.js",
   "/js/dashboard-page.js",
   "/js/admin-page.js",
+  "/js/profile-page.js",
+  "/js/contacts-page.js",
+  "/js/chat-page.js",
+  "/js/admin-chat-page.js",
   "/manifest.webmanifest",
   "/icon.svg",
   "/img/clover-shield.svg",

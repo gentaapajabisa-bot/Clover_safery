@@ -3,17 +3,116 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#147d54" />
     <meta name="robots" content="noindex" />
-    <meta http-equiv="refresh" content="0;url=/dashboard" />
     <title>Profil — Clover Safety</title>
     <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap"
+    />
     <link rel="stylesheet" href="/css/auth.css" />
+    <link rel="stylesheet" href="/css/features.css" />
+    <script src="/js/common.js" defer></script>
+    <script src="/js/profile-page.js" defer></script>
   </head>
   <body>
-    <main class="panel redirect">
-      <h2>Mengarahkan ke dashboard</h2>
-      <p class="sub">Pengaturan profil akan tersedia di pengembangan berikutnya.</p>
-      <a href="/dashboard">Kembali ke dashboard</a>
-    </main>
+    <header class="topbar">
+      <a class="brand" href="/dashboard">
+        <span class="clover">🍀</span>
+        <span>
+          CLOVER SAFETY
+          <small>DIGITAL WELLNESS &amp; SAFETY</small>
+        </span>
+      </a>
+      <div class="top-right">
+        <a class="me-chip" id="me-chip" href="/profile" hidden aria-label="Profil saya"></a>
+        <button class="logout" id="logout" type="button">Keluar</button>
+      </div>
+    </header>
+
+    <div class="app-layout">
+      <aside class="sidebar">
+        <div class="side-label">MENU PENGGUNA</div>
+        <a class="navitem" href="/dashboard">◫ Ringkasan</a>
+        <a class="navitem" href="/belajar">✦ Materi edukasi</a>
+        <a class="navitem" href="/kontak">☎ Kontak tepercaya</a>
+        <a class="navitem" href="/chat">✉ Chat admin <span class="badge" data-chat-badge="user" hidden></span></a>
+        <a class="navitem active" href="/profile">◎ Profil</a>
+        <div class="side-label">ADMINISTRASI</div>
+        <a class="navitem" id="admin-link" href="/admin" hidden>♧ Panel admin</a>
+      </aside>
+
+      <main class="mainarea">
+        <div class="welcome">
+          <div>
+            <p class="muted eyebrow-sm">AKUN SAYA</p>
+            <h1>Profil</h1>
+            <p class="muted">Atur nama, foto, dan kontak pribadimu.</p>
+          </div>
+        </div>
+        <div id="message" class="msg" role="alert" hidden></div>
+
+        <section class="box section profile-head">
+          <div id="avatar-view"></div>
+          <div class="profile-head-body">
+            <h2 id="p-title">Memuat…</h2>
+            <p class="muted small" id="p-sub"></p>
+            <div class="row-actions">
+              <label class="btn-sm primary" for="avatar-file" tabindex="0" id="avatar-pick">Ganti foto</label>
+              <input id="avatar-file" type="file" accept="image/jpeg,image/png,image/webp,image/gif" hidden />
+              <button class="logout" id="avatar-remove" type="button" hidden>Hapus foto</button>
+            </div>
+            <p class="muted small">JPG, PNG, WebP, atau GIF. Foto otomatis dipotong persegi dan diperkecil.</p>
+          </div>
+        </section>
+
+        <section class="box section">
+          <h2>Data profil</h2>
+          <form id="profile-form" class="form-grid" novalidate>
+            <div class="field">
+              <label for="p-name">Nama</label>
+              <input id="p-name" maxlength="100" required autocomplete="name" />
+            </div>
+            <div class="field">
+              <label for="p-email">Email</label>
+              <input id="p-email" type="email" disabled />
+            </div>
+            <div class="field">
+              <label for="p-phone">Nomor telepon (opsional)</label>
+              <input id="p-phone" maxlength="30" inputmode="tel" autocomplete="tel" placeholder="mis. 0812 3456 7890" />
+            </div>
+            <div class="field full">
+              <label for="p-bio">Tentang saya (opsional)</label>
+              <textarea id="p-bio" maxlength="300" rows="3" placeholder="Tulis singkat tentang dirimu"></textarea>
+              <div class="tiny counter"><span id="bio-count">0</span>/300</div>
+            </div>
+            <div class="full"><button class="btn-sm primary" type="submit">Simpan profil</button></div>
+          </form>
+        </section>
+
+        <section class="box section">
+          <h2>Ganti kata sandi</h2>
+          <form id="password-form" class="form-grid" novalidate>
+            <div class="field">
+              <label for="pw-current">Kata sandi saat ini</label>
+              <input id="pw-current" type="password" autocomplete="current-password" required />
+            </div>
+            <div class="field">
+              <label for="pw-new">Kata sandi baru (min. 10 karakter)</label>
+              <input id="pw-new" type="password" autocomplete="new-password" minlength="10" required />
+            </div>
+            <div class="field">
+              <label for="pw-confirm">Ulangi kata sandi baru</label>
+              <input id="pw-confirm" type="password" autocomplete="new-password" required />
+            </div>
+            <div class="full"><button class="btn-sm primary" type="submit">Ganti kata sandi</button></div>
+          </form>
+          <p class="footnote">Setelah kata sandi diganti, perangkat lain akan otomatis keluar.</p>
+        </section>
+      </main>
+    </div>
   </body>
 </html>

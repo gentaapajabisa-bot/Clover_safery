@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#147d54" />
+    <meta name="robots" content="noindex" />
+    <title>Chat Pengguna — Clover Safety</title>
+    <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap"
+    />
+    <link rel="stylesheet" href="/css/auth.css" />
+    <link rel="stylesheet" href="/css/features.css" />
+    <script src="/js/common.js" defer></script>
+    <script src="/js/admin-chat-page.js" defer></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="/dashboard">
+        <span class="clover">🍀</span>
+        <span>
+          CLOVER SAFETY
+          <small>ADMINISTRATION CONSOLE</small>
+        </span>
+      </a>
+      <div class="top-right">
+        <a class="me-chip" id="me-chip" href="/profile" hidden aria-label="Profil saya"></a>
+        <button class="logout" id="logout" type="button">Keluar</button>
+      </div>
+    </header>
+
+    <div class="app-layout">
+      <aside class="sidebar">
+        <div class="side-label">ADMINISTRASI</div>
+        <a class="navitem" href="/admin">▦ Ringkasan admin</a>
+        <a class="navitem active" href="/admin-chat">✉ Chat pengguna <span class="badge" data-chat-badge="admin" hidden></span></a>
+        <a class="navitem" href="/dashboard">◫ Dashboard pengguna</a>
+        <a class="navitem" href="/belajar">✦ Materi edukasi</a>
+        <a class="navitem" href="/profile">◎ Profil</a>
+      </aside>
+
+      <main class="mainarea">
+        <div class="welcome">
+          <div>
+            <p class="muted eyebrow-sm">ADMINISTRATION CONSOLE</p>
+            <h1>Chat pengguna</h1>
+            <p class="muted">Balas pesan yang dikirim pengguna kepada admin.</p>
+          </div>
+        </div>
+        <div id="message" class="msg" role="alert" hidden></div>
+
+        <section class="admin-chat box" id="admin-chat">
+          <div class="thread-list" id="threads" aria-label="Daftar percakapan"><p class="empty">Memuat percakapan…</p></div>
+          <div class="thread-view">
+            <div class="thread-head" id="thread-head"><span class="muted">Pilih percakapan di sebelah kiri.</span></div>
+            <div class="chat-log" id="chat-log" role="log" aria-live="polite"></div>
+            <form class="chat-form" id="chat-form" hidden>
+              <label class="sr-only" for="chat-input">Tulis balasan</label>
+              <textarea id="chat-input" rows="1" maxlength="2000" placeholder="Tulis balasan…"></textarea>
+              <button class="btn-sm primary" type="submit" id="chat-send">Kirim</button>
+            </form>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
