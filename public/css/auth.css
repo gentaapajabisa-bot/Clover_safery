@@ -8,6 +8,9 @@
   --line: #dcece3;
   --paper: #fff;
   --shadow: 0 24px 70px #123c2518;
+  --deep: #0e3b2c;
+  --gold: #f0b93a;
+  --font: "Plus Jakarta Sans", "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
 * {
@@ -16,13 +19,7 @@
 
 body {
   margin: 0;
-  font-family:
-    Inter,
-    ui-sans-serif,
-    system-ui,
-    -apple-system,
-    "Segoe UI",
-    sans-serif;
+  font-family: var(--font);
   color: var(--ink);
   background: linear-gradient(135deg, #f4fff8, #f7fbf8 45%, #e9f7ef);
   min-height: 100vh;
@@ -572,5 +569,286 @@ a.btn {
   .learn-cta {
     flex-direction: column;
     align-items: flex-start;
+  }
+}
+
+
+/* =========================================================
+   Halaman masuk, daftar, dan sambutan: panel hijau + formulir
+   ========================================================= */
+body.auth {
+  background: #fff;
+}
+
+.split {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  min-height: 100vh;
+}
+
+.split .art {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 36px;
+  padding: clamp(28px, 5vw, 64px);
+  background: var(--deep);
+  color: #fff;
+}
+
+.split .art::before,
+.split .art::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.split .art::before {
+  width: 520px;
+  height: 520px;
+  right: -190px;
+  bottom: -170px;
+  box-shadow: 0 0 0 70px rgba(255, 255, 255, 0.025);
+}
+
+.split .art::after {
+  width: 240px;
+  height: 240px;
+  left: -90px;
+  top: 38%;
+}
+
+.split .art > * {
+  position: relative;
+  z-index: 1;
+}
+
+.split .art .brand {
+  color: #fff;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+.split .art .brand small {
+  color: #9fd3bb;
+  font-weight: 500;
+  letter-spacing: 0;
+  font-size: 12px;
+}
+
+.split .art .clover {
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: none;
+}
+
+.art-body img.emblem {
+  display: block;
+  width: 132px;
+  height: auto;
+  margin-bottom: 30px;
+  filter: drop-shadow(0 16px 26px rgba(0, 0, 0, 0.35));
+}
+
+.art-body h1 {
+  margin: 0 0 16px;
+  max-width: 14em;
+  font-size: clamp(2rem, 3.6vw, 3rem);
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+}
+
+.art-body p {
+  margin: 0;
+  max-width: 30em;
+  color: #cfe6da;
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+.art-points {
+  list-style: none;
+  margin: 28px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.art-points li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.art-points li::before {
+  content: "";
+  flex: none;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+
+.art-help {
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: #b7d8c8;
+}
+
+.art-help a {
+  color: #fff;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.formside {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(22px, 4vw, 40px) clamp(22px, 5vw, 64px) clamp(28px, 5vw, 56px);
+  background: #fff;
+}
+
+.formtop {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.formtop a {
+  font-weight: 700;
+}
+
+.formmain {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 24px;
+}
+
+.formcard {
+  width: min(420px, 100%);
+}
+
+.formcard h2 {
+  margin: 0 0 8px;
+  font-size: 30px;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+}
+
+.formcard .sub {
+  margin-bottom: 26px;
+}
+
+.formcard .field input {
+  padding: 14px 15px;
+  border-width: 1.5px;
+  border-radius: 12px;
+  font-size: 16px;
+}
+
+.formcard .btn {
+  margin-top: 6px;
+  padding: 15px;
+  border-radius: 12px;
+  font-size: 16px;
+  background: var(--green);
+  box-shadow: none;
+}
+
+.formcard .btn:hover {
+  background: #0f6244;
+}
+
+.formcard .btn.btn-ghost {
+  background: #fff;
+  color: var(--green);
+  border: 1.5px solid #bfe0cf;
+}
+
+.formcard .btn.btn-ghost:hover {
+  background: var(--mint);
+}
+
+.pwrap {
+  position: relative;
+}
+
+.pwrap input {
+  padding-right: 88px;
+}
+
+.pw-toggle {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 0;
+  background: none;
+  color: var(--green);
+  font-weight: 700;
+  font-size: 13px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.pw-toggle:hover {
+  background: var(--mint);
+}
+
+.formcard .help-strip {
+  margin-top: 28px;
+}
+
+.formcard :focus-visible,
+.formtop :focus-visible {
+  outline: 3px solid #1b66d6;
+  outline-offset: 2px;
+}
+
+@media (max-width: 900px) {
+  .split {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+
+  .split .art {
+    gap: 18px;
+    padding: 22px 22px 26px;
+  }
+
+  .split .art::before,
+  .split .art::after,
+  .art-points {
+    display: none;
+  }
+
+  .art-body img.emblem {
+    width: 64px;
+    margin-bottom: 16px;
+  }
+
+  .art-body h1 {
+    font-size: 1.7rem;
+    margin-bottom: 10px;
+  }
+
+  .art-body p {
+    font-size: 14.5px;
+  }
+
+  .formmain {
+    padding-top: 12px;
   }
 }

@@ -5,23 +5,23 @@
    Router
    ========================================================= */
 const ROUTES = {
-  "/": { t: "Beranda Clover Safety", nav: "Beranda Clover Safety", r: pageHome },
-  "/tanda-bahaya": { t: "Mengenali Tanda Bahaya", nav: "Mengenali Tanda Bahaya", r: pageSigns, key: "tanda-bahaya" },
+  "/": { t: "Beranda Clover Safety", nav: "Beranda", r: pageHome },
+  "/tanda-bahaya": { t: "Mengenali Tanda Bahaya", nav: "Tanda Bahaya", r: pageSigns, key: "tanda-bahaya" },
   "/privasi": {
     t: "Menjaga Privasi dan Batasan Diri",
-    nav: "Menjaga Privasi dan Batasan Diri",
+    nav: "Privasi &amp; Batasan",
     r: pagePrivacy,
     key: "privasi",
   },
   "/tindakan": {
     t: "Menentukan Tindakan yang Aman",
-    nav: "Menentukan Tindakan yang Aman",
+    nav: "Tindakan Aman",
     r: pageAction,
     a: () => paintScn(),
     key: "tindakan",
   },
-  "/refleksi": { t: "Refleksi Setelah Puzzle", nav: "Refleksi Setelah Puzzle", r: pageReflect, key: "refleksi" },
-  "/bantuan": { t: "Meminta Bantuan", nav: "Meminta Bantuan", r: pageHelp, key: "bantuan" },
+  "/refleksi": { t: "Refleksi Setelah Puzzle", nav: "Refleksi", r: pageReflect, key: "refleksi" },
+  "/bantuan": { t: "Meminta Bantuan", nav: "Bantuan", r: pageHelp, key: "bantuan" },
   "/akun": {
     t: "Akun — Clover Safety",
     r: () =>
@@ -35,7 +35,7 @@ function buildNav(cur) {
   $("#nav-list").innerHTML =
     Object.entries(ROUTES)
       .filter(([p, r]) => r.nav)
-      .map(([p, r]) => `<li><a href="#${p}" ${p === cur ? 'aria-current="page"' : ""}>${r.nav}</a></li>`)
+      .map(([p, r]) => `<li><a href="#${p}" title="${r.t}" ${p === cur ? 'aria-current="page"' : ""}>${r.nav}</a></li>`)
       .join("") +
     (me && me.role === "guru"
       ? `<li><a href="#/guru" ${cur === "/guru" ? 'aria-current="page"' : ""}>Panduan Guru BK</a></li>`

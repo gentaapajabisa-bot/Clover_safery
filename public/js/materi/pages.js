@@ -5,43 +5,71 @@
    Halaman
    ========================================================= */
 function pageHome() {
-  const me = Auth.current();
   const flow = [
-    ["#/tanda-bahaya", "🔎", "Kenali tanda bahaya"],
-    ["#/privasi", "🔒", "Pahami privasi &amp; batasan"],
-    ["#/tindakan", "🧭", "Latih tindakan aman"],
-    ["#/refleksi", "💭", "Refleksi setelah puzzle"],
-    ["#/bantuan", "🤝", "Akses bantuan"],
+    ["#/tanda-bahaya", "Kenali tanda bahaya", "Pelajari pola perilaku yang perlu diwaspadai."],
+    ["#/privasi", "Pahami privasi &amp; batasan", "Apa yang boleh dibagikan dan apa yang tidak."],
+    ["#/tindakan", "Latih tindakan aman", "Pilih langkah yang tepat lewat skenario."],
+    ["#/refleksi", "Refleksi setelah puzzle", "Tuliskan apa yang sudah kamu pelajari."],
+    ["#/bantuan", "Akses bantuan", "Tahu ke mana dan kepada siapa meminta tolong."],
+  ];
+  const extra = [
+    ["#/simulasi", "💬", "Simulasi chat", "Latihan membalas pesan yang membuat tidak nyaman."],
+    ["#/kuis", "📝", "Kuis latihan", "Uji ingatan tanpa nilai."],
+    ["#/kamus", "📖", "Kamus istilah", "Arti istilah di dunia digital."],
   ];
   return `
-  <section class="hero">
-    <h1 tabindex="-1">Selamat Datang di Clover Safety!</h1>
-    <p class="lead">Selamat menyelesaikan puzzle Clover Safety! Setelah bermain puzzle, kamu dapat mempelajari tanda bahaya, memahami batas privasi, menentukan tindakan yang aman, dan melakukan refleksi. Jika kamu merasa tidak aman atau membutuhkan bantuan, kamu dapat langsung membuka menu bantuan.</p>
-    <p class="lead"><strong>Kenali Bahaya, Jaga Privasi, Tentukan Tindakan Aman, Berani Mencari Bantuan.</strong></p>
-    <div class="btn-row">
-      ${routeBtn("#/tanda-bahaya", "Mulai Belajar", "btn btn-primary")}
-      ${routeBtn("#/refleksi", "Refleksi Setelah Puzzle", "btn")}
-      ${routeBtn("#/bantuan", "Meminta Bantuan", "btn btn-pink")}
+  <section class="hero2">
+    <div>
+      <h1 tabindex="-1">Selamat Datang di Clover Safety!</h1>
+      <p class="lead">Selamat menyelesaikan puzzle Clover Safety! Setelah bermain puzzle, kamu dapat mempelajari tanda bahaya, memahami batas privasi, menentukan tindakan yang aman, dan melakukan refleksi. Jika kamu merasa tidak aman atau membutuhkan bantuan, kamu dapat langsung membuka menu bantuan.</p>
+      <ul class="pillars" aria-label="Empat pegangan Clover Safety">
+        <li>Kenali Bahaya</li>
+        <li>Jaga Privasi</li>
+        <li>Tentukan Tindakan Aman</li>
+        <li>Berani Mencari Bantuan</li>
+      </ul>
+      <div class="btn-row">
+        ${routeBtn("#/tanda-bahaya", "Mulai Belajar", "btn btn-gold")}
+        ${routeBtn("#/refleksi", "Refleksi Setelah Puzzle", "btn btn-line")}
+        ${routeBtn("#/bantuan", "Meminta Bantuan", "btn btn-help")}
+      </div>
+    </div>
+    <div class="art" aria-hidden="true"><img src="/img/clover-shield.svg" alt="" /></div>
+  </section>
+
+  <section class="sec" aria-labelledby="alur">
+    <div class="sec-head">
+      <h2 id="alur">Alur belajarmu</h2>
+      <p>Ikuti urutan ini, atau mulai dari bagian mana pun yang kamu butuhkan.</p>
+    </div>
+    <ol class="steps">
+      ${flow.map((f, i) => `<li><a href="${f[0]}"><span class="n" aria-hidden="true">${i + 1}</span><strong>${f[1]}</strong><span class="d">${f[2]}</span></a></li>`).join("")}
+    </ol>
+  </section>
+
+  <section class="sec" aria-labelledby="latihan">
+    <div class="sec-head">
+      <h2 id="latihan">Latihan tambahan</h2>
+      <p>Berlatih dengan santai, tanpa penilaian.</p>
+    </div>
+    <div class="tiles">
+      ${extra.map((x) => `<a class="tile" href="${x[0]}"><span class="i" aria-hidden="true">${x[1]}</span><span><strong>${x[2]}</strong><span class="d">${x[3]}</span></span></a>`).join("")}
     </div>
   </section>
-  <div class="callout pink"><p><strong>Kamu berhak merasa aman, menjaga privasi, menetapkan batasan diri, dan meminta bantuan. Kamu tidak harus menghadapi situasi berbahaya sendirian.</strong></p></div>
 
-  <h2>Alur belajarmu</h2>
-  <div class="grid g3" role="list">
-    ${flow.map((f, i) => `<a class="card" role="listitem" href="${f[0]}" style="text-decoration:none;color:inherit"><div class="step-n" aria-hidden="true">${i + 1}</div><span class="ico" aria-hidden="true">${f[1]}</span><strong>${f[2]}</strong></a>`).join("")}
-  </div>
+  <div class="promise"><p>Kamu berhak merasa aman, menjaga privasi, menetapkan batasan diri, dan meminta bantuan. Kamu tidak harus menghadapi situasi berbahaya sendirian.</p></div>
 
-  <div class="grid g2" style="margin-top:20px">
+  <div class="infogrid">
     <section class="card">
-      <h3>🚨 Tentang tombol alarm</h3>
+      <h3>Tentang tombol alarm</h3>
       <p>Tombol merah <strong>ALARM TANDA BAHAYA</strong> ada di semua halaman. Saat ditekan, perangkatmu membunyikan sirene sampai kamu menekan <strong>HENTIKAN ALARM</strong>.</p>
       <p>Alarm <strong>hanya berbunyi di perangkatmu</strong>. Alarm tidak otomatis menghubungi guru, orang tua, atau petugas. Jadi setelah menjauh ke tempat aman, tetap minta bantuan orang dewasa tepercaya.</p>
     </section>
     <section class="card">
-      <h3>🏠 Kembali ke dashboard</h3>
+      <h3>Kembali ke dashboard</h3>
       <p>Lihat ringkasan akun dan aktivitasmu kapan saja lewat dashboard.</p>
       <p><a class="btn btn-primary" href="/dashboard">Buka dashboard</a></p>
-      <p class="hint" style="margin-top:10px">Menu bantuan dan alarm tetap bisa dipakai siapa saja.</p>
+      <p class="hint">Menu bantuan dan alarm tetap bisa dipakai siapa saja.</p>
     </section>
   </div>`;
 }

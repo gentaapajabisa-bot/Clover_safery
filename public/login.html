@@ -3,80 +3,75 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#147d54" />
+    <meta name="theme-color" content="#0e3b2c" />
     <title>Masuk — Clover Safety</title>
     <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap"
+    />
     <link rel="stylesheet" href="/css/auth.css" />
     <script src="/js/common.js" defer></script>
     <script src="/js/auth-form.js" defer></script>
   </head>
-  <body>
-    <header class="topbar">
-      <a class="brand" href="/">
-        <span class="clover">🍀</span>
-        <span>
-          CLOVER SAFETY
-          <small>DIGITAL WELLNESS &amp; SAFETY</small>
-        </span>
-      </a>
-      <a class="toplink" href="/register">Buat akun ↗</a>
-    </header>
+  <body class="auth">
+    <div class="split">
+      <aside class="art">
+        <a class="brand" href="/">
+          <span class="clover">🍀</span>
+          <span>
+            Clover Safety
+            <small>Edukasi &amp; perlindungan digital</small>
+          </span>
+        </a>
 
-    <main class="shell">
-      <section class="intro">
-        <span class="eyebrow">🍀 RUANG DIGITAL YANG LEBIH AMAN</span>
-        <h1>
-          Keamanan dimulai dari
-          <span class="accent">kesadaran.</span>
-        </h1>
-        <p>
-          Masuk ke Clover Safety untuk melanjutkan pembelajaran, melihat aktivitas akun, dan mengakses fitur
-          perlindungan digital.
-        </p>
-        <div class="points">
-          <span>✓ Akun dan sesi terkelola di server</span>
-          <span>✓ Kata sandi diproses dengan hashing</span>
-          <span>✓ Dashboard sesuai peran pengguna</span>
+        <div class="art-body">
+          <img class="emblem" src="/img/clover-shield.svg" alt="" />
+          <h1>Belajar menjaga diri di dunia digital.</h1>
+          <p>Masuk untuk melanjutkan materi, simulasi chat, dan kuis latihan, serta melihat aktivitas akunmu.</p>
+          <ul class="art-points">
+            <li>Materi, simulasi chat, dan kuis latihan</li>
+            <li>Akun dan sesi dikelola aman di server</li>
+            <li>Tombol bantuan selalu tersedia</li>
+          </ul>
         </div>
-      </section>
 
-      <section class="panel">
-        <h2>Selamat datang kembali</h2>
-        <p class="sub">Masuk menggunakan email dan kata sandi akunmu.</p>
-        <form id="auth-form" data-mode="login">
-          <div id="message" class="msg" role="alert" hidden></div>
-          <div class="field">
-            <label for="email">Alamat email</label>
-            <input
-              id="email"
-              name="email"
-              type="email"
-              autocomplete="email"
-              required
-              maxlength="190"
-              placeholder="nama@email.com"
-            />
-          </div>
-          <div class="field">
-            <label for="password">Kata sandi</label>
-            <input
-              id="password"
-              name="password"
-              type="password"
-              autocomplete="current-password"
-              required
-              maxlength="200"
-              placeholder="Masukkan kata sandi"
-            />
-          </div>
-          <button class="btn" type="submit">Masuk ke akun →</button>
-        </form>
-        <p class="switch">
-          Belum punya akun?
-          <a href="/register">Daftar sekarang</a>
+        <p class="art-help">
+          Butuh bantuan sekarang?
+          <a href="/belajar#/bantuan">Buka halaman bantuan</a>
+          atau telepon <a href="tel:129">129</a> (SAPA 129) dan <a href="tel:112">112</a> (darurat).
         </p>
-        <p class="tiny">Jangan gunakan kata sandi yang sama dengan akun penting lainnya.</p>
+      </aside>
+
+      <section class="formside">
+        <div class="formtop">Belum punya akun? <a href="/register">Daftar</a></div>
+        <main class="formmain">
+          <div class="formcard">
+            <h2>Masuk ke akunmu</h2>
+            <p class="sub">Gunakan email dan kata sandi yang kamu daftarkan.</p>
+            <form id="auth-form" data-mode="login">
+              <div id="message" class="msg" role="alert" hidden></div>
+              <div class="field">
+                <label for="email">Alamat email</label>
+                <input id="email" name="email" type="email" autocomplete="email" required maxlength="190" placeholder="nama@email.com" />
+              </div>
+              <div class="field">
+                <label for="password">Kata sandi</label>
+                <div class="pwrap">
+                  <input id="password" name="password" type="password" autocomplete="current-password" required maxlength="200" placeholder="Masukkan kata sandi" />
+                  <button class="pw-toggle" type="button" aria-controls="password" aria-pressed="false">Tampilkan</button>
+                </div>
+              </div>
+              <button class="btn" type="submit">Masuk</button>
+            </form>
+            <p class="switch">Belum punya akun? <a href="/register">Daftar sekarang</a></p>
+            <p class="tiny">Jangan gunakan kata sandi yang sama dengan akun pentingmu yang lain.</p>
+          </div>
+        </main>
       </section>
-    </main>
+    </div>
   </body>
 </html>

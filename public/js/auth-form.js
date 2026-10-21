@@ -32,3 +32,15 @@ if (form) {
     })
     .catch(() => {});
 }
+
+// Tombol "Tampilkan/Sembunyikan" kata sandi.
+document.querySelectorAll(".pw-toggle").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const input = document.getElementById(btn.getAttribute("aria-controls"));
+    if (!input) return;
+    const show = input.type === "password";
+    input.type = show ? "text" : "password";
+    btn.textContent = show ? "Sembunyikan" : "Tampilkan";
+    btn.setAttribute("aria-pressed", String(show));
+  });
+});

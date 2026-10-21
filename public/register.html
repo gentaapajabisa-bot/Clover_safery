@@ -3,103 +3,83 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#147d54" />
+    <meta name="theme-color" content="#0e3b2c" />
     <title>Daftar — Clover Safety</title>
     <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap"
+    />
     <link rel="stylesheet" href="/css/auth.css" />
     <script src="/js/common.js" defer></script>
     <script src="/js/auth-form.js" defer></script>
   </head>
-  <body>
-    <header class="topbar">
-      <a class="brand" href="/">
-        <span class="clover">🍀</span>
-        <span>
-          CLOVER SAFETY
-          <small>DIGITAL WELLNESS &amp; SAFETY</small>
-        </span>
-      </a>
-      <a class="toplink" href="/login">Sudah punya akun?</a>
-    </header>
+  <body class="auth">
+    <div class="split">
+      <aside class="art">
+        <a class="brand" href="/">
+          <span class="clover">🍀</span>
+          <span>
+            Clover Safety
+            <small>Edukasi &amp; perlindungan digital</small>
+          </span>
+        </a>
 
-    <main class="shell">
-      <section class="intro">
-        <span class="eyebrow">🍀 MULAI DARI LANGKAH KECIL</span>
-        <h1>
-          Buat ruang digital yang lebih
-          <span class="accent">aman.</span>
-        </h1>
-        <p>Daftar untuk menyimpan akun di database dan menggunakan dashboard pribadi Clover Safety.</p>
-        <div class="points">
-          <span>✓ Email digunakan untuk identitas akun</span>
-          <span>✓ Akun baru otomatis menjadi pengguna biasa</span>
-          <span>✓ Hak admin diberikan secara manual oleh pemilik sistem</span>
+        <div class="art-body">
+          <img class="emblem" src="/img/clover-shield.svg" alt="" />
+          <h1>Mulai belajar dengan akunmu sendiri.</h1>
+          <p>Akun menyimpan aktivitas belajarmu dan membuka dashboard pribadi di Clover Safety.</p>
+          <ul class="art-points">
+            <li>Email dipakai sebagai identitas akun</li>
+            <li>Akun baru otomatis menjadi pengguna biasa</li>
+            <li>Hak admin diberikan manual oleh pemilik sistem</li>
+          </ul>
         </div>
-      </section>
 
-      <section class="panel">
-        <h2>Buat akun</h2>
-        <p class="sub">Isi informasi berikut untuk memulai.</p>
-        <form id="auth-form" data-mode="register">
-          <div id="message" class="msg" role="alert" hidden></div>
-          <div class="field">
-            <label for="name">Nama lengkap</label>
-            <input
-              id="name"
-              name="name"
-              autocomplete="name"
-              required
-              minlength="2"
-              maxlength="100"
-              placeholder="Nama kamu"
-            />
-          </div>
-          <div class="field">
-            <label for="email">Alamat email</label>
-            <input
-              id="email"
-              name="email"
-              type="email"
-              autocomplete="email"
-              required
-              maxlength="190"
-              placeholder="nama@email.com"
-            />
-          </div>
-          <div class="field">
-            <label for="password">Kata sandi</label>
-            <input
-              id="password"
-              name="password"
-              type="password"
-              autocomplete="new-password"
-              required
-              minlength="10"
-              maxlength="200"
-              placeholder="Minimal 10 karakter"
-            />
-          </div>
-          <div class="field">
-            <label for="confirm">Ulangi kata sandi</label>
-            <input
-              id="confirm"
-              name="confirm"
-              type="password"
-              autocomplete="new-password"
-              required
-              minlength="10"
-              maxlength="200"
-              placeholder="Ulangi kata sandi"
-            />
-          </div>
-          <button class="btn" type="submit">Buat akun →</button>
-        </form>
-        <p class="switch">
-          Sudah terdaftar?
-          <a href="/login">Masuk di sini</a>
+        <p class="art-help">
+          Butuh bantuan sekarang?
+          <a href="/belajar#/bantuan">Buka halaman bantuan</a>
+          atau telepon <a href="tel:129">129</a> (SAPA 129) dan <a href="tel:112">112</a> (darurat).
         </p>
-        <p class="tiny">Dengan mendaftar, kamu setuju menggunakan layanan secara bertanggung jawab.</p>
+      </aside>
+
+      <section class="formside">
+        <div class="formtop">Sudah punya akun? <a href="/login">Masuk</a></div>
+        <main class="formmain">
+          <div class="formcard">
+            <h2>Buat akun baru</h2>
+            <p class="sub">Isi data berikut untuk mulai belajar.</p>
+            <form id="auth-form" data-mode="register">
+              <div id="message" class="msg" role="alert" hidden></div>
+              <div class="field">
+                <label for="name">Nama lengkap</label>
+                <input id="name" name="name" autocomplete="name" required minlength="2" maxlength="100" placeholder="Nama kamu" />
+              </div>
+              <div class="field">
+                <label for="email">Alamat email</label>
+                <input id="email" name="email" type="email" autocomplete="email" required maxlength="190" placeholder="nama@email.com" />
+              </div>
+              <div class="field">
+                <label for="password">Kata sandi</label>
+                <div class="pwrap">
+                  <input id="password" name="password" type="password" autocomplete="new-password" required minlength="10" maxlength="200" placeholder="Minimal 10 karakter" />
+                  <button class="pw-toggle" type="button" aria-controls="password" aria-pressed="false">Tampilkan</button>
+                </div>
+              </div>
+              <div class="field">
+                <label for="confirm">Ulangi kata sandi</label>
+                <input id="confirm" name="confirm" type="password" autocomplete="new-password" required minlength="10" maxlength="200" placeholder="Ulangi kata sandi" />
+              </div>
+              <button class="btn" type="submit">Buat akun</button>
+            </form>
+            <p class="switch">Sudah punya akun? <a href="/login">Masuk di sini</a></p>
+            <p class="tiny">Dengan mendaftar, kamu setuju menggunakan layanan ini dengan bertanggung jawab.</p>
+          </div>
+        </main>
       </section>
-    </main>
+    </div>
   </body>
 </html>

@@ -3,64 +3,74 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#147d54" />
+    <meta name="theme-color" content="#0e3b2c" />
     <title>Clover Safety — Edukasi &amp; Perlindungan Digital</title>
     <meta
       name="description"
       content="Clover Safety: media edukasi pendamping puzzle untuk mengenali tanda bahaya, menjaga privasi, menentukan tindakan aman, dan meminta bantuan."
     />
-    <link rel="manifest" href="/manifest.webmanifest" />
-    <link rel="icon" href="/icon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/icon-192.png" />
+    <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap"
+    />
     <link rel="stylesheet" href="/css/auth.css" />
     <script src="/js/common.js" defer></script>
     <script src="/js/landing.js" defer></script>
   </head>
-  <body>
-    <header class="topbar">
-      <a class="brand" href="/">
-        <span class="clover">🍀</span>
-        <span>
-          CLOVER SAFETY
-          <small>EDUKASI &amp; PERLINDUNGAN DIGITAL</small>
-        </span>
-      </a>
-      <a class="toplink" href="/register">Buat akun ↗</a>
-    </header>
+  <body class="auth">
+    <div class="split">
+      <aside class="art">
+        <a class="brand" href="/">
+          <span class="clover">🍀</span>
+          <span>
+            Clover Safety
+            <small>Edukasi &amp; perlindungan digital</small>
+          </span>
+        </a>
 
-    <main class="shell">
-      <section class="intro">
-        <span class="eyebrow">🍀 RUANG DIGITAL YANG LEBIH AMAN</span>
-        <h1>
-          Kenali bahaya. Jaga privasi.
-          <span class="accent">Berani mencari bantuan.</span>
-        </h1>
-        <p>
-          Media edukasi pendamping puzzle Clover Safety. Masuk untuk membuka materi, simulasi chat, kuis, dan
-          dashboard pembelajaranmu.
+        <div class="art-body">
+          <img class="emblem" src="/img/clover-shield.svg" alt="" />
+          <h1>Kenali bahaya. Jaga privasi. Berani mencari bantuan.</h1>
+          <p>Media edukasi pendamping puzzle Clover Safety untuk siswa: mengenali tanda bahaya, menjaga batasan diri, dan tahu ke mana harus meminta tolong.</p>
+          <ul class="art-points">
+            <li>Mengenali tanda bahaya</li>
+            <li>Menjaga privasi dan batasan diri</li>
+            <li>Menentukan tindakan yang aman</li>
+          </ul>
+        </div>
+
+        <p class="art-help">
+          Butuh bantuan sekarang?
+          <a href="/belajar#/bantuan">Buka halaman bantuan</a>
+          atau telepon <a href="tel:129">129</a> (SAPA 129) dan <a href="tel:112">112</a> (darurat).
         </p>
-        <div class="points">
-          <span>✓ Mengenali tanda bahaya</span>
-          <span>✓ Menjaga privasi dan batasan diri</span>
-          <span>✓ Menentukan tindakan yang aman</span>
-        </div>
-      </section>
+      </aside>
 
-      <section class="panel">
-        <h2>Mulai dari sini</h2>
-        <p class="sub">Masuk ke akunmu atau buat akun baru untuk mengakses dashboard dan materi.</p>
-        <div class="cta-stack">
-          <a class="btn" href="/login">Masuk ke akun →</a>
-          <a class="btn btn-ghost" href="/register">Buat akun baru</a>
-        </div>
-        <div class="help-strip">
-          <strong>Butuh bantuan sekarang?</strong>
-          <p>
-            <a href="/belajar#/bantuan">Buka halaman bantuan</a>
-            · telepon <a href="tel:129">129 (SAPA 129)</a> atau <a href="tel:112">112 (darurat)</a>
-          </p>
-        </div>
+      <section class="formside">
+        <div class="formtop"><a href="/register">Buat akun</a></div>
+        <main class="formmain">
+          <div class="formcard">
+            <h2>Mulai dari sini</h2>
+            <p class="sub">Masuk ke akunmu, atau buat akun baru untuk membuka dashboard dan materi.</p>
+            <div class="cta-stack">
+              <a class="btn" href="/login">Masuk</a>
+              <a class="btn btn-ghost" href="/register">Buat akun baru</a>
+            </div>
+            <div class="help-strip">
+              <strong>Butuh bantuan sekarang?</strong>
+              <p>
+                <a href="/belajar#/bantuan">Buka halaman bantuan</a>, telepon
+                <a href="tel:129">129 (SAPA 129)</a> atau <a href="tel:112">112 (darurat)</a>.
+              </p>
+            </div>
+          </div>
+        </main>
       </section>
-    </main>
+    </div>
   </body>
 </html>
