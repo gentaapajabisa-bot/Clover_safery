@@ -497,3 +497,80 @@ th {
   max-width: 600px;
   margin: 12vh auto;
 }
+
+/* ---------- Halaman sambutan & tautan antar-bagian ---------- */
+a.btn {
+  display: block;
+  text-align: center;
+}
+
+.btn-ghost {
+  background: #fff;
+  color: var(--green);
+  border: 1.5px solid var(--green2);
+  box-shadow: none;
+}
+
+.cta-stack {
+  display: grid;
+  gap: 12px;
+}
+
+.help-strip {
+  margin-top: 26px;
+  padding: 16px 18px;
+  border-radius: 14px;
+  background: #fff4f2;
+  border: 1px solid #f6cfc8;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.help-strip p {
+  margin: 6px 0 0;
+}
+
+.help-strip a {
+  color: #b3261e;
+  font-weight: 700;
+}
+
+.learn-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 22px;
+  padding: 24px 28px;
+  border-radius: 20px;
+  color: #fff;
+  background: linear-gradient(120deg, #147d54, #1ca66a);
+  box-shadow: 0 12px 30px #147d5430;
+}
+
+.learn-cta h2 {
+  margin: 0 0 6px;
+  font-size: 22px;
+}
+
+.learn-cta p {
+  margin: 0;
+  opacity: 0.92;
+  font-size: 14px;
+}
+
+.learn-cta a {
+  flex: none;
+  padding: 12px 20px;
+  border-radius: 12px;
+  background: #fff;
+  color: var(--green);
+  font-weight: 800;
+}
+
+@media (max-width: 520px) {
+  .learn-cta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

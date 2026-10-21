@@ -41,10 +41,10 @@ function buildNav(cur) {
       ? `<li><a href="#/guru" ${cur === "/guru" ? 'aria-current="page"' : ""}>Panduan Guru BK</a></li>`
       : "");
   const a = $("#acct-link");
-  a.textContent = me ? "👤 " + me.nickname : "Masuk";
-  a.setAttribute("aria-label", me ? `Akun: ${me.nickname}` : "Masuk atau daftar (opsional)");
-  if (cur === "/akun") a.setAttribute("aria-current", "page");
-  else a.removeAttribute("aria-current");
+  a.textContent = "← Dashboard";
+  a.setAttribute("href", "/dashboard");
+  a.setAttribute("aria-label", "Kembali ke dashboard");
+  a.removeAttribute("aria-current");
 }
 function render() {
   let p = location.hash.replace(/^#/, "") || "/";

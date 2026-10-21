@@ -38,13 +38,10 @@ function pageHome() {
       <p>Alarm <strong>hanya berbunyi di perangkatmu</strong>. Alarm tidak otomatis menghubungi guru, orang tua, atau petugas. Jadi setelah menjauh ke tempat aman, tetap minta bantuan orang dewasa tepercaya.</p>
     </section>
     <section class="card">
-      <h3>👤 Akun (boleh dilewati)</h3>
-      ${
-        me
-          ? `<p>Halo, <strong>${esc(me.nickname)}</strong>! Kamu sedang masuk sebagai ${me.role === "guru" ? "Guru BK" : "siswa"}.</p>${routeBtn("/login", "Buka dashboard", "btn btn-primary")}`
-          : `<p>Kamu bisa masuk untuk melihat kemajuan belajar. <strong>Semua materi, alarm, dan bantuan bisa dipakai tanpa akun.</strong></p>${routeBtn("/login", "Masuk atau Daftar", "btn btn-primary")}`
-      }
-      <p class="hint" style="margin-top:10px">Jangan memakai nama lengkap sebagai nama pengguna.</p>
+      <h3>🏠 Kembali ke dashboard</h3>
+      <p>Lihat ringkasan akun dan aktivitasmu kapan saja lewat dashboard.</p>
+      <p><a class="btn btn-primary" href="/dashboard">Buka dashboard</a></p>
+      <p class="hint" style="margin-top:10px">Menu bantuan dan alarm tetap bisa dipakai siapa saja.</p>
     </section>
   </div>`;
 }

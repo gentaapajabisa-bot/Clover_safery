@@ -7,7 +7,8 @@ Media edukasi keselamatan digital (materi, simulasi chat, kuis, kamus, alarm tan
 ```
 Clover_safery/
 ├── public/            # Seluruh file statis yang dilayani ke browser
-│   ├── index.html     #   materi edukasi (SPA berbasis hash-route)
+│   ├── index.html     #   halaman sambutan (tanpa isi materi) + landing.js
+│   ├── belajar.html   #   materi edukasi (SPA berbasis hash-route), dijaga materi-guard.js
 │   ├── login.html · register.html · dashboard.html · admin.html · profile.html
 │   ├── css/           #   styles.css, extra.css (materi) · auth.css (login/dashboard/admin)
 │   ├── js/            #   theme.js (tema) · common.js (helper bersama) · auth-form.js
@@ -59,13 +60,16 @@ Akun baru selalu berperan `user`; tidak ada pilihan admin di halaman publik, dan
 
 | Jalur                                                      | Keterangan                        |
 | ---------------------------------------------------------- | --------------------------------- |
-| `/`                                                        | Materi edukasi (tanpa login)      |
+| `/`                                                        | Halaman sambutan (Masuk/Daftar)   |
+| `/belajar`                                                 | Materi edukasi (wajib login*)     |
 | `/login` · `/register`                                     | Masuk / daftar                    |
 | `/dashboard`                                               | Dashboard pengguna                |
 | `/admin`                                                   | Panel admin                       |
 | `POST /api/auth/register` · `login` · `logout`, `GET …/me` | Autentikasi & sesi                |
 | `GET /api/dashboard`                                       | Aktivitas & laporan milik sendiri |
 | `GET /api/admin/stats`, `GET/PATCH /api/admin/users`       | Khusus admin                      |
+
+> \* Alur: `/` → `/login` → `/dashboard` → `/belajar`. Rute `/belajar#/bantuan` dan `#/tentang` tetap terbuka tanpa login demi keselamatan (tombol alarm menuju halaman bantuan). Penjagaan `/belajar` dilakukan di sisi klien; file statisnya tetap bisa diunduh langsung, jadi ini pengatur alur, bukan pengaman data.
 
 ## Keamanan
 

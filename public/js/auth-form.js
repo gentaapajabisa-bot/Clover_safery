@@ -23,3 +23,12 @@ if (form) {
     }
   });
 }
+
+// Sudah punya sesi aktif? Tidak perlu login lagi.
+if (form) {
+  api("/api/auth/me", null, "GET")
+    .then(({ user }) => {
+      if (user) location.replace("/dashboard");
+    })
+    .catch(() => {});
+}
