@@ -380,3 +380,88 @@
     margin-left: 6px;
   }
 }
+
+/* ---------- Riwayat ---------- */
+.filters {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+.chip {
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--ink);
+  border-radius: 99px;
+  padding: 7px 14px;
+  font-weight: 750;
+  font-size: 13px;
+  cursor: pointer;
+}
+.chip.active {
+  background: var(--green);
+  border-color: var(--green);
+  color: #fff;
+}
+.hist {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  margin-bottom: 10px;
+  background: #fff;
+  overflow: hidden;
+}
+.hist-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 14px 16px;
+  border: 0;
+  background: none;
+  text-align: left;
+  cursor: pointer;
+  color: var(--ink);
+  font: inherit;
+}
+.hist-head:hover {
+  background: var(--mint);
+}
+.hist-title {
+  min-width: 0;
+  flex: 1;
+}
+.hist-title strong,
+.hist-title span {
+  display: block;
+  overflow-wrap: anywhere;
+}
+.hist-title span {
+  color: var(--muted);
+  font-size: 13px;
+}
+.hist-body {
+  padding: 4px 16px 16px;
+  border-top: 1px solid #edf3ef;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.hist-body dt {
+  font-weight: 750;
+  margin-top: 12px;
+}
+.hist-body dd {
+  margin: 2px 0 0;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.hist-body .ok {
+  color: var(--green);
+  font-weight: 750;
+}
+.hist-body .no {
+  color: #a64e23;
+  font-weight: 750;
+}
+.hist-body .row-actions {
+  margin-top: 14px;
+}

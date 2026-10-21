@@ -27,7 +27,9 @@ document.addEventListener("click", (e) => {
     if (b) b.focus({ preventScroll: true });
   } else if (x === "quiz-pick") {
     Q.sel = i;
-    if (i === QUIZ[Q.i][2]) Q.ok++;
+    const [qt, qo, qa, qe] = QUIZ[Q.i];
+    if (i === qa) Q.ok++;
+    Q.log.push({ q: qt, chosen: qo[i], correct: qo[qa], ok: i === qa, explanation: qe });
     paintQuiz();
     const b = $("[data-x=quiz-next]");
     if (b) b.focus();
@@ -35,13 +37,14 @@ document.addEventListener("click", (e) => {
     Q.i++;
     Q.sel = null;
     paintQuiz();
+    if (Q.i >= QUIZ.length) saveQuizHistory();
     const h = $("#quiz-root .card h2, #quiz-root .callout");
     if (h) {
       h.setAttribute("tabindex", "-1");
       h.focus();
     }
   } else if (x === "quiz-reset") {
-    Q = { i: 0, sel: null, ok: 0 };
+    Q = { i: 0, sel: null, ok: 0, log: [], saved: false };
     paintQuiz();
   }
 });

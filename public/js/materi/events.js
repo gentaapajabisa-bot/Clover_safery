@@ -115,6 +115,10 @@ document.addEventListener("click", async (e) => {
     toast("Kata sandi diatur ulang. Sampaikan langsung kepada pemilik akun.");
     return;
   }
+  if (act === "ref-save") {
+    await saveReflectionHistory(t);
+    return;
+  }
   if (act === "ref-copy") {
     const R = S.ref;
     const lines = ["Refleksi Clover Safety (ditulis oleh saya sendiri)"];

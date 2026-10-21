@@ -22,3 +22,6 @@ ALTER TABLE trusted_contacts
 
 ALTER TABLE chat_messages
   ADD CONSTRAINT fk_chat_thread_user FOREIGN KEY (thread_user_id) REFERENCES users (id) ON DELETE CASCADE;
+
+ALTER TABLE user_history
+  ADD CONSTRAINT fk_history_user FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE;

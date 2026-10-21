@@ -212,7 +212,7 @@ function pageReflect() {
   return `
   <h1 tabindex="-1">Refleksi Setelah Puzzle</h1>
   <div class="callout"><p>Selamat menyelesaikan puzzle Clover Safety! Luangkan waktu sejenak untuk merefleksikan hal yang kamu pelajari. <strong>Tidak ada nilai benar atau salah.</strong> Kamu boleh melewati pertanyaan yang tidak ingin kamu jawab.</p></div>
-  <div class="callout kuning"><p>Jawabanmu <strong>tidak disimpan dan tidak dikirim</strong> ke mana pun; jawaban hilang saat halaman ditutup atau dimuat ulang. Jangan menulis nama lengkap, alamat, kata sandi, atau data pribadi lain.</p></div>
+  <div class="callout kuning"><p>Jawabanmu <strong>tidak disimpan otomatis</strong> dan hilang saat halaman ditutup. Kamu bisa memilih <strong>“Simpan ke riwayat”</strong> setelah selesai; riwayat hanya bisa dilihat olehmu (tidak oleh admin). Jangan menulis nama lengkap, alamat, kata sandi, atau data pribadi lain.</p></div>
   <form id="ref-form" novalidate>
     <div class="card" style="margin-bottom:14px"><h3>1. Apa pesan terpenting yang kamu dapatkan setelah menyelesaikan puzzle?</h3>${txt("q1", "Jawabanku")}</div>
     <fieldset><legend>2. Tanda bahaya apa yang sekarang lebih kamu pahami?</legend>${grp("q2", q2, R.q2, "checkbox")}</fieldset>
@@ -231,6 +231,7 @@ function pageReflect() {
   </form>
   <div id="ref-end" ${R.done ? "" : "hidden"}>
     <div class="callout hijau" style="margin-top:20px"><p><strong>Terima kasih telah melakukan refleksi.</strong> Kamu berhak merasa aman, menjaga privasi, menolak hal yang membuatmu tidak nyaman, dan mencari bantuan. Kamu tidak harus menghadapi situasi berbahaya sendirian.</p></div>
+    <div class="card" style="margin-top:14px"><h3>Simpan jawabanku</h3><p class="hint">Opsional. Jawaban masuk ke Riwayat akunmu dan hanya bisa dilihat olehmu.</p><div class="btn-row"><button type="button" class="btn btn-primary" data-act="ref-save">Simpan ke riwayat</button></div><p class="hint" id="ref-save-status" role="status"></p></div>
     <div class="btn-row">${routeBtn("#/tanda-bahaya", "Pelajari Lagi", "btn")}${routeBtn("#/", "Kembali ke Beranda", "btn")}${routeBtn("#/bantuan", "Aku Ingin Meminta Bantuan", "btn btn-pink")}</div>
   </div>`;
 }
@@ -287,7 +288,7 @@ function pageAbout() {
   <p class="lead">Clover Safety adalah media edukasi pendamping puzzle tentang pencegahan child grooming untuk siswa SMP.</p>
   <div class="grid g2">
     <section class="card"><h3>Data apa yang tersimpan?</h3>
-      <ul class="clean"><li><strong>Tanpa akun:</strong> tidak ada data pribadi yang disimpan. Hanya pengaturan tampilan (tema, ukuran huruf) yang diingat di perangkat ini.</li><li><strong>Dengan akun:</strong> hanya nama panggilan, nama pengguna, peran, sidik kata sandi (hash), dan daftar halaman materi yang sudah dibuka. Semuanya tersimpan <strong>di browser perangkat ini saja</strong>.</li><li><strong>Tidak pernah disimpan:</strong> jawaban refleksi, centang checklist, pilihan skenario, atau isi “peta orang tepercaya”.</li><li>Kontak tepercaya yang kamu simpan di halaman Kontak, serta profil dan pesan ke admin, tersimpan di server dan <strong>hanya bisa dibuka oleh akunmu</strong> (pesan juga bisa dibaca admin yang kamu hubungi).</li></ul></section>
+      <ul class="clean"><li><strong>Tanpa akun:</strong> tidak ada data pribadi yang disimpan. Hanya pengaturan tampilan (tema, ukuran huruf) yang diingat di perangkat ini.</li><li><strong>Dengan akun:</strong> hanya nama panggilan, nama pengguna, peran, sidik kata sandi (hash), dan daftar halaman materi yang sudah dibuka. Semuanya tersimpan <strong>di browser perangkat ini saja</strong>.</li><li><strong>Tidak pernah disimpan otomatis:</strong> centang checklist, pilihan skenario, atau isi “catatan sementara”. Jawaban kuis dan refleksi hanya masuk Riwayat bila kamu sudah login (kuis otomatis, refleksi lewat tombol “Simpan ke riwayat”).</li><li>Kontak tepercaya yang kamu simpan di halaman Kontak, serta profil dan pesan ke admin, tersimpan di server dan <strong>hanya bisa dibuka oleh akunmu</strong> (pesan juga bisa dibaca admin yang kamu hubungi).</li></ul></section>
     <section class="card"><h3>Batasan akun</h3>
       <ul class="clean"><li>Akun hanya berlaku di perangkat dan browser yang sama; tidak bisa dipakai di perangkat lain.</li><li>Membersihkan data browser akan menghapus akun.</li><li>Sesi login berakhir saat tab ditutup, agar aman di komputer bersama.</li><li>Karena tidak memakai server, ini bukan sistem keamanan tingkat lembaga. Peran Guru BK dibuka dengan kode yang bisa dilihat siapa pun yang membuka kode sumber.</li></ul></section>
     <section class="card"><h3>Batasan alarm</h3>

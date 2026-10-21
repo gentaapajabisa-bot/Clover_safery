@@ -113,3 +113,16 @@ CREATE TABLE IF NOT EXISTS chat_messages (
   KEY idx_chat_thread (thread_user_id, id),
   KEY idx_chat_unread (sender_role, read_at)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Riwayat jawaban kuis dan refleksi. Hanya pemilik yang dapat membaca (admin pun tidak).
+CREATE TABLE IF NOT EXISTS user_history (
+  id         BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  user_id    BIGINT UNSIGNED NOT NULL,
+  kind       ENUM('kuis','refleksi') NOT NULL,
+  title      VARCHAR(150)    NOT NULL,
+  summary    VARCHAR(300)    NULL,
+  data       TEXT            NOT NULL,
+  created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  KEY idx_history_user (user_id, id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

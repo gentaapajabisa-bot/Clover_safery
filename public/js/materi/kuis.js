@@ -64,15 +64,15 @@ const QUIZ = [
     "SAPA 129 (Kementerian PPPA). Bahaya langsung: hubungi 112.",
   ],
 ];
-let Q = { i: 0, sel: null, ok: 0 };
+let Q = { i: 0, sel: null, ok: 0, log: [], saved: false };
 function pageQuiz() {
-  return `<h1 tabindex="-1">Kuis Latihan</h1><p class="lead">${QUIZ.length} pertanyaan singkat untuk mengingat materi. Setelah menjawab, kamu langsung melihat penjelasannya. Ini bukan ujian dan tidak disimpan.</p><div id="quiz-root"></div>`;
+  return `<h1 tabindex="-1">Kuis Latihan</h1><p class="lead">${QUIZ.length} pertanyaan singkat untuk mengingat materi. Setelah menjawab, kamu langsung melihat penjelasannya. Ini bukan ujian. Jika sudah masuk, hasilmu disimpan di Riwayat dan hanya bisa dilihat olehmu.</p><div id="quiz-root"></div>`;
 }
 function paintQuiz() {
   const root = $("#quiz-root");
   if (!root) return;
   if (Q.i >= QUIZ.length) {
-    root.innerHTML = `<div class="callout hijau"><p><strong>Kuis selesai.</strong> Kamu memilih jawaban yang sesuai saran keselamatan ${Q.ok} dari ${QUIZ.length}. Ini bukan nilai. Ulangi kapan saja, atau baca lagi materinya.</p></div><div class="btn-row"><button type="button" class="btn btn-primary" data-x="quiz-reset">Ulangi kuis</button>${routeBtn("#/tanda-bahaya", "Baca materi", "btn")}${routeBtn("#/bantuan", "Meminta Bantuan", "btn btn-pink")}</div>`;
+    root.innerHTML = `<div class="callout hijau"><p><strong>Kuis selesai.</strong> Kamu memilih jawaban yang sesuai saran keselamatan ${Q.ok} dari ${QUIZ.length}. Ini bukan nilai. Ulangi kapan saja, atau baca lagi materinya.</p></div><p class="hint" id="quiz-save" role="status"></p><div class="btn-row"><button type="button" class="btn btn-primary" data-x="quiz-reset">Ulangi kuis</button>${routeBtn("#/tanda-bahaya", "Baca materi", "btn")}${routeBtn("#/bantuan", "Meminta Bantuan", "btn btn-pink")}</div>`;
     return;
   }
   const [q, opts, ans, ex] = QUIZ[Q.i],

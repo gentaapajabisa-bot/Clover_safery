@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#147d54" />
+    <meta name="robots" content="noindex" />
+    <title>Riwayat — Clover Safety</title>
+    <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap"
+    />
+    <link rel="stylesheet" href="/css/auth.css" />
+    <link rel="stylesheet" href="/css/features.css" />
+    <script src="/js/common.js" defer></script>
+    <script src="/js/history-page.js" defer></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="/dashboard">
+        <span class="clover">🍀</span>
+        <span>
+          CLOVER SAFETY
+          <small>DIGITAL WELLNESS &amp; SAFETY</small>
+        </span>
+      </a>
+      <div class="top-right">
+        <a class="me-chip" id="me-chip" href="/profile" hidden aria-label="Profil saya"></a>
+        <button class="logout" id="logout" type="button">Keluar</button>
+      </div>
+    </header>
+
+    <div class="app-layout">
+      <aside class="sidebar">
+        <div class="side-label">MENU PENGGUNA</div>
+        <a class="navitem" href="/dashboard">◫ Ringkasan</a>
+        <a class="navitem" href="/belajar">✦ Materi edukasi</a>
+        <a class="navitem active" href="/riwayat">☰ Riwayat</a>
+        <a class="navitem" href="/kontak">☎ Kontak tepercaya</a>
+        <a class="navitem" href="/chat">✉ Chat admin <span class="badge" data-chat-badge="user" hidden></span></a>
+        <a class="navitem" href="/profile">◎ Profil</a>
+        <div class="side-label">ADMINISTRASI</div>
+        <a class="navitem" id="admin-link" href="/admin" hidden>♧ Panel admin</a>
+      </aside>
+
+            <main class="mainarea">
+        <div class="welcome">
+          <div>
+            <p class="muted eyebrow-sm">RIWAYAT</p>
+            <h1>Riwayat jawabanku</h1>
+            <p class="muted">Hasil kuis dan refleksi yang pernah kamu simpan.</p>
+          </div>
+        </div>
+        <div id="message" class="msg" role="alert" hidden></div>
+
+        <div class="privacy-note" role="note">
+          <strong>🔒 Privat.</strong> Hanya kamu yang bisa membuka riwayat ini. Admin dan pengguna lain tidak bisa
+          membacanya. Kamu bisa menghapus entri kapan saja.
+        </div>
+
+        <section class="box section">
+          <div class="filters" role="tablist" aria-label="Filter riwayat">
+            <button class="chip active" type="button" data-filter="all">Semua</button>
+            <button class="chip" type="button" data-filter="kuis">Kuis</button>
+            <button class="chip" type="button" data-filter="refleksi">Refleksi</button>
+          </div>
+          <div id="history"><p class="empty">Memuat riwayat…</p></div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
