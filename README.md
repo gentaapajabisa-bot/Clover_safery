@@ -1,40 +1,78 @@
-# Clover Safety
+# Clover Safery
 
-Versi pengembangan Clover Safety: edukasi digital + login berbasis server + dashboard pengguna + panel admin dengan TiDB Cloud Serverless dan Vercel Functions.
+Media edukasi keselamatan digital (materi, simulasi chat, kuis, kamus, alarm tanda bahaya) dengan **login berbasis server**, **dashboard pengguna**, dan **panel admin**. Berjalan di **Vercel** (static + Functions) dengan database **TiDB Cloud**.
 
-## Fitur yang dipertahankan
-- Materi edukasi keselamatan digital, simulasi, kuis, kamus, pengaturan aksesibilitas dan alarm lokal dari aplikasi awal.
-- Identitas/branding diperbarui menjadi Clover Safety.
-- Halaman terpisah `/login`, `/register`, `/dashboard`, dan `/admin`.
-- Backend API untuk daftar/login/logout, pemeriksaan sesi, dashboard, statistik admin dan pengelolaan status pengguna.
-- Password disimpan dengan scrypt; sesi memakai token acak di cookie HttpOnly/Secure/SameSite dan hash token di database.
+## Struktur proyek
 
-## Setup database TiDB
-1. Buat cluster TiDB Cloud Starter/Essential yang mendukung TiDB Cloud Serverless Driver.
-2. Buka SQL Editor dan jalankan `sql/schema.sql` (jika console sudah memilih database `clover_safety`, hapus baris `CREATE DATABASE`/`USE` jika tidak didukung dalam editor).
-3. Di Vercel > Settings > Environment Variables, tambahkan `DATABASE_URL` sesuai connection string yang disediakan TiDB Cloud Serverless Driver. Jangan pernah commit password database ke GitHub.
-4. Tambahkan `SESSION_TTL_DAYS` bernilai `7`.
-5. Deploy ulang.
+```
+Clover_safery/
+├── public/            # Seluruh file statis yang dilayani ke browser
+│   ├── index.html     #   materi edukasi (SPA berbasis hash-route)
+│   ├── login.html · register.html · dashboard.html · admin.html · profile.html
+│   ├── css/           #   styles.css, extra.css (materi) · auth.css (login/dashboard/admin)
+│   ├── js/            #   app.js, extra.js, theme.js (materi)
+│   │                  #   common.js (helper bersama) · auth-form.js · dashboard-page.js · admin-page.js
+│   ├── sw.js          #   service worker (offline)
+│   └── manifest.webmanifest, icon.*
+├── api/               # Vercel Functions
+│   ├── auth/          #   register · login · logout · me
+│   ├── admin/         #   stats · users
+│   └── dashboard.js
+├── lib/               # db.js (koneksi TiDB) · security.js (hash, sesi, guard)
+├── sql/               # schema.sql · foreign-keys.sql (opsional)
+├── vercel.json        # header keamanan (CSP, HSTS, dll.) & outputDirectory
+└── package.json
+```
 
-## Jadikan akun admin
-1. Daftar lewat `/register` menggunakan email milikmu.
-2. Buka SQL Editor TiDB dan jalankan:
-   `UPDATE users SET role='admin' WHERE email='email-kamu@example.com';`
-3. Logout lalu login lagi. Panel admin tersedia di `/admin`.
+> Hanya isi `public/` yang bisa diakses publik. `lib/`, `sql/`, dan file konfigurasi tidak ikut terlayani.
 
-Akun registrasi baru selalu mendapat peran `user`. Tidak ada pilihan peran admin di halaman publik. Hak akses admin dicek kembali di backend.
+## Setup database (TiDB)
 
-## Jalur penting
-- `/` — materi edukasi
-- `/login` — masuk
-- `/register` — daftar
-- `/dashboard` — dashboard pengguna
-- `/admin` — panel admin
-- `/api/auth/register`, `/api/auth/login`, `/api/auth/logout`, `/api/auth/me`
-- `/api/dashboard`, `/api/admin/stats`, `/api/admin/users`
+1. Buat cluster TiDB Cloud (Starter/Essential) yang mendukung Serverless Driver.
+2. Buka **SQL Editor**, pilih database tujuan, lalu jalankan seluruh isi `sql/schema.sql`.
+   Skema tidak memuat `CREATE DATABASE`/`USE` dan tidak memakai foreign key, supaya aman di semua versi TiDB.
+3. _(Opsional, TiDB v8.5+)_ jalankan `sql/foreign-keys.sql` untuk menambah foreign key.
 
-## Environment
-Salin `.env.example` sebagai referensi saja. Untuk produksi, masukkan nilai sebenarnya ke Vercel Environment Variables. Jangan commit `.env`.
+## Deploy ke Vercel
 
-## Catatan
-Ini paket starter implementasi yang perlu diuji di cluster TiDB dan project Vercel milikmu sebelum digunakan untuk data nyata. Driver `@tidbcloud/serverless` saat ini ditujukan untuk TiDB Cloud Starter/Essential. Fitur pelaporan baru menampilkan daftar laporan yang ada; form pembuatan laporan dan verifikasi email belum termasuk. Materi edukasi dapat dibuka tanpa login.
+1. Impor repositori ini ke Vercel (Framework Preset: **Other**; tanpa build command).
+2. Di **Settings → Environment Variables** tambahkan:
+   - `DATABASE_URL` — connection string dari TiDB Cloud
+   - `SESSION_TTL_DAYS` — mis. `7` (opsional, rentang 1–30)
+3. Deploy. Jangan pernah meng-commit `.env` atau password database.
+
+Pengembangan lokal: salin `.env.example` ke `.env`, isi nilainya, lalu `npm install && npm run dev`.
+
+## Menjadikan akun admin
+
+1. Daftar lewat `/register`.
+2. Di SQL Editor TiDB: `UPDATE users SET role = 'admin' WHERE email = 'email-kamu@example.com';`
+3. Logout, lalu login lagi. Panel admin ada di `/admin`.
+
+Akun baru selalu berperan `user`; tidak ada pilihan admin di halaman publik, dan hak akses dicek ulang di backend.
+
+## Halaman & endpoint
+
+| Jalur                                                      | Keterangan                        |
+| ---------------------------------------------------------- | --------------------------------- |
+| `/`                                                        | Materi edukasi (tanpa login)      |
+| `/login` · `/register`                                     | Masuk / daftar                    |
+| `/dashboard`                                               | Dashboard pengguna                |
+| `/admin`                                                   | Panel admin                       |
+| `POST /api/auth/register` · `login` · `logout`, `GET …/me` | Autentikasi & sesi                |
+| `GET /api/dashboard`                                       | Aktivitas & laporan milik sendiri |
+| `GET /api/admin/stats`, `GET/PATCH /api/admin/users`       | Khusus admin                      |
+
+## Keamanan
+
+- Kata sandi di-hash dengan **scrypt** (salt acak); perbandingan memakai `timingSafeEqual`.
+- Sesi: token acak 256-bit di cookie `HttpOnly; Secure; SameSite=Lax`; yang disimpan di database hanya **hash SHA-256**-nya.
+- Login memakai hash pembanding untuk email yang tidak terdaftar sehingga waktu respons tidak membocorkan keberadaan akun. Sesi kedaluwarsa dibersihkan saat login; menangguhkan akun langsung mencabut semua sesinya.
+- CSP ketat (`script-src 'self'`), HSTS, `nosniff`, `frame-ancestors 'none'` di `vercel.json`.
+
+## Catatan & batasan
+
+- Paket ini perlu diuji di cluster TiDB dan project Vercel milikmu sebelum dipakai untuk data nyata.
+- Belum ada pembatasan percobaan login di server (rate limiting) dan verifikasi email.
+- Fitur laporan baru menampilkan daftar; form pembuatan laporan belum ada.
+- Materi edukasi (`public/js/app.js`) masih memuat sistem akun **lokal** lama (disimpan di browser, termasuk kode Guru BK di sisi klien). Itu bukan keamanan sungguhan dan terpisah dari login server. Kunci penyimpanan lokal masih berawalan `pazzel_` agar data pengguna lama tidak hilang.
