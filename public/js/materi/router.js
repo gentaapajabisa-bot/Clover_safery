@@ -20,7 +20,7 @@ const ROUTES = {
     a: () => paintScn(),
     key: "tindakan",
   },
-  "/refleksi": { t: "Refleksi Setelah Puzzle", nav: "Refleksi", r: pageReflect, key: "refleksi" },
+  "/refleksi": { t: "Refleksi", nav: "Refleksi", r: pageReflect, key: "refleksi" },
   "/bantuan": { t: "Meminta Bantuan", nav: "Bantuan", r: pageHelp, a: () => paintTrusted(), key: "bantuan" },
   "/akun": {
     t: "Akun — Clover Safety",

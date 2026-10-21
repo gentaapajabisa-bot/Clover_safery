@@ -9,7 +9,7 @@ function pageHome() {
     ["#/tanda-bahaya", "Kenali tanda bahaya", "Pelajari pola perilaku yang perlu diwaspadai."],
     ["#/privasi", "Pahami privasi &amp; batasan", "Apa yang boleh dibagikan dan apa yang tidak."],
     ["#/tindakan", "Latih tindakan aman", "Pilih langkah yang tepat lewat skenario."],
-    ["#/refleksi", "Refleksi setelah puzzle", "Tuliskan apa yang sudah kamu pelajari."],
+    ["#/refleksi", "Refleksi", "Tuliskan apa yang sudah kamu pelajari."],
     ["#/bantuan", "Akses bantuan", "Tahu ke mana dan kepada siapa meminta tolong."],
   ];
   const extra = [
@@ -30,7 +30,7 @@ function pageHome() {
       </ul>
       <div class="btn-row">
         ${routeBtn("#/tanda-bahaya", "Mulai Belajar", "btn btn-gold")}
-        ${routeBtn("#/refleksi", "Refleksi Setelah Puzzle", "btn btn-line")}
+        ${routeBtn("#/refleksi", "Refleksi", "btn btn-line")}
         ${routeBtn("#/bantuan", "Meminta Bantuan", "btn btn-help")}
       </div>
     </div>
@@ -134,7 +134,7 @@ function pageAction() {
     <ul class="clean">${SCN_EXPL.map((t) => `<li>${esc(t)}</li>`).join("")}</ul>
   </div>
   ${checklist("act", "Checklist Tindakan Aman", CL_ACT)}
-  <div class="btn-row">${routeBtn("#/refleksi", "Lanjut: Refleksi Setelah Puzzle", "btn btn-primary")}${routeBtn("#/bantuan", "Meminta Bantuan", "btn btn-pink")}</div>`;
+  <div class="btn-row">${routeBtn("#/refleksi", "Lanjut: Refleksi", "btn btn-primary")}${routeBtn("#/bantuan", "Meminta Bantuan", "btn btn-pink")}</div>`;
 }
 function paintScn(focusI) {
   const root = $("#scn-root");
@@ -210,7 +210,7 @@ function pageReflect() {
       )
       .join("");
   return `
-  <h1 tabindex="-1">Refleksi Setelah Puzzle</h1>
+  <h1 tabindex="-1">Refleksi</h1>
   <div class="callout"><p>Selamat menyelesaikan puzzle Clover Safety! Luangkan waktu sejenak untuk merefleksikan hal yang kamu pelajari. <strong>Tidak ada nilai benar atau salah.</strong> Kamu boleh melewati pertanyaan yang tidak ingin kamu jawab.</p></div>
   <div class="callout kuning"><p>Jawabanmu <strong>tidak disimpan otomatis</strong> dan hilang saat halaman ditutup. Kamu bisa memilih <strong>“Simpan ke riwayat”</strong> setelah selesai; riwayat hanya bisa dilihat olehmu (tidak oleh admin). Jangan menulis nama lengkap, alamat, kata sandi, atau data pribadi lain.</p></div>
   <form id="ref-form" novalidate>

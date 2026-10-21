@@ -34,7 +34,7 @@ function buildEntry(body) {
       .filter((i) => i.label && i.value.trim());
     if (!items.length) return { error: "Isi dulu setidaknya satu jawaban refleksi." };
     const first = items.find((i) => i.value.trim());
-    return { kind, title: "Refleksi setelah puzzle", summary: clip(first.value.replace(/\s+/g, " "), 120), data: { items } };
+    return { kind, title: "Refleksi", summary: clip(first.value.replace(/\s+/g, " "), 120), data: { items } };
   }
   return { error: "Jenis riwayat tidak dikenal." };
 }

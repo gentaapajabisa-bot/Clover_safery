@@ -31,7 +31,7 @@ function render() {
           (e) => `<article class="hist" data-id="${Number(e.id)}">
             <button class="hist-head" type="button" aria-expanded="false" data-open="${Number(e.id)}">
               <span class="pill">${esc(KIND[e.kind] || e.kind)}</span>
-              <span class="hist-title"><strong>${esc(e.title)}</strong><span>${esc(e.summary || "")} · ${esc(fmtDate(e.created_at))}</span></span>
+              <span class="hist-title"><strong>${esc(e.kind === "refleksi" ? "Refleksi" : e.title)}</strong><span>${esc(e.summary || "")} · ${esc(fmtDate(e.created_at))}</span></span>
               <span aria-hidden="true">▾</span>
             </button>
             <div class="hist-body" hidden></div>
