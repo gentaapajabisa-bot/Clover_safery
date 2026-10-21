@@ -21,7 +21,7 @@ function pageHome() {
   <section class="hero2">
     <div>
       <h1 tabindex="-1">Selamat Datang di Clover Safety!</h1>
-      <p class="lead">Selamat menyelesaikan puzzle Clover Safety! Setelah bermain puzzle, kamu dapat mempelajari tanda bahaya, memahami batas privasi, menentukan tindakan yang aman, dan melakukan refleksi. Jika kamu merasa tidak aman atau membutuhkan bantuan, kamu dapat langsung membuka menu bantuan.</p>
+      <p class="lead">Di Clover Safety kamu dapat mempelajari tanda bahaya, memahami batas privasi, menentukan tindakan yang aman, dan melakukan refleksi. Jika kamu merasa tidak aman atau membutuhkan bantuan, kamu dapat langsung membuka menu bantuan.</p>
       <ul class="pillars" aria-label="Empat pegangan Clover Safety">
         <li>Kenali Bahaya</li>
         <li>Jaga Privasi</li>
@@ -211,10 +211,10 @@ function pageReflect() {
       .join("");
   return `
   <h1 tabindex="-1">Refleksi</h1>
-  <div class="callout"><p>Selamat menyelesaikan puzzle Clover Safety! Luangkan waktu sejenak untuk merefleksikan hal yang kamu pelajari. <strong>Tidak ada nilai benar atau salah.</strong> Kamu boleh melewati pertanyaan yang tidak ingin kamu jawab.</p></div>
+  <div class="callout"><p>Luangkan waktu sejenak untuk merefleksikan hal yang kamu pelajari. <strong>Tidak ada nilai benar atau salah.</strong> Kamu boleh melewati pertanyaan yang tidak ingin kamu jawab.</p></div>
   <div class="callout kuning"><p>Jawabanmu <strong>tidak disimpan otomatis</strong> dan hilang saat halaman ditutup. Kamu bisa memilih <strong>“Simpan ke riwayat”</strong> setelah selesai; riwayat hanya bisa dilihat olehmu (tidak oleh admin). Jangan menulis nama lengkap, alamat, kata sandi, atau data pribadi lain.</p></div>
   <form id="ref-form" novalidate>
-    <div class="card" style="margin-bottom:14px"><h3>1. Apa pesan terpenting yang kamu dapatkan setelah menyelesaikan puzzle?</h3>${txt("q1", "Jawabanku")}</div>
+    <div class="card" style="margin-bottom:14px"><h3>1. Apa pesan terpenting yang kamu dapatkan setelah belajar di Clover Safety?</h3>${txt("q1", "Jawabanku")}</div>
     <fieldset><legend>2. Tanda bahaya apa yang sekarang lebih kamu pahami?</legend>${grp("q2", q2, R.q2, "checkbox")}</fieldset>
     <fieldset><legend>3. Mengapa penting menjaga privasi dan batasan diri?</legend>${grp("q3", q3, [], "radio")}${txt("q3t", "Atau tulis dengan kata-katamu sendiri")}</fieldset>
     <fieldset><legend>4. Apa yang dapat kamu lakukan jika seseorang meminta sesuatu yang membuatmu tidak nyaman?</legend>${grp("q4", q4, R.q4, "checkbox")}</fieldset>
@@ -285,7 +285,7 @@ function pageHelp() {
 function pageAbout() {
   return `
   <h1 tabindex="-1">Tentang Clover Safety, Privasi, dan Batasan Fitur</h1>
-  <p class="lead">Clover Safety adalah media edukasi pendamping puzzle tentang pencegahan child grooming untuk siswa SMP.</p>
+  <p class="lead">Clover Safety adalah media edukasi tentang pencegahan child grooming untuk siswa SMP.</p>
   <div class="grid g2">
     <section class="card"><h3>Data apa yang tersimpan?</h3>
       <ul class="clean"><li><strong>Tanpa akun:</strong> tidak ada data pribadi yang disimpan. Hanya pengaturan tampilan (tema, ukuran huruf) yang diingat di perangkat ini.</li><li><strong>Dengan akun:</strong> hanya nama panggilan, nama pengguna, peran, sidik kata sandi (hash), dan daftar halaman materi yang sudah dibuka. Semuanya tersimpan <strong>di browser perangkat ini saja</strong>.</li><li><strong>Tidak pernah disimpan otomatis:</strong> centang checklist, pilihan skenario, atau isi “catatan sementara”. Jawaban kuis dan refleksi hanya masuk Riwayat bila kamu sudah login (kuis otomatis, refleksi lewat tombol “Simpan ke riwayat”).</li><li>Kontak tepercaya yang kamu simpan di halaman Kontak, serta profil dan pesan ke admin, tersimpan di server dan <strong>hanya bisa dibuka oleh akunmu</strong> (pesan juga bisa dibaca admin yang kamu hubungi).</li></ul></section>
