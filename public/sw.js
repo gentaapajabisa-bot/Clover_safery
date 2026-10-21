@@ -1,6 +1,6 @@
 /* Service worker Clover Safery: halaman & aset dicache untuk pemakaian offline.
    Naikkan CACHE_VERSION setiap kali daftar atau isi aset berubah. */
-const CACHE_VERSION = "clover-safery-v4";
+const CACHE_VERSION = "clover-safery-v5";
 
 const PRECACHE = [
   "/",
@@ -12,8 +12,23 @@ const PRECACHE = [
   "/css/extra.css",
   "/css/auth.css",
   "/js/theme.js",
-  "/js/app.js",
-  "/js/extra.js",
+  "/js/materi/core.js",
+  "/js/materi/local-auth.js",
+  "/js/materi/state.js",
+  "/js/materi/alarm.js",
+  "/js/materi/content.js",
+  "/js/materi/components.js",
+  "/js/materi/pages.js",
+  "/js/materi/pages-local-account.js",
+  "/js/materi/router.js",
+  "/js/materi/events.js",
+  "/js/materi/settings.js",
+  "/js/materi/simulasi.js",
+  "/js/materi/kuis.js",
+  "/js/materi/kamus.js",
+  "/js/materi/extra-routes.js",
+  "/js/materi/extra-events.js",
+  "/js/materi/pwa.js",
   "/js/common.js",
   "/js/auth-form.js",
   "/js/dashboard-page.js",

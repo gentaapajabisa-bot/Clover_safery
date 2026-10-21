@@ -10,8 +10,12 @@ Clover_safery/
 │   ├── index.html     #   materi edukasi (SPA berbasis hash-route)
 │   ├── login.html · register.html · dashboard.html · admin.html · profile.html
 │   ├── css/           #   styles.css, extra.css (materi) · auth.css (login/dashboard/admin)
-│   ├── js/            #   app.js, extra.js, theme.js (materi)
-│   │                  #   common.js (helper bersama) · auth-form.js · dashboard-page.js · admin-page.js
+│   ├── js/            #   theme.js (tema) · common.js (helper bersama) · auth-form.js
+│   │   │              #   dashboard-page.js · admin-page.js
+│   │   └── materi/    #   materi edukasi, dimuat berurutan oleh index.html:
+│   │                  #     core · local-auth* · state · alarm · content · components · pages
+│   │                  #     pages-local-account* · router · events · settings · simulasi · kuis
+│   │                  #     kamus · extra-routes · extra-events · pwa
 │   ├── sw.js          #   service worker (offline)
 │   └── manifest.webmanifest, icon.*
 ├── api/               # Vercel Functions
@@ -75,4 +79,4 @@ Akun baru selalu berperan `user`; tidak ada pilihan admin di halaman publik, dan
 - Paket ini perlu diuji di cluster TiDB dan project Vercel milikmu sebelum dipakai untuk data nyata.
 - Belum ada pembatasan percobaan login di server (rate limiting) dan verifikasi email.
 - Fitur laporan baru menampilkan daftar; form pembuatan laporan belum ada.
-- Materi edukasi (`public/js/app.js`) masih memuat sistem akun **lokal** lama (disimpan di browser, termasuk kode Guru BK di sisi klien). Itu bukan keamanan sungguhan dan terpisah dari login server. Kunci penyimpanan lokal masih berawalan `pazzel_` agar data pengguna lama tidak hilang.
+- Materi edukasi (`public/js/materi/local-auth.js` dan `pages-local-account.js`, bertanda `*` di atas) masih memuat sistem akun **lokal** lama (disimpan di browser, termasuk kode Guru BK di `core.js`). Itu bukan keamanan sungguhan dan terpisah dari login server. Kunci penyimpanan lokal masih berawalan `pazzel_` agar data pengguna lama tidak hilang.
