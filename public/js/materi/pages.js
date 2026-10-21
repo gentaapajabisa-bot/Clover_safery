@@ -15,8 +15,8 @@ function pageHome() {
   ];
   return `
   <section class="hero">
-    <h1 tabindex="-1">Selamat Datang di Clover Safery!</h1>
-    <p class="lead">Selamat menyelesaikan puzzle Clover Safery! Setelah bermain puzzle, kamu dapat mempelajari tanda bahaya, memahami batas privasi, menentukan tindakan yang aman, dan melakukan refleksi. Jika kamu merasa tidak aman atau membutuhkan bantuan, kamu dapat langsung membuka menu bantuan.</p>
+    <h1 tabindex="-1">Selamat Datang di Clover Safety!</h1>
+    <p class="lead">Selamat menyelesaikan puzzle Clover Safety! Setelah bermain puzzle, kamu dapat mempelajari tanda bahaya, memahami batas privasi, menentukan tindakan yang aman, dan melakukan refleksi. Jika kamu merasa tidak aman atau membutuhkan bantuan, kamu dapat langsung membuka menu bantuan.</p>
     <p class="lead"><strong>Kenali Bahaya, Jaga Privasi, Tentukan Tindakan Aman, Berani Mencari Bantuan.</strong></p>
     <div class="btn-row">
       ${routeBtn("#/tanda-bahaya", "Mulai Belajar", "btn btn-primary")}
@@ -183,7 +183,7 @@ function pageReflect() {
       .join("");
   return `
   <h1 tabindex="-1">Refleksi Setelah Puzzle</h1>
-  <div class="callout"><p>Selamat menyelesaikan puzzle Clover Safery! Luangkan waktu sejenak untuk merefleksikan hal yang kamu pelajari. <strong>Tidak ada nilai benar atau salah.</strong> Kamu boleh melewati pertanyaan yang tidak ingin kamu jawab.</p></div>
+  <div class="callout"><p>Selamat menyelesaikan puzzle Clover Safety! Luangkan waktu sejenak untuk merefleksikan hal yang kamu pelajari. <strong>Tidak ada nilai benar atau salah.</strong> Kamu boleh melewati pertanyaan yang tidak ingin kamu jawab.</p></div>
   <div class="callout kuning"><p>Jawabanmu <strong>tidak disimpan dan tidak dikirim</strong> ke mana pun; jawaban hilang saat halaman ditutup atau dimuat ulang. Jangan menulis nama lengkap, alamat, kata sandi, atau data pribadi lain.</p></div>
   <form id="ref-form" novalidate>
     <div class="card" style="margin-bottom:14px"><h3>1. Apa pesan terpenting yang kamu dapatkan setelah menyelesaikan puzzle?</h3>${txt("q1", "Jawabanku")}</div>
@@ -219,7 +219,7 @@ const HELP_PANELS = {
   resmi: `<h3>Jalur pelaporan resmi</h3>
     <p><strong>SAPA 129</strong> adalah layanan pengaduan kekerasan terhadap perempuan dan anak dari Kementerian PPPA. Kamu bisa membuka laman resminya, atau didampingi orang dewasa tepercaya.</p>
     <div class="btn-row"><a class="btn btn-primary" href="${OFFICIAL_URL}" target="_blank" rel="noopener noreferrer">Buka laman resmi SAPA 129 ↗</a><a class="btn" href="tel:129">Telepon 129</a></div>
-    <p class="hint" style="margin-top:12px">Clover Safery tidak mengirim laporan apa pun. Laporan hanya terkirim jika kamu atau orang dewasa yang membantumu mengirimkannya sendiri lewat layanan resmi tersebut.</p>`,
+    <p class="hint" style="margin-top:12px">Clover Safety tidak mengirim laporan apa pun. Laporan hanya terkirim jika kamu atau orang dewasa yang membantumu mengirimkannya sendiri lewat layanan resmi tersebut.</p>`,
   bahaya: `<div class="callout merah"><h3 style="color:#8f0a12">Jika kamu merasa sedang dalam bahaya</h3>
     <ol style="padding-left:1.2em;margin:0 0 1em"><li>Jika memungkinkan, <strong>menjauhlah ke tempat yang aman</strong>.</li><li>Dekati <strong>orang dewasa tepercaya</strong> atau tempat yang <strong>aman dan ramai</strong> (kantor guru, pos satpam, toko, masjid/gereja).</li><li>Jika ada ancaman langsung, <strong>minta bantuan segera</strong> kepada orang di sekitar atau hubungi layanan darurat.</li></ol>
     <p>Kamu tidak perlu mengisi formulir atau menceritakan seluruh kejadian untuk mendapat bantuan.</p>
@@ -249,13 +249,13 @@ function pageHelp() {
       ${S.trusted.map((t, i) => `<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:8px 0"><input type="text" aria-label="Orang tepercaya ${i + 1}: peran" data-tr="${i}" data-f="r" placeholder="Siapa / perannya" maxlength="40" value="${esc(t.r)}"><input type="text" aria-label="Orang tepercaya ${i + 1}: cara menemui" data-tr="${i}" data-f="c" placeholder="Cara menemui" maxlength="60" value="${esc(t.c)}"></div>`).join("")}
       <button type="button" class="btn btn-small" data-act="tr-copy">Salin daftar</button></div>
   </div>
-  <div class="callout biru"><p><strong>Catatan:</strong> Clover Safery tidak mengirim laporan, lokasi, atau pesan kepada siapa pun. Untuk mendapat pertolongan, hubungi orang atau layanan di atas secara langsung.</p></div>`;
+  <div class="callout biru"><p><strong>Catatan:</strong> Clover Safety tidak mengirim laporan, lokasi, atau pesan kepada siapa pun. Untuk mendapat pertolongan, hubungi orang atau layanan di atas secara langsung.</p></div>`;
 }
 
 function pageAbout() {
   return `
-  <h1 tabindex="-1">Tentang Clover Safery, Privasi, dan Batasan Fitur</h1>
-  <p class="lead">Clover Safery (Clover Safery) adalah media edukasi pendamping puzzle tentang pencegahan child grooming untuk siswa SMP.</p>
+  <h1 tabindex="-1">Tentang Clover Safety, Privasi, dan Batasan Fitur</h1>
+  <p class="lead">Clover Safety adalah media edukasi pendamping puzzle tentang pencegahan child grooming untuk siswa SMP.</p>
   <div class="grid g2">
     <section class="card"><h3>Data apa yang tersimpan?</h3>
       <ul class="clean"><li><strong>Tanpa akun:</strong> tidak ada data pribadi yang disimpan. Hanya pengaturan tampilan (tema, ukuran huruf) yang diingat di perangkat ini.</li><li><strong>Dengan akun:</strong> hanya nama panggilan, nama pengguna, peran, sidik kata sandi (hash), dan daftar halaman materi yang sudah dibuka. Semuanya tersimpan <strong>di browser perangkat ini saja</strong>.</li><li><strong>Tidak pernah disimpan:</strong> jawaban refleksi, centang checklist, pilihan skenario, atau isi “peta orang tepercaya”.</li><li>Tidak ada data yang dikirim ke server mana pun.</li></ul></section>

@@ -1,7 +1,7 @@
 {
   "name": "clover_safery",
   "version": "1.0.0",
-  "description": "Clover Safery — edukasi keselamatan digital dengan login, dashboard, dan panel admin (TiDB Cloud + Vercel).",
+  "description": "Clover Safety — edukasi keselamatan digital dengan login, dashboard, dan panel admin (TiDB Cloud + Vercel).",
   "private": true,
   "type": "module",
   "engines": {

@@ -7,9 +7,9 @@ function pageAccount() {
   if (me) return pageDashboard(me);
   const masuk = S.tab === "masuk";
   return `
-  <h1 tabindex="-1">Akun Clover Safery</h1>
+  <h1 tabindex="-1">Akun Clover Safety</h1>
   <div class="callout biru"><p><strong>Akun itu opsional.</strong> Semua materi, alarm, dan menu bantuan bisa dipakai tanpa masuk. Akun hanya mencatat halaman materi yang sudah kamu buka.</p></div>
-  ${!Auth.cryptoOK() ? `<div class="msg err" role="alert">Browser ini membatasi fitur keamanan yang dibutuhkan untuk akun. Buka Clover Safery lewat alamat https:// atau gunakan browser terbaru. Materi dan alarm tetap bisa dipakai.</div>` : ""}
+  ${!Auth.cryptoOK() ? `<div class="msg err" role="alert">Browser ini membatasi fitur keamanan yang dibutuhkan untuk akun. Buka Clover Safety lewat alamat https:// atau gunakan browser terbaru. Materi dan alarm tetap bisa dipakai.</div>` : ""}
   <div class="tabs" role="tablist" aria-label="Masuk atau Daftar">
     <button type="button" class="tab" role="tab" data-act="tab" data-t="masuk" aria-selected="${masuk}">Masuk</button>
     <button type="button" class="tab" role="tab" data-act="tab" data-t="daftar" aria-selected="${!masuk}">Daftar</button>
@@ -94,7 +94,7 @@ function pageDashboard(me) {
 function pageGuru() {
   const me = Auth.current();
   if (!me || me.role !== "guru") {
-    return `<h1 tabindex="-1">Panduan Guru BK</h1><div class="callout kuning"><p>Halaman ini hanya untuk akun Guru BK. ${me ? "Akunmu terdaftar sebagai siswa." : "Silakan masuk terlebih dahulu."}</p></div><div class="btn-row">${routeBtn("/login", "Masuk ke Clover Safery", "btn btn-primary")}</div><p>Menu bantuan dan alarm tetap bisa dipakai siapa saja.</p>`;
+    return `<h1 tabindex="-1">Panduan Guru BK</h1><div class="callout kuning"><p>Halaman ini hanya untuk akun Guru BK. ${me ? "Akunmu terdaftar sebagai siswa." : "Silakan masuk terlebih dahulu."}</p></div><div class="btn-row">${routeBtn("/login", "Masuk ke Clover Safety", "btn btn-primary")}</div><p>Menu bantuan dan alarm tetap bisa dipakai siapa saja.</p>`;
   }
   const users = Auth.users();
   const rows = Object.entries(users)
@@ -105,8 +105,8 @@ function pageGuru() {
     .join("");
   return `
   <h1 tabindex="-1">Panduan Guru BK</h1>
-  <p class="lead">Ringkasan untuk membantu penggunaan Clover Safery di kelas dan sekolah.</p>
-  <div class="callout biru"><p>Clover Safery <strong>tidak mengirim data siswa kepada guru</strong>. Jawaban refleksi dan checklist tidak disimpan, sehingga tidak ada yang bisa dilihat di sini selain daftar akun lokal dan jumlah halaman yang dibuka.</p></div>
+  <p class="lead">Ringkasan untuk membantu penggunaan Clover Safety di kelas dan sekolah.</p>
+  <div class="callout biru"><p>Clover Safety <strong>tidak mengirim data siswa kepada guru</strong>. Jawaban refleksi dan checklist tidak disimpan, sehingga tidak ada yang bisa dilihat di sini selain daftar akun lokal dan jumlah halaman yang dibuka.</p></div>
 
   <h2>Saat siswa mengungkapkan pengalaman berisiko</h2>
   <div class="grid g2">

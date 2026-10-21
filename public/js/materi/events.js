@@ -117,7 +117,7 @@ document.addEventListener("click", async (e) => {
   }
   if (act === "ref-copy") {
     const R = S.ref;
-    const lines = ["Refleksi Clover Safery (ditulis oleh saya sendiri)"];
+    const lines = ["Refleksi Clover Safety (ditulis oleh saya sendiri)"];
     const add = (l, v) => {
       if (v && String(v).trim()) lines.push(l + ": " + v);
     };

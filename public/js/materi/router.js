@@ -5,7 +5,7 @@
    Router
    ========================================================= */
 const ROUTES = {
-  "/": { t: "Beranda Clover Safery", nav: "Beranda Clover Safery", r: pageHome },
+  "/": { t: "Beranda Clover Safety", nav: "Beranda Clover Safety", r: pageHome },
   "/tanda-bahaya": { t: "Mengenali Tanda Bahaya", nav: "Mengenali Tanda Bahaya", r: pageSigns, key: "tanda-bahaya" },
   "/privasi": {
     t: "Menjaga Privasi dan Batasan Diri",
@@ -23,9 +23,9 @@ const ROUTES = {
   "/refleksi": { t: "Refleksi Setelah Puzzle", nav: "Refleksi Setelah Puzzle", r: pageReflect, key: "refleksi" },
   "/bantuan": { t: "Meminta Bantuan", nav: "Meminta Bantuan", r: pageHelp, key: "bantuan" },
   "/akun": {
-    t: "Akun — Clover Safery",
+    t: "Akun — Clover Safety",
     r: () =>
-      `<h1 tabindex="-1">Akun Clover Safery</h1><p class="lead">Halaman login sekarang terpisah dari materi edukasi.</p><p><a class="btn btn-primary" href="/login">Masuk atau daftar akun</a></p>`,
+      `<h1 tabindex="-1">Akun Clover Safety</h1><p class="lead">Halaman login sekarang terpisah dari materi edukasi.</p><p><a class="btn btn-primary" href="/login">Masuk atau daftar akun</a></p>`,
   },
   "/guru": { t: "Panduan Guru BK", r: pageGuru },
   "/tentang": { t: "Tentang dan Privasi", r: pageAbout },
@@ -54,7 +54,7 @@ function render() {
   if (r.a) r.a();
   if (r.key) Auth.markOpened(r.key);
   buildNav(p);
-  document.title = r.t + " — Clover Safery";
+  document.title = r.t + " — Clover Safety";
   $("#nav-main").classList.remove("open");
   $("#menu-toggle").setAttribute("aria-expanded", "false");
   window.scrollTo(0, 0);

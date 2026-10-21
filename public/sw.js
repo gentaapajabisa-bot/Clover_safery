@@ -1,6 +1,6 @@
-/* Service worker Clover Safery: halaman & aset dicache untuk pemakaian offline.
+/* Service worker Clover Safety: halaman & aset dicache untuk pemakaian offline.
    Naikkan CACHE_VERSION setiap kali daftar atau isi aset berubah. */
-const CACHE_VERSION = "clover-safery-v6";
+const CACHE_VERSION = "clover-safety-v7";
 
 const PRECACHE = [
   "/",

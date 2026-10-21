@@ -57,7 +57,7 @@ const CL_ACT = [
   "Saya memahami bahwa keselamatan lebih penting daripada memenuhi permintaan orang lain.",
 ];
 const CL_GURU = [
-  "Isi, alur bantuan, dan teks privasi Clover Safery sudah ditinjau bersama pihak yang kompeten dalam perlindungan anak.",
+  "Isi, alur bantuan, dan teks privasi Clover Safety sudah ditinjau bersama pihak yang kompeten dalam perlindungan anak.",
   "Kode pendaftaran Guru BK pada file sudah diganti dan hanya diketahui penanggung jawab.",
   "Nomor dan tautan bantuan (SAPA 129, 112) sudah diperiksa ulang pada sumber resmi.",
   "Sudah ada prosedur tertulis di sekolah jika siswa mengungkapkan pengalaman berisiko (siapa menerima, siapa dilibatkan, kapan orang tua dihubungi, kapan dilaporkan).",

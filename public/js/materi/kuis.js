@@ -58,7 +58,7 @@ const QUIZ = [
     "Orang yang menghargaimu menerima penolakanmu.",
   ],
   [
-    "Layanan resmi pengaduan kekerasan terhadap anak yang disebut di Clover Safery adalah…",
+    "Layanan resmi pengaduan kekerasan terhadap anak yang disebut di Clover Safety adalah…",
     ["Grup chat kelas", "SAPA 129", "Kolom komentar publik"],
     1,
     "SAPA 129 (Kementerian PPPA). Bahaya langsung: hubungi 112.",

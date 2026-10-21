@@ -1,4 +1,4 @@
--- Clover Safery — skema database untuk TiDB (kompatibel MySQL).
+-- Clover Safety — skema database untuk TiDB (kompatibel MySQL).
 --
 -- Cara pakai: pilih database tujuan di SQL Editor / koneksi (mis. `clover_safery`
 -- atau `test` bawaan TiDB Cloud), lalu jalankan seluruh file ini.

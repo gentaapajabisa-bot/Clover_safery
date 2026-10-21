@@ -20,7 +20,7 @@ function pageSettings() {
   const grp = (k, label, opts, cur) =>
     `<fieldset><legend>${label}</legend><div class="tabs" role="group" aria-label="${label}">${opts.map(([v, l]) => `<button type="button" class="tab" data-x="pref" data-k="${k}" data-v="${v}" aria-pressed="${cur === v}">${l}</button>`).join("")}</div></fieldset>`;
   return `<h1 tabindex="-1">Tampilan &amp; Aksesibilitas</h1>
-  <p class="lead">Atur supaya Clover Safery nyaman dibaca. Pengaturan ini hanya tersimpan di perangkat ini dan tidak berisi data pribadi.</p>
+  <p class="lead">Atur supaya Clover Safety nyaman dibaca. Pengaturan ini hanya tersimpan di perangkat ini dan tidak berisi data pribadi.</p>
   ${grp(
     "theme",
     "Tema",

@@ -1,4 +1,4 @@
-# Clover Safery
+# Clover Safety
 
 Media edukasi keselamatan digital (materi, simulasi chat, kuis, kamus, alarm tanda bahaya) dengan **login berbasis server**, **dashboard pengguna**, dan **panel admin**. Berjalan di **Vercel** (static + Functions) dengan database **TiDB Cloud**.
 
