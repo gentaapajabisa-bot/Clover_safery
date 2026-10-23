@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 220" role="img" aria-label="Gelembung pesan bergerigi dan wajah sedih tertekan">
+  <rect width="320" height="220" rx="24" fill="#fff1e0"/>
+  <circle cx="160" cy="112" r="88" fill="#ffd9b0"/>
+  <path d="M74 56 l22 12 l18 -22 l16 22 l26 -14 l4 28 l26 6 l-20 20 l14 24 l-30 -2 l-6 26 l-24 -18 l-22 20 l-6 -28 l-28 2 l12 -26 l-22 -18 l26 -8z" fill="#fff"/>
+  <path d="M74 56 l22 12 l18 -22 l16 22 l26 -14 l4 28 l26 6 l-20 20 l14 24 l-30 -2 l-6 26 l-24 -18 l-22 20 l-6 -28 l-28 2 l12 -26 l-22 -18 l26 -8z" fill="none" stroke="#f58a1f" stroke-width="4" stroke-linejoin="round"/>
+  <text x="124" y="124" font-family="Arial, sans-serif" font-size="58" font-weight="900" text-anchor="middle" fill="#e07412">!</text>
+  <circle cx="240" cy="148" r="40" fill="#ffe7a8"/>
+  <circle cx="226" cy="142" r="4.5" fill="#4a2a12"/><circle cx="254" cy="142" r="4.5" fill="#4a2a12"/>
+  <path d="M226 164 q14 -10 28 0" fill="none" stroke="#4a2a12" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M219 130 l14 4 M261 130 l-14 4" stroke="#4a2a12" stroke-width="3" stroke-linecap="round"/>
+  <path d="M258 152 c4 6 4 10 0 12 c-4 -2 -4 -6 0 -12z" fill="#7cc0e8"/>
+  <g fill="#f58a1f"><circle cx="270" cy="60" r="5"/><circle cx="52" cy="170" r="4"/></g>
+</svg>

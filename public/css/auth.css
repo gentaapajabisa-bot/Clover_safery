@@ -1,14 +1,14 @@
 :root {
   color-scheme: light;
-  --green: #147d54;
-  --green2: #1ca66a;
-  --mint: #e8f8ef;
-  --ink: #17352b;
-  --muted: #698077;
-  --line: #dcece3;
+  --green: #c0580e;
+  --green2: #f57a0f;
+  --mint: #fff2e7;
+  --ink: #402211;
+  --muted: #957964;
+  --line: #fce7d5;
   --paper: #fff;
-  --shadow: 0 24px 70px #123c2518;
-  --deep: #0e3b2c;
+  --shadow: 0 24px 70px #42221218;
+  --deep: #3e2111;
   --gold: #f0b93a;
   --font: "Plus Jakarta Sans", "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
 }
@@ -21,7 +21,7 @@ body {
   margin: 0;
   font-family: var(--font);
   color: var(--ink);
-  background: linear-gradient(135deg, #f4fff8, #f7fbf8 45%, #e9f7ef);
+  background: linear-gradient(135deg, #fffbf7, #fffaf6 45%, #fff2e7);
   min-height: 100vh;
 }
 
@@ -41,7 +41,7 @@ input {
   align-items: center;
   justify-content: space-between;
   padding: 0 clamp(20px, 6vw, 88px);
-  border-bottom: 1px solid #dcece3a8;
+  border-bottom: 1px solid #fce7d5a8;
   background: #ffffffc9;
   backdrop-filter: blur(14px);
 }
@@ -60,11 +60,11 @@ input {
   place-items: center;
   width: 42px;
   height: 42px;
-  background: linear-gradient(145deg, #1ca66a, #116b48);
+  background: linear-gradient(145deg, #f57a0f, #9b470c);
   border-radius: 14px;
   color: white;
   font-size: 25px;
-  box-shadow: 0 8px 20px #147d5430;
+  box-shadow: 0 8px 20px #c0580e30;
 }
 
 .brand small {
@@ -97,8 +97,8 @@ input {
   display: inline-flex;
   padding: 8px 12px;
   border-radius: 99px;
-  background: #dff6e8;
-  color: #16744e;
+  background: #ffedde;
+  color: #b5530e;
   font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.07em;
@@ -122,7 +122,7 @@ input {
   display: grid;
   gap: 13px;
   margin-top: 28px;
-  color: #426356;
+  color: #7a5a42;
 }
 
 .points span {
@@ -165,8 +165,8 @@ input {
 
 .field input {
   width: 100%;
-  border: 1px solid #d8e8de;
-  background: #fbfefc;
+  border: 1px solid #fce4cf;
+  background: #fffdfb;
   padding: 13px 14px;
   border-radius: 12px;
   outline: none;
@@ -174,19 +174,19 @@ input {
 
 .field input:focus {
   border-color: var(--green2);
-  box-shadow: 0 0 0 3px #1ca66a20;
+  box-shadow: 0 0 0 3px #f57a0f20;
 }
 
 .btn {
   width: 100%;
   border: 0;
   border-radius: 12px;
-  background: linear-gradient(120deg, #147d54, #1ca66a);
+  background: linear-gradient(120deg, #c0580e, #f57a0f);
   color: white;
   padding: 14px;
   font-weight: 800;
   cursor: pointer;
-  box-shadow: 0 8px 20px #147d5426;
+  box-shadow: 0 8px 20px #c0580e26;
 }
 
 .btn:disabled {
@@ -207,8 +207,8 @@ input {
 }
 
 .msg.ok {
-  background: #e9f9ef;
-  color: #176b47;
+  background: #fff3e9;
+  color: #a64c0c;
 }
 
 .switch {
@@ -220,7 +220,7 @@ input {
 
 .tiny {
   text-align: center;
-  color: #83968c;
+  color: #a48d7c;
   font-size: 11px;
   line-height: 1.6;
   margin-top: 20px;
@@ -240,7 +240,7 @@ input {
 
 .side-label {
   font-size: 11px;
-  color: #8aa094;
+  color: #ad9582;
   font-weight: 800;
   letter-spacing: 0.14em;
   margin: 20px 12px 10px;
@@ -252,7 +252,7 @@ input {
   gap: 11px;
   padding: 12px 13px;
   border-radius: 12px;
-  color: #597468;
+  color: #8c6e57;
   font-size: 14px;
   font-weight: 700;
   margin: 4px 0;
@@ -299,7 +299,7 @@ input {
   border: 1px solid var(--line);
   border-radius: 18px;
   padding: 22px;
-  box-shadow: 0 8px 30px #17432a08;
+  box-shadow: 0 8px 30px #4d281508;
 }
 
 .stat .num {
@@ -337,12 +337,12 @@ th,
 td {
   text-align: left;
   padding: 13px 12px;
-  border-bottom: 1px solid #edf3ef;
+  border-bottom: 1px solid #f7f3f0;
   white-space: nowrap;
 }
 
 th {
-  color: #7b9186;
+  color: #a18774;
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -354,8 +354,8 @@ th {
   padding: 5px 9px;
   font-size: 11px;
   font-weight: 800;
-  background: #e4f7eb;
-  color: #147d54;
+  background: #fff0e3;
+  color: #c0580e;
 }
 
 .pill.off {
@@ -374,13 +374,13 @@ th {
 }
 
 .empty {
-  color: #83968c;
+  color: #a48d7c;
   font-size: 14px;
   padding: 18px 0;
 }
 
 .footnote {
-  color: #8aa094;
+  color: #ad9582;
   font-size: 12px;
   margin-top: 30px;
 }
@@ -479,7 +479,7 @@ th {
 }
 
 .accent {
-  color: #168254;
+  color: #c75c0f;
 }
 
 .eyebrow-sm {
@@ -541,8 +541,8 @@ a.btn {
   padding: 24px 28px;
   border-radius: 20px;
   color: #fff;
-  background: linear-gradient(120deg, #147d54, #1ca66a);
-  box-shadow: 0 12px 30px #147d5430;
+  background: linear-gradient(120deg, #c0580e, #f57a0f);
+  box-shadow: 0 12px 30px #c0580e30;
 }
 
 .learn-cta h2 {
@@ -635,7 +635,7 @@ body.auth {
 }
 
 .split .art .brand small {
-  color: #9fd3bb;
+  color: #f7c89e;
   font-weight: 500;
   letter-spacing: 0;
   font-size: 12px;
@@ -665,7 +665,7 @@ body.auth {
 .art-body p {
   margin: 0;
   max-width: 30em;
-  color: #cfe6da;
+  color: #fce0c8;
   font-size: 16px;
   line-height: 1.75;
 }
@@ -698,7 +698,7 @@ body.auth {
 .art-help {
   font-size: 13.5px;
   line-height: 1.6;
-  color: #b7d8c8;
+  color: #fad4b3;
 }
 
 .art-help a {
@@ -767,13 +767,13 @@ body.auth {
 }
 
 .formcard .btn:hover {
-  background: #0f6244;
+  background: #823c0a;
 }
 
 .formcard .btn.btn-ghost {
   background: #fff;
   color: var(--green);
-  border: 1.5px solid #bfe0cf;
+  border: 1.5px solid #fbd9bc;
 }
 
 .formcard .btn.btn-ghost:hover {

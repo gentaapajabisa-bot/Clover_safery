@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 220" role="img" aria-label="Gelembung chat bergembok dan wajah yang diminta diam">
+  <rect width="320" height="220" rx="24" fill="#fff1e0"/>
+  <circle cx="160" cy="112" r="88" fill="#ffd9b0"/>
+  <path d="M70 62 h112 a16 16 0 0 1 16 16 v52 a16 16 0 0 1 -16 16 h-62 l-26 22 v-22 h-24 a16 16 0 0 1 -16 -16 v-52 a16 16 0 0 1 16 -16z" fill="#fff"/>
+  <rect x="104" y="92" width="48" height="38" rx="8" fill="#f58a1f"/>
+  <path d="M114 92 v-10 a14 14 0 0 1 28 0 v10" fill="none" stroke="#c0580e" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="128" cy="108" r="5" fill="#fff4e6"/>
+  <rect x="126" y="108" width="4" height="12" rx="2" fill="#fff4e6"/>
+  <circle cx="232" cy="136" r="44" fill="#ffe7a8"/>
+  <circle cx="218" cy="128" r="4.5" fill="#4a2a12"/><circle cx="246" cy="128" r="4.5" fill="#4a2a12"/>
+  <path d="M222 156 q10 5 20 0" fill="none" stroke="#4a2a12" stroke-width="3.5" stroke-linecap="round"/>
+  <rect x="226.5" y="146" width="11" height="34" rx="5.5" fill="#f2b98a" stroke="#d99a6a" stroke-width="1.5"/>
+  <path d="M206 112 q10 -12 22 -6" fill="none" stroke="#4a2a12" stroke-width="3" stroke-linecap="round"/>
+  <path d="M250 106 q10 -6 18 4" fill="none" stroke="#4a2a12" stroke-width="3" stroke-linecap="round"/>
+  <g fill="#f58a1f"><circle cx="58" cy="164" r="5"/><circle cx="276" cy="52" r="5"/></g>
+</svg>

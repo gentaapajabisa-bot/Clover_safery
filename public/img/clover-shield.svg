@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 280" role="img" aria-label="Perisai dengan daun semanggi">
   <defs>
     <linearGradient id="sh" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#2fb67f"/>
-      <stop offset="1" stop-color="#0f6b49"/>
+      <stop offset="0" stop-color="#f68828"/>
+      <stop offset="1" stop-color="#97450b"/>
     </linearGradient>
     <path id="leaf" d="M0 0 C-6 -6 -34 -22 -34 -44 C-34 -58 -14 -64 0 -48 C14 -64 34 -58 34 -44 C34 -22 6 -6 0 0Z"/>
   </defs>
@@ -14,7 +14,7 @@
     <use href="#leaf" transform="rotate(180) translate(0 -4)"/>
     <use href="#leaf" transform="rotate(270) translate(0 -4)" fill-opacity=".92"/>
   </g>
-  <g transform="translate(120 132)" stroke="#0f6b49" stroke-opacity=".22" stroke-width="2" stroke-linecap="round" fill="none">
+  <g transform="translate(120 132)" stroke="#97450b" stroke-opacity=".22" stroke-width="2" stroke-linecap="round" fill="none">
     <path d="M0 -10 L0 -44"/><path d="M10 0 L44 0"/><path d="M0 10 L0 44"/><path d="M-10 0 L-44 0"/>
   </g>
   <path d="M120 136 C122 170 132 196 150 214" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round"/>

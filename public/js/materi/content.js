@@ -36,6 +36,15 @@ const SIGNS = [
     "Mengatakan bahwa hanya dia yang mengerti kamu, atau membuatmu ragu pada orang-orang yang mendukungmu.",
   ],
 ];
+/* Ilustrasi tiap tanda bahaya (urutan sama dengan SIGNS): [nama berkas, teks alternatif]. */
+const SIGN_IMG = [
+  ["hadiah", "Kotak hadiah dengan label bertanda bintang dan tanya, artinya ada syarat tersembunyi"],
+  ["rahasia", "Gelembung chat dengan gembok dan wajah yang diminta diam"],
+  ["foto", "Ponsel berisi foto dengan tanda larangan di sampingnya"],
+  ["bertemu", "Penanda lokasi bertanda tanya di ujung jalan putus-putus pada malam hari"],
+  ["tekanan", "Gelembung pesan bergerigi dengan tanda seru dan wajah sedih tertekan"],
+  ["menjauh", "Satu orang terpisah dari kelompok keluarga dan teman"],
+];
 const CL_SIGNS = [
   "Saya dapat mengenali permintaan yang membuat saya tidak nyaman.",
   "Saya memahami bahwa hadiah tidak membuat seseorang berhak menuntut imbalan.",

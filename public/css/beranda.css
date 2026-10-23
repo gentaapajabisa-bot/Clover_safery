@@ -3,30 +3,30 @@
 
 :root {
   --font: "Plus Jakarta Sans", "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
-  --ungu: #177a52;
-  --ungu-t: #0e4a33;
-  --ungu-m: #e7f3ec;
-  --bg: #f3f8f5;
+  --ungu: #c0580e;
+  --ungu-t: #4b2714;
+  --ungu-m: #fff0e3;
+  --bg: #fff7f0;
   --putih: #ffffff;
-  --teks: #14261e;
-  --abu: #58695f;
-  --garis: #d8e5dc;
+  --teks: #361c0e;
+  --abu: #826a59;
+  --garis: #ece3dc;
   --r: 18px;
-  --deep: #0e3b2c;
+  --deep: #3e2111;
   --gold: #f0b93a;
   --wrap: 1080px;
 }
 
 html[data-theme="dark"] {
-  --bg: #0b1612;
-  --putih: #12221b;
-  --teks: #e8f3ec;
-  --abu: #9db5a8;
-  --garis: #243d31;
-  --ungu: #1e9468;
-  --ungu-m: #1a3327;
-  --ungu-t: #8fe0b4;
-  --deep: #0f3426;
+  --bg: #26140a;
+  --putih: #321a0d;
+  --teks: #fff0e3;
+  --abu: #cdbbae;
+  --garis: #632707;
+  --ungu: #e27211;
+  --ungu-m: #412211;
+  --ungu-t: #f7c69c;
+  --deep: #3b1f10;
 }
 
 body {
@@ -199,7 +199,7 @@ a.card:hover {
   border-radius: 12px;
 }
 .btn-primary:hover {
-  background: #0f6244;
+  background: #823c0a;
 }
 
 /* ---------- Beranda ---------- */
@@ -217,7 +217,7 @@ a.card:hover {
   overflow: hidden;
 }
 html[data-theme="dark"] .hero2 {
-  border: 1px solid #1d4a38;
+  border: 1px solid #6b2b08;
 }
 .hero2::after {
   content: "";
@@ -240,7 +240,7 @@ html[data-theme="dark"] .hero2 {
   margin: 0 0 16px;
 }
 .hero2 .lead {
-  color: #cfe6da;
+  color: #fce0c8;
   font-size: 1.05rem;
   line-height: 1.7;
   max-width: 540px;

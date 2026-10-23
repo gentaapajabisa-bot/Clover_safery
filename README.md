@@ -1,6 +1,6 @@
 # Clover Safety
 
-Media edukasi keselamatan digital (materi, simulasi chat, kuis, kamus, alarm tanda bahaya) dengan **login berbasis server**, **dashboard pengguna**, dan **panel admin**. Berjalan di **Vercel** (static + Functions) dengan database **TiDB Cloud**.
+Media edukasi keselamatan digital (materi, simulasi chat, kuis, glosarium, alarm tanda bahaya) dengan **login berbasis server**, **dashboard pengguna**, dan **panel admin**. Berjalan di **Vercel** (static + Functions) dengan database **TiDB Cloud**.
 
 ## Struktur proyek
 
@@ -16,7 +16,7 @@ Clover_safery/
 │   │   └── materi/    #   materi edukasi, dimuat berurutan oleh index.html:
 │   │                  #     core · local-auth* · state · alarm · content · components · pages
 │   │                  #     pages-local-account* · router · events · settings · simulasi · kuis
-│   │                  #     kamus · extra-routes · extra-events · pwa
+│   │                  #     glosarium · extra-routes · extra-events · pwa
 │   ├── sw.js          #   service worker (offline)
 │   └── manifest.webmanifest, icon.*
 ├── api/               # Vercel Functions

@@ -3,7 +3,7 @@ html[data-size="lg"] body {
   font-size: 20px;
 }
 html[data-contrast="high"] {
-  --garis: #5d8571;
+  --garis: #9b7558;
 }
 html[data-contrast="high"] :is(.card, fieldset, details, .opt, .myth, input, textarea, select) {
   border-color: var(--ungu-t);
@@ -13,19 +13,19 @@ html[data-contrast="high"] a {
 }
 html[data-theme="dark"] {
   color-scheme: dark;
-  --bg: #0f1d17;
-  --putih: #172a21;
-  --teks: #e6f4ec;
-  --abu: #a9c2b6;
-  --garis: #2c4a3b;
-  --ungu-m: #1f3b2d;
-  --ungu-t: #8fe0b4;
+  --bg: #2d170c;
+  --putih: #3a1e0f;
+  --teks: #fff0e3;
+  --abu: #d7c6b9;
+  --garis: #8e410b;
+  --ungu-m: #4d2815;
+  --ungu-t: #f7c69c;
 }
 html[data-theme="dark"] body {
-  background: linear-gradient(180deg, #14261d, #0f1d17 260px, #0c1812);
+  background: linear-gradient(180deg, #361c0e, #2d170c 260px, #28150b);
 }
 html[data-theme="dark"] header.top {
-  background: rgba(20, 38, 29, 0.94);
+  background: rgba(54, 28, 14, 0.94);
 }
 html[data-theme="dark"]
   :is(
@@ -63,7 +63,7 @@ html[data-theme="dark"] .opt[aria-pressed="true"] {
   background: var(--ungu-m);
 }
 html[data-theme="dark"] .hero {
-  background: linear-gradient(135deg, #1b4a35, #4a2150 60%, #1f3a63);
+  background: linear-gradient(135deg, #672908, #4a2150 60%, #1f3a63);
 }
 html[data-theme="dark"] .pill {
   background: var(--ungu-m);
@@ -72,13 +72,13 @@ html[data-theme="dark"] .pill.done {
   background: var(--hijau);
 }
 html[data-theme="dark"] .skip {
-  color: #17352b;
+  color: #402211;
 }
 /* alarm selalu terang & terbaca */
 html[data-theme="dark"] #alarm-overlay {
   --teks: #2a2540;
   --abu: #5f5b78;
-  --ungu-t: #105d3b;
+  --ungu-t: #793809;
 }
 /* chat & kuis */
 .chat {

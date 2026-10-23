@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 220" role="img" aria-label="Kotak hadiah dengan label bersyarat">
+  <rect width="320" height="220" rx="24" fill="#fff1e0"/>
+  <circle cx="160" cy="116" r="88" fill="#ffd9b0"/>
+  <g fill="#f58a1f"><circle cx="58" cy="52" r="6"/><rect x="252" y="40" width="13" height="13" rx="3" transform="rotate(22 258 46)"/><circle cx="276" cy="112" r="4"/></g>
+  <g fill="#7cc0e8"><circle cx="272" cy="170" r="6"/><rect x="40" y="148" width="13" height="13" rx="3" transform="rotate(-20 46 154)"/><circle cx="70" cy="104" r="4"/></g>
+  <rect x="104" y="104" width="112" height="82" rx="9" fill="#f58a1f"/>
+  <rect x="94" y="84" width="132" height="32" rx="9" fill="#ff9f3d"/>
+  <rect x="148" y="84" width="24" height="102" fill="#fff4e6"/>
+  <path d="M160 84 C138 46 102 62 122 82 C134 94 150 88 160 84Z" fill="#fff4e6"/>
+  <path d="M160 84 C182 46 218 62 198 82 C186 94 170 88 160 84Z" fill="#fff4e6"/>
+  <circle cx="160" cy="84" r="10" fill="#e07412"/>
+  <path d="M216 150 C236 150 240 160 238 172" fill="none" stroke="#4a2a12" stroke-width="3" stroke-linecap="round" stroke-dasharray="1 7"/>
+  <g transform="translate(222 168) rotate(10)">
+    <rect width="62" height="38" rx="8" fill="#fff"/>
+    <circle cx="10" cy="19" r="3.5" fill="#ffd9b0"/>
+    <text x="38" y="28" font-family="Arial, sans-serif" font-size="24" font-weight="800" text-anchor="middle" fill="#c0580e">*?</text>
+  </g>
+</svg>

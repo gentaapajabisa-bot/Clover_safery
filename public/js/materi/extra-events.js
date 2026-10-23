@@ -1,5 +1,5 @@
 "use strict";
-/* Event klik/input untuk simulasi, kuis, kamus, dan pengaturan. */
+/* Event klik/input untuk simulasi, kuis, glosarium, dan pengaturan. */
 
 /* ---------- Interaksi ---------- */
 document.addEventListener("click", (e) => {

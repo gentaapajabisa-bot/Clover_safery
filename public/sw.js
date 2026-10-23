@@ -1,6 +1,6 @@
 /* Service worker Clover Safety: halaman & aset dicache untuk pemakaian offline.
    Naikkan CACHE_VERSION setiap kali daftar atau isi aset berubah. */
-const CACHE_VERSION = "clover-safety-v10";
+const CACHE_VERSION = "clover-safety-v11";
 
 const PRECACHE = [
   "/",
@@ -18,6 +18,7 @@ const PRECACHE = [
   "/css/extra.css",
   "/css/auth.css",
   "/css/features.css",
+  "/css/theme.css",
   "/css/beranda.css",
   "/js/theme.js",
   "/js/materi-guard.js",
@@ -37,7 +38,7 @@ const PRECACHE = [
   "/js/materi/settings.js",
   "/js/materi/simulasi.js",
   "/js/materi/kuis.js",
-  "/js/materi/kamus.js",
+  "/js/materi/glosarium.js",
   "/js/materi/extra-routes.js",
   "/js/materi/extra-events.js",
   "/js/materi/pwa.js",
@@ -53,6 +54,13 @@ const PRECACHE = [
   "/manifest.webmanifest",
   "/icon.svg",
   "/img/clover-shield.svg",
+  "/img/signs/hadiah.svg",
+  "/img/signs/rahasia.svg",
+  "/img/signs/foto.svg",
+  "/img/signs/bertemu.svg",
+  "/img/signs/tekanan.svg",
+  "/img/signs/menjauh.svg",
+  "/img/tanda-bahaya-hero.svg",
   "/icon-192.png",
   "/icon-512.png",
 ];

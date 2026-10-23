@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 220" role="img" aria-label="Satu orang terpisah dari kelompok keluarga dan teman">
+  <rect width="320" height="220" rx="24" fill="#fff1e0"/>
+  <circle cx="160" cy="112" r="88" fill="#ffd9b0"/>
+  <g>
+    <circle cx="70" cy="88" r="20" fill="#ffe7a8"/><path d="M42 160 c0 -26 12 -42 28 -42 s28 16 28 42z" fill="#4caf72"/>
+    <circle cx="112" cy="96" r="17" fill="#f2c9a6"/><path d="M88 160 c0 -22 10 -36 24 -36 s24 14 24 36z" fill="#7cc0e8"/>
+  </g>
+  <path d="M146 130 q18 -8 36 0" fill="none" stroke="#c0580e" stroke-width="4" stroke-linecap="round" stroke-dasharray="1 9"/>
+  <rect x="150" y="116" width="20" height="12" rx="6" fill="none" stroke="#c0580e" stroke-width="4" transform="rotate(-20 160 122)"/>
+  <rect x="164" y="124" width="20" height="12" rx="6" fill="none" stroke="#c0580e" stroke-width="4" transform="rotate(-20 174 130)"/>
+  <circle cx="246" cy="98" r="19" fill="#ffe7a8"/><path d="M220 164 c0 -24 11 -40 26 -40 s26 16 26 40z" fill="#f58a1f"/>
+  <circle cx="240" cy="96" r="2.8" fill="#4a2a12"/><circle cx="254" cy="96" r="2.8" fill="#4a2a12"/>
+  <path d="M240 106 q6 -5 14 0" fill="none" stroke="#4a2a12" stroke-width="2.6" stroke-linecap="round"/>
+  <g fill="#f58a1f"><circle cx="268" cy="46" r="5"/><circle cx="58" cy="184" r="4"/></g>
+  <text x="246" y="62" font-family="Arial, sans-serif" font-size="26" font-weight="800" text-anchor="middle" fill="#c0580e">?</text>
+</svg>

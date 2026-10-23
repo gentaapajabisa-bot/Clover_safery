@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 220" role="img" aria-label="Penanda lokasi, jalan putus-putus, dan bulan malam">
+  <rect width="320" height="220" rx="24" fill="#fff1e0"/>
+  <circle cx="160" cy="112" r="88" fill="#ffd9b0"/>
+  <path d="M52 176 C100 176 96 130 148 134 C200 138 190 96 244 92" fill="none" stroke="#c0580e" stroke-width="5" stroke-linecap="round" stroke-dasharray="2 12"/>
+  <circle cx="52" cy="176" r="9" fill="#fff" stroke="#c0580e" stroke-width="5"/>
+  <path d="M244 36 c-26 0 -42 18 -42 40 c0 28 42 66 42 66 s42 -38 42 -66 c0 -22 -16 -40 -42 -40z" fill="#f58a1f"/>
+  <circle cx="244" cy="76" r="15" fill="#fff4e6"/>
+  <text x="244" y="84" font-family="Arial, sans-serif" font-size="22" font-weight="800" text-anchor="middle" fill="#c0580e">?</text>
+  <path d="M96 44 a30 30 0 1 0 28 40 a24 24 0 1 1 -28 -40z" fill="#ffe7a8"/>
+  <g fill="#ffd166"><circle cx="146" cy="52" r="4"/><circle cx="166" cy="30" r="3"/><circle cx="62" cy="86" r="3.5"/></g>
+  <ellipse cx="244" cy="146" rx="26" ry="7" fill="#c0580e" opacity=".25"/>
+</svg>

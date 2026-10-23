@@ -49,7 +49,7 @@
   height: 34px;
   border-radius: 50%;
   overflow: hidden;
-  background: linear-gradient(145deg, #1ca66a, #116b48);
+  background: linear-gradient(145deg, #f57a0f, #9b470c);
   color: #fff;
   font-weight: 800;
   font-size: 15px;
@@ -104,7 +104,7 @@
   color: #fff;
 }
 .btn-sm.primary:hover {
-  background: #116b48;
+  background: #9b470c;
 }
 .btn-sm:disabled,
 .logout:disabled {
@@ -124,7 +124,7 @@
 }
 :is(.btn-sm, .logout, .navitem, .me-chip):focus-visible,
 :is(.field input, .field textarea, .chat-form textarea):focus-visible {
-  outline: 3px solid #1ca66a66;
+  outline: 3px solid #f57a0f66;
   outline-offset: 2px;
 }
 
@@ -149,7 +149,7 @@
   resize: vertical;
 }
 .field input:disabled {
-  background: #f3f7f5;
+  background: #f9f7f5;
   color: var(--muted);
 }
 .counter {
@@ -239,7 +239,7 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  background: #fafdfb;
+  background: #fffcfa;
 }
 .bubble {
   max-width: min(78%, 520px);
@@ -307,7 +307,7 @@
   width: 100%;
   padding: 13px 14px;
   border: 0;
-  border-bottom: 1px solid #edf3ef;
+  border-bottom: 1px solid #f7f3f0;
   background: #fff;
   text-align: left;
   cursor: pointer;
@@ -441,7 +441,7 @@
 }
 .hist-body {
   padding: 4px 16px 16px;
-  border-top: 1px solid #edf3ef;
+  border-top: 1px solid #f7f3f0;
   font-size: 14px;
   line-height: 1.6;
 }

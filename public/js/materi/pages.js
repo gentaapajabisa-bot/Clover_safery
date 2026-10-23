@@ -15,7 +15,7 @@ function pageHome() {
   const extra = [
     ["#/simulasi", "💬", "Simulasi chat", "Latihan membalas pesan yang membuat tidak nyaman."],
     ["#/kuis", "📝", "Kuis latihan", "Uji ingatan tanpa nilai."],
-    ["#/kamus", "📖", "Kamus istilah", "Arti istilah di dunia digital."],
+    ["#/glosarium", "📖", "Glosarium", "Arti istilah di dunia digital."],
   ];
   return `
   <section class="hero2">
@@ -77,9 +77,10 @@ function pageHome() {
 function pageSigns() {
   return `
   <h1 tabindex="-1">Mengenali Tanda Bahaya</h1>
+  <figure class="hero-fig"><img src="/img/tanda-bahaya-hero.svg" alt="Ilustrasi kaca pembesar menyorot tanda peringatan di samping perisai semanggi" width="760" height="240"></figure>
   <p class="lead">Beberapa pola perilaku perlu diwaspadai, baik saat bertemu langsung maupun di dunia maya. Ketuk setiap kartu untuk membaca penjelasannya.</p>
-  <div>
-    ${SIGNS.map((s) => `<details><summary><span aria-hidden="true" style="font-size:1.4rem">${s[0]}</span> ${esc(s[1])}</summary><div class="dbody"><p>${esc(s[2])}</p></div></details>`).join("")}
+  <div class="signs">
+    ${SIGNS.map((s, i) => `<details><summary><img class="sign-thumb" src="/img/signs/${SIGN_IMG[i][0]}.svg" alt="" width="88" height="60"><span>${esc(s[1])}</span></summary><div class="dbody sign-body"><figure><img src="/img/signs/${SIGN_IMG[i][0]}.svg" alt="${esc(SIGN_IMG[i][1])}" width="320" height="220" loading="lazy"></figure><p>${esc(s[2])}</p></div></details>`).join("")}
   </div>
   <div class="callout kuning"><p><strong>Penting:</strong> satu tanda saja tidak otomatis membuktikan terjadinya grooming. Namun setiap perasaan tidak aman atau tidak nyaman layak ditanggapi dengan serius, dan kamu boleh membicarakannya dengan orang dewasa tepercaya.</p></div>
 

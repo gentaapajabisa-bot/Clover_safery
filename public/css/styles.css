@@ -1,22 +1,22 @@
 :root {
-  --ungu: #168254;
-  --ungu-t: #105d3b;
-  --ungu-m: #e2f5e9;
+  --ungu: #c75c0f;
+  --ungu-t: #793809;
+  --ungu-m: #ffeee0;
   --pink: #fbd5e6;
   --pink-t: #8f2457;
   --biru: #d6e9fb;
   --biru-t: #1b4f86;
-  --hijau: #dff3e6;
-  --hijau-t: #1f6b3a;
+  --hijau: #ffecdb;
+  --hijau-t: #b5530e;
   --kuning: #fff1cf;
   --kuning-t: #7a5200;
   --merah: #d4151f;
   --merah-t: #8f0a12;
-  --bg: #f5fbf7;
+  --bg: #fff9f4;
   --putih: #fff;
   --teks: #2a2540;
   --abu: #5f5b78;
-  --garis: #d4e8dc;
+  --garis: #fce2cc;
   --r: 16px;
 }
 * {
@@ -38,7 +38,7 @@ body {
   font-size: 17px;
   line-height: 1.6;
   color: var(--teks);
-  background: linear-gradient(180deg, #eaf8ef 0, #f5fbf7 260px, #fff 100%);
+  background: linear-gradient(180deg, #fff3e9 0, #fff9f4 260px, #fff 100%);
   min-height: 100vh;
 }
 h1,
@@ -225,7 +225,7 @@ footer.foot {
   border: 1px solid var(--garis);
   border-radius: var(--r);
   padding: 20px;
-  box-shadow: 0 2px 10px rgba(20, 90, 60, 0.07);
+  box-shadow: 0 2px 10px rgba(123, 57, 9, 0.07);
 }
 .grid {
   display: grid;
@@ -238,7 +238,7 @@ footer.foot {
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 }
 .hero {
-  background: linear-gradient(135deg, #dcf5e6, #fde4ef 60%, #dcecfc);
+  background: linear-gradient(135deg, #ffecdb, #fde4ef 60%, #dcecfc);
   border-radius: 24px;
   padding: clamp(22px, 5vw, 44px);
   margin-bottom: 22px;
@@ -274,7 +274,7 @@ footer.foot {
   color: #fff;
 }
 .btn-primary:hover {
-  background: #0f6a45;
+  background: #95440b;
 }
 .btn-pink {
   background: var(--pink);
@@ -319,8 +319,8 @@ footer.foot {
 }
 .callout.hijau {
   background: var(--hijau);
-  border-color: #4fae73;
-  color: #123d22;
+  border-color: #f7923a;
+  color: #432312;
 }
 .callout.merah {
   background: #ffe4e4;
@@ -513,8 +513,8 @@ select:focus {
 }
 .fb.aman {
   background: var(--hijau);
-  color: #123d22;
-  border-left: 6px solid #4fae73;
+  color: #432312;
+  border-left: 6px solid #f7923a;
 }
 .fb.hati {
   background: var(--kuning);
@@ -563,7 +563,7 @@ select:focus {
   border-radius: 999px;
   font-size: 0.9rem;
   font-weight: 700;
-  background: #e9f3ed;
+  background: #fff1e4;
   color: var(--abu);
 }
 .pill.done {

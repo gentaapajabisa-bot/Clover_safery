@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 240" role="img" aria-label="Kaca pembesar menyorot tanda peringatan dan perisai semanggi">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffb866"/><stop offset="1" stop-color="#f58a1f"/></linearGradient>
+  </defs>
+  <rect width="760" height="240" rx="28" fill="url(#g)"/>
+  <circle cx="650" cy="40" r="110" fill="#fff" opacity=".12"/>
+  <circle cx="90" cy="220" r="90" fill="#fff" opacity=".12"/>
+  <g transform="translate(130 24) scale(.9)">
+    <path d="M90 6 L170 38 V108 C170 160 138 196 90 214 C42 196 10 160 10 108 V38 Z" fill="#fff"/>
+    <path d="M90 22 L156 48 V108 C156 150 130 180 90 196 C50 180 24 150 24 108 V48 Z" fill="#ffe3c7"/>
+    <g transform="translate(90 108)" fill="#f58a1f" stroke="#ffe3c7" stroke-width="3.5">
+      <circle cx="-17" cy="-3" r="22"/><circle cx="17" cy="-3" r="22"/><circle cx="0" cy="-20" r="22"/><circle cx="0" cy="14" r="22"/>
+      <rect x="-3" y="14" width="6" height="42" rx="3" transform="rotate(-18)"/>
+    </g>
+  </g>
+  <g transform="translate(330 40)">
+    <circle cx="86" cy="86" r="66" fill="#fff" opacity=".35" stroke="#fff" stroke-width="12"/>
+    <path d="M86 52 l34 58 h-68z" fill="#ffd166"/>
+    <rect x="82" y="72" width="8" height="20" rx="4" fill="#c0580e"/><circle cx="86" cy="100" r="4.5" fill="#c0580e"/>
+    <path d="M136 136 l54 54" stroke="#fff" stroke-width="16" stroke-linecap="round"/>
+  </g>
+  <g transform="translate(560 70)" fill="#fff">
+    <rect width="150" height="22" rx="11" opacity=".9"/><rect y="38" width="110" height="22" rx="11" opacity=".7"/><rect y="76" width="130" height="22" rx="11" opacity=".5"/>
+  </g>
+</svg>
