@@ -463,3 +463,15 @@ html body .hero2 .btn-help:hover {
 .infogrid .btn {
   margin-top: 4px;
 }
+
+/* Tombol Mulai Belajar di bawah alur belajar */
+.start-row {
+  justify-content: center;
+  margin-top: 28px;
+}
+.start-row .btn {
+  min-height: 52px;
+  padding-inline: 36px;
+  font-size: 1.05rem;
+  border-radius: 12px;
+}

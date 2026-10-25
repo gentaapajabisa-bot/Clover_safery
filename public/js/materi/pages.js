@@ -17,9 +17,6 @@ function pageHome() {
     <div>
       <h1 tabindex="-1">Selamat Datang di Clover Safety!</h1>
       <p class="lead">Belajar mengenali tanda bahaya, menjaga privasi, dan tahu cara meminta bantuan, dengan cara yang sederhana.</p>
-      <div class="btn-row">
-        ${routeBtn("#/tanda-bahaya", "Mulai Belajar", "btn btn-gold")}
-      </div>
     </div>
     <div class="art" aria-hidden="true"><img src="/img/clover-shield.svg" alt="" /></div>
   </section>
@@ -32,6 +29,9 @@ function pageHome() {
     <ol class="steps">
       ${flow.map((f, i) => `<li><a href="${f[0]}"><span class="n" aria-hidden="true">${i + 1}</span><strong>${f[1]}</strong><span class="d">${f[2]}</span></a></li>`).join("")}
     </ol>
+    <div class="btn-row start-row">
+      ${routeBtn("#/tanda-bahaya", "Mulai Belajar", "btn btn-primary")}
+    </div>
   </section>
   `;
 }
