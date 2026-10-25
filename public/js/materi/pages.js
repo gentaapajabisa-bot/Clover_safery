@@ -12,26 +12,13 @@ function pageHome() {
     ["#/refleksi", "Refleksi", "Tuliskan apa yang sudah kamu pelajari."],
     ["#/bantuan", "Akses bantuan", "Tahu ke mana dan kepada siapa meminta tolong."],
   ];
-  const extra = [
-    ["#/simulasi", "💬", "Simulasi chat", "Latihan membalas pesan yang membuat tidak nyaman."],
-    ["#/kuis", "📝", "Kuis latihan", "Uji ingatan tanpa nilai."],
-    ["#/glosarium", "📖", "Glosarium", "Arti istilah di dunia digital."],
-  ];
   return `
   <section class="hero2">
     <div>
       <h1 tabindex="-1">Selamat Datang di Clover Safety!</h1>
-      <p class="lead">Di Clover Safety kamu dapat mempelajari tanda bahaya, memahami batas privasi, menentukan tindakan yang aman, dan melakukan refleksi. Jika kamu merasa tidak aman atau membutuhkan bantuan, kamu dapat langsung membuka menu bantuan.</p>
-      <ul class="pillars" aria-label="Empat pegangan Clover Safety">
-        <li>Kenali Bahaya</li>
-        <li>Jaga Privasi</li>
-        <li>Tentukan Tindakan Aman</li>
-        <li>Berani Mencari Bantuan</li>
-      </ul>
+      <p class="lead">Belajar mengenali tanda bahaya, menjaga privasi, dan tahu cara meminta bantuan, dengan cara yang sederhana.</p>
       <div class="btn-row">
         ${routeBtn("#/tanda-bahaya", "Mulai Belajar", "btn btn-gold")}
-        ${routeBtn("#/refleksi", "Refleksi", "btn btn-line")}
-        ${routeBtn("#/bantuan", "Meminta Bantuan", "btn btn-help")}
       </div>
     </div>
     <div class="art" aria-hidden="true"><img src="/img/clover-shield.svg" alt="" /></div>
@@ -46,32 +33,7 @@ function pageHome() {
       ${flow.map((f, i) => `<li><a href="${f[0]}"><span class="n" aria-hidden="true">${i + 1}</span><strong>${f[1]}</strong><span class="d">${f[2]}</span></a></li>`).join("")}
     </ol>
   </section>
-
-  <section class="sec" aria-labelledby="latihan">
-    <div class="sec-head">
-      <h2 id="latihan">Latihan tambahan</h2>
-      <p>Berlatih dengan santai, tanpa penilaian.</p>
-    </div>
-    <div class="tiles">
-      ${extra.map((x) => `<a class="tile" href="${x[0]}"><span class="i" aria-hidden="true">${x[1]}</span><span><strong>${x[2]}</strong><span class="d">${x[3]}</span></span></a>`).join("")}
-    </div>
-  </section>
-
-  <div class="promise"><p>Kamu berhak merasa aman, menjaga privasi, menetapkan batasan diri, dan meminta bantuan. Kamu tidak harus menghadapi situasi berbahaya sendirian.</p></div>
-
-  <div class="infogrid">
-    <section class="card">
-      <h3>Tentang tombol alarm</h3>
-      <p>Tombol merah <strong>ALARM TANDA BAHAYA</strong> ada di semua halaman. Saat ditekan, perangkatmu membunyikan sirene sampai kamu menekan <strong>HENTIKAN ALARM</strong>.</p>
-      <p>Alarm <strong>hanya berbunyi di perangkatmu</strong>. Alarm tidak otomatis menghubungi guru, orang tua, atau petugas. Jadi setelah menjauh ke tempat aman, tetap minta bantuan orang dewasa tepercaya.</p>
-    </section>
-    <section class="card">
-      <h3>Kembali ke dashboard</h3>
-      <p>Lihat ringkasan akun dan aktivitasmu kapan saja lewat dashboard.</p>
-      <p><a class="btn btn-primary" href="/dashboard">Buka dashboard</a></p>
-      <p class="hint">Menu bantuan dan alarm tetap bisa dipakai siapa saja.</p>
-    </section>
-  </div>`;
+  `;
 }
 
 function pageSigns() {
