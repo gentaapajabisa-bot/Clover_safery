@@ -410,3 +410,23 @@ table th {
   background: #ffd2a1;
   color: var(--j-ink);
 }
+
+/* ---------- Materi: semua tombol berwarna oranye ---------- */
+#app .btn:not(.btn-danger),
+#app .btn-pink,
+#app .btn-small:not(.btn-danger),
+#app .acct-btn {
+  background: var(--j-btn);
+  border-color: transparent;
+  color: #fff;
+  box-shadow: 0 6px 16px rgba(184, 77, 9, 0.25);
+}
+#app .btn:not(.btn-danger):hover,
+#app .btn-pink:hover,
+#app .btn-small:not(.btn-danger):hover,
+#app .acct-btn:hover {
+  background: linear-gradient(135deg, #b84d09, #8a3806);
+  border-color: transparent;
+  color: #fff;
+  transform: translateY(-1px);
+}
