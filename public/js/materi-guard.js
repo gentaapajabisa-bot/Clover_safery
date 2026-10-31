@@ -26,6 +26,18 @@
     })
     .then(function (data) {
       verified = !!(data && data.user);
+      if (verified) {
+        try {
+          var uid = String(data.user.id);
+          if (localStorage.getItem("clover_uid") !== uid) {
+            localStorage.setItem("clover_uid", uid);
+            location.reload();
+            return;
+          }
+        } catch (e) {
+          /* penyimpanan tidak tersedia */
+        }
+      }
       if (verified || isPublic()) reveal();
       else toLogin();
     })

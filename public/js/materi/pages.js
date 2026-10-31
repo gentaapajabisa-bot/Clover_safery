@@ -6,12 +6,23 @@
    ========================================================= */
 function pageHome() {
   const flow = [
-    ["#/tanda-bahaya", "Kenali tanda bahaya", "Pelajari pola perilaku yang perlu diwaspadai."],
-    ["#/privasi", "Pahami privasi &amp; batasan", "Apa yang boleh dibagikan dan apa yang tidak."],
-    ["#/tindakan", "Latih tindakan aman", "Pilih langkah yang tepat lewat skenario."],
-    ["#/refleksi", "Refleksi", "Tuliskan apa yang sudah kamu pelajari."],
-    ["#/bantuan", "Akses bantuan", "Tahu ke mana dan kepada siapa meminta tolong."],
+    ["tanda-bahaya", "#/tanda-bahaya", "Kenali tanda bahaya", "Pelajari pola perilaku yang perlu diwaspadai."],
+    ["privasi", "#/privasi", "Pahami privasi &amp; batasan", "Apa yang boleh dibagikan dan apa yang tidak."],
+    ["tindakan", "#/tindakan", "Latih tindakan aman", "Pilih langkah yang tepat lewat skenario."],
+    ["refleksi", "#/refleksi", "Refleksi", "Tuliskan apa yang sudah kamu pelajari."],
+    [null, "#/bantuan", "Akses bantuan", "Tahu ke mana dan kepada siapa meminta tolong."],
   ];
+  const nxt = Progress.next();
+  const n = Progress.doneCount();
+  const total = Progress.STEPS.length;
+  const state = (k) => {
+    if (!k) return ["open", "Selalu terbuka"];
+    if (Progress.isDone(k)) return ["done", "✓ Selesai"];
+    if (nxt && nxt.key === k) return ["now", "Berikutnya"];
+    return ["lock", "🔒 Terkunci"];
+  };
+  const startLabel = n === 0 ? "Mulai Belajar" : nxt ? "Lanjutkan Belajar" : "Ulangi Materi";
+  const startHref = nxt ? "#/" + nxt.key : "#/tanda-bahaya";
   return `
   <section class="hero2">
     <div>
@@ -24,13 +35,20 @@ function pageHome() {
   <section class="sec" aria-labelledby="alur">
     <div class="sec-head">
       <h2 id="alur">Alur belajarmu</h2>
-      <p>Ikuti urutan ini, atau mulai dari bagian mana pun yang kamu butuhkan.</p>
+      <p>Selesaikan langkah demi langkah: isi semua skor atau jawaban wajib di satu langkah untuk membuka langkah berikutnya.</p>
     </div>
+    <div class="flow-prog" role="progressbar" aria-valuemin="0" aria-valuemax="${total}" aria-valuenow="${n}" aria-label="Langkah belajar yang sudah selesai"><i style="width:${(n / total) * 100}%"></i></div>
+    <p class="flow-count">${n} dari ${total} langkah belajar selesai</p>
     <ol class="steps">
-      ${flow.map((f, i) => `<li><a href="${f[0]}"><span class="n" aria-hidden="true">${i + 1}</span><strong>${f[1]}</strong><span class="d">${f[2]}</span></a></li>`).join("")}
+      ${flow
+        .map((f, i) => {
+          const [st, txt] = state(f[0]);
+          return `<li class="st-${st}"><a href="${f[1]}"><span class="n" aria-hidden="true">${i + 1}</span><strong>${f[2]}</strong><span class="d">${f[3]}</span><span class="badge-st">${txt}</span></a></li>`;
+        })
+        .join("")}
     </ol>
     <div class="btn-row start-row">
-      ${routeBtn("#/tanda-bahaya", "Mulai Belajar", "btn btn-primary")}
+      ${routeBtn(startHref, startLabel, "btn btn-primary")}
     </div>
   </section>
   `;
@@ -46,14 +64,9 @@ function pageSigns() {
   </div>
   <div class="callout kuning"><p><strong>Penting:</strong> satu tanda saja tidak otomatis membuktikan terjadinya grooming. Namun setiap perasaan tidak aman atau tidak nyaman layak ditanggapi dengan serius, dan kamu boleh membicarakannya dengan orang dewasa tepercaya.</p></div>
 
-  <h2 style="margin-top:28px">Mitos atau fakta?</h2>
-  <p>Ketuk pernyataan untuk melihat penjelasannya. Tidak ada nilai atau skor.</p>
-  <div id="myth-root">
-    ${MYTHS.map((m, i) => `<div style="margin:10px 0"><button type="button" class="myth" data-act="myth" data-i="${i}" aria-expanded="${!!S.myth[i]}">${esc(m[0])}</button><div class="myth-ans" ${S.myth[i] ? "" : "hidden"} id="myth-a-${i}">${esc(m[1])}</div></div>`).join("")}
-  </div>
 
-  ${checklist("signs", "Checklist Mengenali Tanda Bahaya", CL_SIGNS)}
-  <div class="btn-row">${routeBtn("#/privasi", "Lanjut: Privasi dan Batasan Diri", "btn btn-primary")}${routeBtn("#/bantuan", "Meminta Bantuan", "btn btn-pink")}</div>`;
+  ${checklist("signs", "Skor Pemahaman: Mengenali Tanda Bahaya", CL_SIGNS)}
+  <div class="btn-row">${nextBtn("signs", "#/privasi", "Lanjut: Privasi dan Batasan Diri")}${routeBtn("#/bantuan", "Meminta Bantuan", "btn btn-pink")}</div>`;
 }
 
 function pagePrivacy() {
@@ -78,13 +91,9 @@ function pagePrivacy() {
     ).join("")}
   </div>
 
-  <h2>Tips pengaturan akun dan game</h2>
-  <details><summary>🔐 Akun dan kata sandi</summary><div class="dbody"><ul class="clean"><li>Gunakan kata sandi yang berbeda untuk tiap akun.</li><li>Jangan beri tahu kode OTP atau kode keamanan kepada siapa pun.</li><li>Keluar dari akun saat memakai perangkat bersama.</li></ul></div></details>
-  <details><summary>🌐 Profil media sosial dan game</summary><div class="dbody"><ul class="clean"><li>Atur akun menjadi privat jika memungkinkan.</li><li>Hindari memasang nama lengkap, nama sekolah, atau foto seragam di profil publik.</li><li>Terima permintaan pertemanan hanya dari orang yang kamu kenal.</li></ul></div></details>
-  <details><summary>📍 Lokasi dan kamera</summary><div class="dbody"><ul class="clean"><li>Matikan berbagi lokasi pada aplikasi yang tidak membutuhkannya.</li><li>Pikirkan dulu sebelum memberi izin kamera dan mikrofon kepada aplikasi.</li></ul></div></details>
 
-  ${checklist("priv", "Checklist Prinsip Privasi", CL_PRIV)}
-  <div class="btn-row">${routeBtn("#/tindakan", "Lanjut: Tindakan yang Aman", "btn btn-primary")}${routeBtn("#/bantuan", "Meminta Bantuan", "btn btn-pink")}</div>`;
+  ${checklist("priv", "Skor Pemahaman: Prinsip Privasi", CL_PRIV)}
+  <div class="btn-row">${nextBtn("priv", "#/tindakan", "Lanjut: Tindakan yang Aman")}${routeBtn("#/bantuan", "Meminta Bantuan", "btn btn-pink")}</div>`;
 }
 
 function pageAction() {
@@ -96,8 +105,8 @@ function pageAction() {
     <h3>Ingat selalu</h3>
     <ul class="clean">${SCN_EXPL.map((t) => `<li>${esc(t)}</li>`).join("")}</ul>
   </div>
-  ${checklist("act", "Checklist Tindakan Aman", CL_ACT)}
-  <div class="btn-row">${routeBtn("#/refleksi", "Lanjut: Refleksi", "btn btn-primary")}${routeBtn("#/bantuan", "Meminta Bantuan", "btn btn-pink")}</div>`;
+  ${checklist("act", "Skor Pemahaman: Tindakan Aman", CL_ACT)}
+  <div class="btn-row">${nextBtn("act", "#/refleksi", "Lanjut: Refleksi")}${routeBtn("#/bantuan", "Meminta Bantuan", "btn btn-pink")}</div>`;
 }
 function paintScn(focusI) {
   const root = $("#scn-root");
@@ -174,15 +183,15 @@ function pageReflect() {
       .join("");
   return `
   <h1 tabindex="-1">Refleksi</h1>
-  <div class="callout"><p>Luangkan waktu sejenak untuk merefleksikan hal yang kamu pelajari. <strong>Tidak ada nilai benar atau salah.</strong> Kamu boleh melewati pertanyaan yang tidak ingin kamu jawab.</p></div>
+  <div class="callout"><p>Luangkan waktu sejenak untuk merefleksikan hal yang kamu pelajari. <strong>Tidak ada nilai benar atau salah.</strong> Pertanyaan 1 dan 6 wajib diisi agar refleksi bisa diselesaikan; pertanyaan lain boleh dilewati. </p></div>
   <div class="callout kuning"><p>Jawabanmu <strong>tidak disimpan otomatis</strong> dan hilang saat halaman ditutup. Kamu bisa memilih <strong>“Simpan ke riwayat”</strong> setelah selesai; riwayat hanya bisa dilihat olehmu (tidak oleh admin). Jangan menulis nama lengkap, alamat, kata sandi, atau data pribadi lain.</p></div>
   <form id="ref-form" novalidate>
-    <div class="card" style="margin-bottom:14px"><h3>1. Apa pesan terpenting yang kamu dapatkan setelah belajar di Clover Safety?</h3>${txt("q1", "Jawabanku")}</div>
+    <div class="card" style="margin-bottom:14px"><h3>1. Apa pesan terpenting yang kamu dapatkan setelah belajar di Clover Safety? <span class="req">(wajib)</span></h3>${txt("q1", "Jawabanku")}</div>
     <fieldset><legend>2. Tanda bahaya apa yang sekarang lebih kamu pahami?</legend>${grp("q2", q2, R.q2, "checkbox")}</fieldset>
     <fieldset><legend>3. Mengapa penting menjaga privasi dan batasan diri?</legend>${grp("q3", q3, [], "radio")}${txt("q3t", "Atau tulis dengan kata-katamu sendiri")}</fieldset>
     <fieldset><legend>4. Apa yang dapat kamu lakukan jika seseorang meminta sesuatu yang membuatmu tidak nyaman?</legend>${grp("q4", q4, R.q4, "checkbox")}</fieldset>
     <div class="card" style="margin-bottom:14px"><h3>5. Siapa yang dapat kamu hubungi jika merasa takut atau tidak aman?</h3>${txt("q5", "Jawabanku", "Cukup tulis perannya (misalnya “guru BK”, “ibu”), tanpa nomor atau alamat.")}</div>
-    <div class="card" style="margin-bottom:14px"><h3>6. Apa satu hal yang ingin kamu lakukan untuk menjaga keselamatan diri?</h3>${txt("q6", "Jawabanku")}</div>
+    <div class="card" style="margin-bottom:14px"><h3>6. Apa satu hal yang ingin kamu lakukan untuk menjaga keselamatan diri? <span class="req">(wajib)</span></h3>${txt("q6", "Jawabanku")}</div>
     <fieldset id="ref-opts"><legend>Bagaimana perasaanmu sekarang? (boleh pilih lebih dari satu)</legend>
       ${ropts.map((t, i) => `<label class="chk"><input type="checkbox" data-ropt="${i}" ${R.opts.includes(i) ? "checked" : ""}><span>${esc(t)}</span></label>`).join("")}
     </fieldset>
@@ -190,6 +199,7 @@ function pageReflect() {
       <p><strong>Terima kasih sudah jujur. Kamu tidak sendirian.</strong> Kamu bisa langsung melihat pilihan bantuan sekarang juga.</p>
       <div class="btn-row">${routeBtn("#/bantuan", "Buka Menu Meminta Bantuan", "btn btn-primary")}</div>
     </div>
+    <p class="msg-err" id="ref-err" role="alert" hidden></p>
     <div class="btn-row"><button type="submit" class="btn btn-primary">Selesai Refleksi</button><button type="button" class="btn" data-act="ref-copy">Salin jawabanku (jika ingin menunjukkan ke orang dewasa)</button></div>
   </form>
   <div id="ref-end" ${R.done ? "" : "hidden"}>
@@ -256,7 +266,7 @@ function pageAbout() {
       <ul class="clean"><li>Akun hanya berlaku di perangkat dan browser yang sama; tidak bisa dipakai di perangkat lain.</li><li>Membersihkan data browser akan menghapus akun.</li><li>Sesi login berakhir saat tab ditutup, agar aman di komputer bersama.</li><li>Karena tidak memakai server, ini bukan sistem keamanan tingkat lembaga. Peran Guru BK dibuka dengan kode yang bisa dilihat siapa pun yang membuka kode sumber.</li></ul></section>
     <section class="card"><h3>Batasan alarm</h3>
       <ul class="clean"><li>Alarm adalah sinyal suara lokal di perangkat ini.</li><li>Alarm tidak mengirim lokasi, pesan, atau panggilan ke siapa pun.</li><li>Volume mengikuti pengaturan perangkat; website tidak bisa melampaui batas itu.</li><li>Alarm tidak berbunyi otomatis; hanya setelah tombol ditekan.</li></ul></section>
-    <section class="card"><h3>Checklist dan refleksi</h3><p>Hanya sarana belajar. Bukan tes, diagnosis, ataupun bukti bahwa seseorang mengalami grooming.</p></section>
+    <section class="card"><h3>Skor dan refleksi</h3><p>Hanya sarana belajar. Bukan tes, diagnosis, ataupun bukti bahwa seseorang mengalami grooming.</p></section>
   </div>
   <div class="callout kuning"><p>Sebelum dipakai di sekolah, isi, alur bantuan, dan prosedur penanganan sebaiknya ditinjau bersama guru BK atau pihak yang kompeten dalam perlindungan anak.</p></div>`;
 }

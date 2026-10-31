@@ -1,14 +1,14 @@
 :root {
   color-scheme: light;
-  --green: #c0580e;
-  --green2: #f57a0f;
-  --mint: #fff2e7;
-  --ink: #402211;
-  --muted: #957964;
-  --line: #fce7d5;
+  --green: #478510;
+  --green2: #5eb016;
+  --mint: #e8fad8;
+  --ink: #1c2f0c;
+  --muted: #6e865a;
+  --line: #d2f6b3;
   --paper: #fff;
   --shadow: 0 24px 70px #42221218;
-  --deep: #3e2111;
+  --deep: #1c2d0c;
   --gold: #f0b93a;
   --font: "Plus Jakarta Sans", "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
 }
@@ -21,7 +21,7 @@ body {
   margin: 0;
   font-family: var(--font);
   color: var(--ink);
-  background: linear-gradient(135deg, #fffbf7, #fffaf6 45%, #fff2e7);
+  background: linear-gradient(135deg, #f8fef3, #f6fdf0 45%, #e8fad8);
   min-height: 100vh;
 }
 
@@ -60,7 +60,7 @@ input {
   place-items: center;
   width: 42px;
   height: 42px;
-  background: linear-gradient(145deg, #f57a0f, #9b470c);
+  background: linear-gradient(145deg, #5eb016, #396b0d);
   border-radius: 14px;
   color: white;
   font-size: 25px;
@@ -97,8 +97,8 @@ input {
   display: inline-flex;
   padding: 8px 12px;
   border-radius: 99px;
-  background: #ffedde;
-  color: #b5530e;
+  background: #dff8c8;
+  color: #437e10;
   font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.07em;
@@ -122,7 +122,7 @@ input {
   display: grid;
   gap: 13px;
   margin-top: 28px;
-  color: #7a5a42;
+  color: #4f6838;
 }
 
 .points span {
@@ -165,8 +165,8 @@ input {
 
 .field input {
   width: 100%;
-  border: 1px solid #fce4cf;
-  background: #fffdfb;
+  border: 1px solid #ccf4a9;
+  background: #fbfef9;
   padding: 13px 14px;
   border-radius: 12px;
   outline: none;
@@ -181,7 +181,7 @@ input {
   width: 100%;
   border: 0;
   border-radius: 12px;
-  background: linear-gradient(120deg, #c0580e, #f57a0f);
+  background: linear-gradient(120deg, #478510, #5eb016);
   color: white;
   padding: 14px;
   font-weight: 800;
@@ -207,8 +207,8 @@ input {
 }
 
 .msg.ok {
-  background: #fff3e9;
-  color: #a64c0c;
+  background: #eafbdb;
+  color: #3d730e;
 }
 
 .switch {
@@ -220,7 +220,7 @@ input {
 
 .tiny {
   text-align: center;
-  color: #a48d7c;
+  color: #81996c;
   font-size: 11px;
   line-height: 1.6;
   margin-top: 20px;
@@ -240,7 +240,7 @@ input {
 
 .side-label {
   font-size: 11px;
-  color: #ad9582;
+  color: #87a170;
   font-weight: 800;
   letter-spacing: 0.14em;
   margin: 20px 12px 10px;
@@ -252,7 +252,7 @@ input {
   gap: 11px;
   padding: 12px 13px;
   border-radius: 12px;
-  color: #8c6e57;
+  color: #627b4d;
   font-size: 14px;
   font-weight: 700;
   margin: 4px 0;
@@ -337,12 +337,12 @@ th,
 td {
   text-align: left;
   padding: 13px 12px;
-  border-bottom: 1px solid #f7f3f0;
+  border-bottom: 1px solid #f1f5ed;
   white-space: nowrap;
 }
 
 th {
-  color: #a18774;
+  color: #7a9464;
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -354,13 +354,13 @@ th {
   padding: 5px 9px;
   font-size: 11px;
   font-weight: 800;
-  background: #fff0e3;
-  color: #c0580e;
+  background: #e4f9d2;
+  color: #478510;
 }
 
 .pill.off {
-  background: #fff0e9;
-  color: #a64e23;
+  background: #e5fad3;
+  color: #437418;
 }
 
 .logout {
@@ -374,13 +374,13 @@ th {
 }
 
 .empty {
-  color: #a48d7c;
+  color: #81996c;
   font-size: 14px;
   padding: 18px 0;
 }
 
 .footnote {
-  color: #ad9582;
+  color: #87a170;
   font-size: 12px;
   margin-top: 30px;
 }
@@ -479,7 +479,7 @@ th {
 }
 
 .accent {
-  color: #c75c0f;
+  color: #4a8b11;
 }
 
 .eyebrow-sm {
@@ -541,7 +541,7 @@ a.btn {
   padding: 24px 28px;
   border-radius: 20px;
   color: #fff;
-  background: linear-gradient(120deg, #c0580e, #f57a0f);
+  background: linear-gradient(120deg, #478510, #5eb016);
   box-shadow: 0 12px 30px #c0580e30;
 }
 
@@ -635,7 +635,7 @@ body.auth {
 }
 
 .split .art .brand small {
-  color: #f7c89e;
+  color: #8ee740;
   font-weight: 500;
   letter-spacing: 0;
   font-size: 12px;
@@ -665,7 +665,7 @@ body.auth {
 .art-body p {
   margin: 0;
   max-width: 30em;
-  color: #fce0c8;
+  color: #c5f39c;
   font-size: 16px;
   line-height: 1.75;
 }
@@ -698,7 +698,7 @@ body.auth {
 .art-help {
   font-size: 13.5px;
   line-height: 1.6;
-  color: #fad4b3;
+  color: #abed71;
 }
 
 .art-help a {
@@ -767,13 +767,13 @@ body.auth {
 }
 
 .formcard .btn:hover {
-  background: #823c0a;
+  background: #305a0b;
 }
 
 .formcard .btn.btn-ghost {
   background: #fff;
   color: var(--green);
-  border: 1.5px solid #fbd9bc;
+  border: 1.5px solid #b6f084;
 }
 
 .formcard .btn.btn-ghost:hover {
@@ -851,4 +851,14 @@ body.auth {
   .formmain {
     padding-top: 12px;
   }
+}
+
+.learn-prog {
+  margin-top: 12px;
+  max-width: 340px;
+  background: rgba(255, 255, 255, 0.25);
+}
+.learn-prog i {
+  width: 0;
+  background: #fff;
 }

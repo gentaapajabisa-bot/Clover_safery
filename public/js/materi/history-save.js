@@ -1,5 +1,5 @@
 "use strict";
-/* Menyimpan hasil kuis dan refleksi ke riwayat akun (server). Hanya terbaca oleh pemilik akun. */
+/* Menyimpan refleksi ke riwayat akun (server). Hanya terbaca oleh pemilik akun. */
 
 async function postHistory(payload) {
   const res = await fetch("/api/history", {
@@ -22,21 +22,6 @@ async function postHistory(payload) {
 }
 
 const LOGIN_HINT = `Masuk dulu untuk menyimpan ke riwayat: <a href="/login">Masuk</a>.`;
-
-/** Hasil kuis disimpan otomatis saat kuis selesai. */
-async function saveQuizHistory() {
-  const el = $("#quiz-save");
-  if (!el || Q.saved) return;
-  Q.saved = true;
-  el.textContent = "Menyimpan hasil ke riwayat…";
-  try {
-    await postHistory({ kind: "kuis", answers: Q.log });
-    el.innerHTML = `Hasil kuis tersimpan di <a href="/riwayat">Riwayat</a>. Hanya kamu yang bisa melihatnya.`;
-  } catch (e) {
-    Q.saved = false;
-    el.innerHTML = e.status === 401 ? LOGIN_HINT : esc(e.message);
-  }
-}
 
 /** Mengumpulkan pertanyaan + jawaban refleksi langsung dari formulir yang tampil (tanpa menyalin daftar opsi). */
 function reflectionItems() {

@@ -76,21 +76,6 @@ const CL_GURU = [
 ];
 const CL_TOTAL = { signs: CL_SIGNS.length, priv: CL_PRIV.length, act: CL_ACT.length, guru: CL_GURU.length };
 
-const MYTHS = [
-  [
-    "“Kalau sudah menerima hadiah, aku harus membalasnya.”",
-    "Tidak. Hadiah tidak membuatmu berutang foto, informasi, atau apa pun yang membuatmu tidak nyaman. Kamu boleh mengembalikan, mengabaikan, atau berhenti menerimanya.",
-  ],
-  [
-    "“Kalau aku sudah terlanjur mengirim sesuatu, aku pasti dimarahi dan tidak bisa dibantu.”",
-    "Tidak. Yang bersalah adalah orang yang menekan atau mengancam, bukan kamu. Bantuan tetap bisa diminta kapan saja, dan orang dewasa tepercaya ada untuk membantumu, bukan menyalahkanmu.",
-  ],
-  [
-    "“Orang yang baik dan perhatian padaku pasti tidak berbahaya.”",
-    "Perhatian bisa tulus, tetapi kadang dipakai untuk membangun kepercayaan sebelum meminta hal yang tidak pantas. Yang perlu diperhatikan adalah permintaannya: apakah membuatmu tidak nyaman, memintamu merahasiakan, atau menekanmu?",
-  ],
-  ["“Menolak itu tidak sopan.”", "Menolak dengan tenang itu hakmu. Orang yang menghargaimu akan menerima penolakanmu."],
-];
 const BOUNDARY = [
   [
     "Kata sandi dan kode keamanan",

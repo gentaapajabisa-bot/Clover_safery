@@ -8,6 +8,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   $("#welcome").textContent = `Halo, ${user.name}`;
   if (user.role === "admin") $("#admin-link").hidden = false;
 
+  paintLearning();
+
   try {
     const data = await api("/api/dashboard", null, "GET");
     const activity = data.activity || [];
@@ -38,3 +40,20 @@ document.addEventListener("DOMContentLoaded", async () => {
     message(e.message);
   }
 });
+
+/** Ringkasan kemajuan belajar + tautan ke langkah berikutnya. */
+function paintLearning() {
+  if (typeof Progress === "undefined") return;
+  const n = Progress.doneCount(),
+    total = Progress.STEPS.length,
+    nxt = Progress.next();
+  $("#learn-title").textContent = n === 0 ? "Mulai belajar" : nxt ? "Lanjutkan belajar" : "Semua langkah selesai 🎉";
+  $("#learn-text").textContent = nxt
+    ? `${n} dari ${total} langkah selesai. Berikutnya: ${nxt.label}. Selesaikan dulu untuk membuka langkah selanjutnya.`
+    : `${n} dari ${total} langkah selesai. Kamu boleh mengulang materi kapan saja.`;
+  const bar = $("#learn-prog");
+  bar.setAttribute("aria-valuenow", String(n));
+  $("i", bar).style.width = (n / total) * 100 + "%";
+  $("#learn-link").setAttribute("href", nxt ? "/belajar#/" + nxt.key : "/belajar");
+  $("#learn-link").textContent = n === 0 ? "Mulai belajar →" : nxt ? "Lanjutkan →" : "Buka materi →";
+}

@@ -1,22 +1,22 @@
 :root {
-  --ungu: #c75c0f;
-  --ungu-t: #793809;
-  --ungu-m: #ffeee0;
+  --ungu: #4a8b11;
+  --ungu-t: #2d540a;
+  --ungu-m: #e1f9cb;
   --pink: #fbd5e6;
   --pink-t: #8f2457;
   --biru: #d6e9fb;
   --biru-t: #1b4f86;
-  --hijau: #ffecdb;
-  --hijau-t: #b5530e;
+  --hijau: #ddf8c5;
+  --hijau-t: #437e10;
   --kuning: #fff1cf;
   --kuning-t: #7a5200;
   --merah: #d4151f;
   --merah-t: #8f0a12;
-  --bg: #fff9f4;
+  --bg: #f4fded;
   --putih: #fff;
   --teks: #2a2540;
   --abu: #5f5b78;
-  --garis: #fce2cc;
+  --garis: #c9f4a3;
   --r: 16px;
 }
 * {
@@ -38,7 +38,7 @@ body {
   font-size: 17px;
   line-height: 1.6;
   color: var(--teks);
-  background: linear-gradient(180deg, #fff3e9 0, #fff9f4 260px, #fff 100%);
+  background: linear-gradient(180deg, #eafbdb 0, #f4fded 260px, #fff 100%);
   min-height: 100vh;
 }
 h1,
@@ -225,7 +225,7 @@ footer.foot {
   border: 1px solid var(--garis);
   border-radius: var(--r);
   padding: 20px;
-  box-shadow: 0 2px 10px rgba(123, 57, 9, 0.07);
+  box-shadow: 0 2px 10px rgba(45, 85, 11, 0.07);
 }
 .grid {
   display: grid;
@@ -238,7 +238,7 @@ footer.foot {
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 }
 .hero {
-  background: linear-gradient(135deg, #ffecdb, #fde4ef 60%, #dcecfc);
+  background: linear-gradient(135deg, #ddf8c5, #fde4ef 60%, #dcecfc);
   border-radius: 24px;
   padding: clamp(22px, 5vw, 44px);
   margin-bottom: 22px;
@@ -274,7 +274,7 @@ footer.foot {
   color: #fff;
 }
 .btn-primary:hover {
-  background: #95440b;
+  background: #37670d;
 }
 .btn-pink {
   background: var(--pink);
@@ -319,8 +319,8 @@ footer.foot {
 }
 .callout.hijau {
   background: var(--hijau);
-  border-color: #f7923a;
-  color: #432312;
+  border-color: #66c018;
+  color: #1d300d;
 }
 .callout.merah {
   background: #ffe4e4;
@@ -513,34 +513,13 @@ select:focus {
 }
 .fb.aman {
   background: var(--hijau);
-  color: #432312;
-  border-left: 6px solid #f7923a;
+  color: #1d300d;
+  border-left: 6px solid #66c018;
 }
 .fb.hati {
   background: var(--kuning);
   color: #4a3300;
   border-left: 6px solid #e0a82e;
-}
-.myth {
-  width: 100%;
-  text-align: left;
-  font: inherit;
-  background: #fff;
-  border: 2px solid var(--garis);
-  border-radius: 14px;
-  padding: 14px 16px;
-  cursor: pointer;
-  color: var(--teks);
-}
-.myth:hover {
-  border-color: var(--ungu);
-}
-.myth-ans {
-  background: var(--biru);
-  color: #0e2f52;
-  padding: 12px 16px;
-  border-radius: 0 0 14px 14px;
-  margin-top: -8px;
 }
 .bar {
   height: 12px;
@@ -563,7 +542,7 @@ select:focus {
   border-radius: 999px;
   font-size: 0.9rem;
   font-weight: 700;
-  background: #fff1e4;
+  background: #e6fad4;
   color: var(--abu);
 }
 .pill.done {

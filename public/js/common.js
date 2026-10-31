@@ -95,6 +95,11 @@ async function requireSession(admin = false) {
       location.replace("/dashboard");
       return null;
     }
+    try {
+      localStorage.setItem("clover_uid", String(user.id));
+    } catch {
+      /* penyimpanan tidak tersedia */
+    }
     initChrome(user);
     return user;
   } catch {

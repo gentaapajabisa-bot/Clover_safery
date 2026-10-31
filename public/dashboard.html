@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#c0580e" />
+    <meta name="theme-color" content="#478510" />
     <meta name="robots" content="noindex" />
     <title>Dashboard — Clover Safety</title>
     <link rel="icon" href="/icon.svg" type="image/svg+xml" />
@@ -17,7 +17,10 @@
     <link rel="stylesheet" href="/css/features.css" />
     <link rel="stylesheet" href="/css/theme.css" />
     <script src="/js/common.js" defer></script>
+    <script src="/js/progress.js" defer></script>
     <script src="/js/dashboard-page.js" defer></script>
+    <link rel="stylesheet" href="/css/loader.css" />
+    <script src="/js/loader.js"></script>
   </head>
   <body>
     <header class="topbar">
@@ -59,10 +62,11 @@
 
         <section class="learn-cta">
           <div>
-            <h2>Lanjutkan belajar</h2>
-            <p>Materi tanda bahaya, privasi, simulasi chat, kuis, dan glosarium istilah.</p>
+            <h2 id="learn-title">Lanjutkan belajar</h2>
+            <p id="learn-text">Materi tanda bahaya, privasi, tindakan aman, refleksi, simulasi chat, dan glosarium istilah.</p>
+            <div class="learn-prog" role="progressbar" aria-valuemin="0" aria-valuemax="4" aria-valuenow="0" aria-label="Langkah belajar selesai" id="learn-prog"><i></i></div>
           </div>
-          <a href="/belajar">Buka materi →</a>
+          <a href="/belajar" id="learn-link">Buka materi →</a>
         </section>
 
         <div class="cards">

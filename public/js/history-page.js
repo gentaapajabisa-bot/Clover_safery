@@ -38,7 +38,7 @@ function render() {
           </article>`
         )
         .join("")
-    : `<p class="empty">${entries.length ? "Tidak ada entri untuk filter ini." : "Belum ada riwayat. Selesaikan kuis atau refleksi di materi, lalu hasilnya muncul di sini."}</p>`;
+    : `<p class="empty">${entries.length ? "Tidak ada entri untuk filter ini." : "Belum ada riwayat. Selesaikan refleksi di materi, lalu hasilnya muncul di sini."}</p>`;
 }
 
 async function load() {

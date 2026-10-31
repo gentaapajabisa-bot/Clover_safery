@@ -1,6 +1,6 @@
 # Clover Safety
 
-Media edukasi keselamatan digital (materi, simulasi chat, kuis, glosarium, alarm tanda bahaya) dengan **login berbasis server**, **dashboard pengguna**, dan **panel admin**. Berjalan di **Vercel** (static + Functions) dengan database **TiDB Cloud**.
+Media edukasi keselamatan digital (materi, simulasi chat, glosarium, alarm tanda bahaya) dengan **login berbasis server**, **dashboard pengguna**, dan **panel admin**. Berjalan di **Vercel** (static + Functions) dengan database **TiDB Cloud**.
 
 ## Struktur proyek
 
@@ -15,7 +15,7 @@ Clover_safery/
 │   │   │              #   dashboard-page.js · admin-page.js
 │   │   └── materi/    #   materi edukasi, dimuat berurutan oleh index.html:
 │   │                  #     core · local-auth* · state · alarm · content · components · pages
-│   │                  #     pages-local-account* · router · events · settings · simulasi · kuis
+│   │                  #     pages-local-account* · router · events · settings · simulasi
 │   │                  #     glosarium · extra-routes · extra-events · pwa
 │   ├── sw.js          #   service worker (offline)
 │   └── manifest.webmanifest, icon.*
@@ -46,7 +46,7 @@ Clover_safery/
 | --- | --- |
 | `/profile` | Nama, telepon, bio, **foto profil** (dipotong persegi 256px di browser), ganti kata sandi |
 | `/kontak` | **Kontak tepercaya** — hanya pemilik yang bisa melihat/menambah/ubah/hapus (maks. 20); tidak ada endpoint admin |
-| `/riwayat` | **Riwayat** hasil kuis (tersimpan otomatis saat kuis selesai) dan refleksi (lewat tombol “Simpan ke riwayat”); hanya pemilik yang bisa membaca, bisa dihapus |
+| `/riwayat` | **Riwayat** refleksi (lewat tombol “Simpan ke riwayat”); hanya pemilik yang bisa membaca, bisa dihapus |
 | `/chat` | Chat pengguna ↔ admin (hanya percakapan sendiri) |
 | `/admin-chat` | Admin melihat daftar percakapan dan membalas |
 | `/belajar#/bantuan` & alarm | Menampilkan kontak tepercaya akun (bila login) dengan tombol telepon |

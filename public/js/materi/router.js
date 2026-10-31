@@ -4,6 +4,7 @@
 /* =========================================================
    Router
    ========================================================= */
+let CUR = "/";
 const ROUTES = {
   "/": { t: "Beranda Clover Safety", nav: "Beranda", r: pageHome },
   "/tanda-bahaya": { t: "Mengenali Tanda Bahaya", nav: "Tanda Bahaya", r: pageSigns, key: "tanda-bahaya" },
@@ -35,7 +36,10 @@ function buildNav(cur) {
   $("#nav-list").innerHTML =
     Object.entries(ROUTES)
       .filter(([p, r]) => r.nav)
-      .map(([p, r]) => `<li><a href="#${p}" title="${r.t}" ${p === cur ? 'aria-current="page"' : ""}>${r.nav}</a></li>`)
+      .map(([p, r]) => {
+        const lock = r.key && Progress.blocker(r.key);
+        return `<li><a href="#${p}" title="${lock ? "Selesaikan langkah sebelumnya dulu" : r.t}" ${p === cur ? 'aria-current="page"' : ""} ${lock ? 'class="locked"' : ""}>${lock ? "🔒 " : ""}${r.nav}</a></li>`;
+      })
       .join("") +
     (me && me.role === "guru"
       ? `<li><a href="#/guru" ${cur === "/guru" ? 'aria-current="page"' : ""}>Panduan Guru BK</a></li>`
@@ -50,9 +54,19 @@ function render() {
   let p = location.hash.replace(/^#/, "") || "/";
   if (!ROUTES[p]) p = "/";
   const r = ROUTES[p];
-  $("#main").innerHTML = r.r();
-  if (r.a) r.a();
-  if (r.key) Auth.markOpened(r.key);
+  CUR = p;
+  const lock = r.key && Progress.blocker(r.key);
+  if (lock) {
+    $("#main").innerHTML = `
+    <h1 tabindex="-1">🔒 Selesaikan langkah sebelumnya dulu</h1>
+    <p class="lead">Halaman <strong>${r.nav}</strong> terbuka setelah kamu menyelesaikan <strong>${lock.label}</strong>.</p>
+    <div class="callout"><p>${lock.rate ? "Beri skor 1–5 untuk semua pernyataan di bagian skor pemahaman." : "Isi pertanyaan wajib, lalu tekan “Selesai Refleksi”."} Setelah itu langkah berikutnya otomatis terbuka. Kamu tetap bisa membuka <a href="#/bantuan">Bantuan</a> kapan saja.</p></div>
+    <div class="btn-row">${routeBtn("#/" + lock.key, "Lanjut ke: " + lock.label, "btn btn-primary")}${routeBtn("#/", "Kembali ke Beranda", "btn")}</div>`;
+  } else {
+    $("#main").innerHTML = r.r();
+    if (r.a) r.a();
+    if (r.key) Auth.markOpened(r.key);
+  }
   buildNav(p);
   document.title = r.t + " — Clover Safety";
   $("#nav-main").classList.remove("open");

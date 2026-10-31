@@ -1,0 +1,282 @@
+/* Loading screen Clover Safety (tampil sekali per sesi). */
+html.cl-loading,
+html.cl-loading body {
+  overflow: hidden;
+}
+#cl-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483000;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: clamp(18px, 4vh, 40px) clamp(18px, 5vw, 64px);
+  color: #f1fce2;
+  font-family: "Plus Jakarta Sans", "Segoe UI", system-ui, sans-serif;
+  background:
+    radial-gradient(ellipse 70% 55% at 50% 42%, #5aa81b 0%, rgba(90, 168, 27, 0) 70%),
+    radial-gradient(ellipse 120% 90% at 50% 100%, #1b3d08 0%, #0b1a04 70%),
+    #0b1a04;
+  transition: opacity 0.55s ease, transform 0.55s ease, visibility 0s linear 0.55s;
+  overflow: hidden;
+}
+#cl-loader.out {
+  opacity: 0;
+  transform: scale(1.04);
+  visibility: hidden;
+  pointer-events: none;
+}
+/* sinar cahaya berputar pelan */
+#cl-loader .rays {
+  position: absolute;
+  left: 50%;
+  top: 44%;
+  width: 190vmax;
+  height: 190vmax;
+  transform: translate(-50%, -50%);
+  background: repeating-conic-gradient(from 0deg, rgba(190, 255, 90, 0.1) 0deg 6deg, rgba(190, 255, 90, 0) 6deg 18deg);
+  -webkit-mask-image: radial-gradient(circle, #000 0%, rgba(0, 0, 0, 0.55) 22%, transparent 55%);
+  mask-image: radial-gradient(circle, #000 0%, rgba(0, 0, 0, 0.55) 22%, transparent 55%);
+  animation: cl-spin 60s linear infinite;
+}
+#cl-loader .vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 45%, rgba(0, 0, 0, 0.55) 100%);
+  pointer-events: none;
+}
+#cl-loader .leaf {
+  position: absolute;
+  bottom: -12vh;
+  width: var(--s, 22px);
+  height: var(--s, 22px);
+  left: var(--x, 50%);
+  opacity: 0;
+  animation: cl-rise var(--d, 9s) linear var(--t, 0s) infinite;
+  filter: drop-shadow(0 0 8px rgba(190, 255, 90, 0.6));
+}
+#cl-loader .top,
+#cl-loader .stage,
+#cl-loader .bottom {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1100px;
+}
+#cl-loader .top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  color: #c6f27e;
+}
+#cl-loader .skip {
+  font: inherit;
+  letter-spacing: 0.06em;
+  color: #e8fbc8;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 99px;
+  padding: 8px 16px;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+#cl-loader .skip.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+#cl-loader .skip:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+#cl-loader .stage {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 14px;
+}
+#cl-loader .emblem {
+  position: relative;
+  width: min(42vh, 300px);
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  animation: cl-float 3.2s ease-in-out infinite;
+}
+#cl-loader .emblem::before,
+#cl-loader .emblem::after {
+  content: "";
+  position: absolute;
+  inset: -8%;
+  border-radius: 50%;
+  border: 2px solid rgba(190, 255, 90, 0.55);
+  animation: cl-ring 2.4s ease-out infinite;
+}
+#cl-loader .emblem::after {
+  animation-delay: 1.2s;
+}
+#cl-loader .emblem img {
+  width: 82%;
+  height: auto;
+  filter: drop-shadow(0 0 26px rgba(150, 240, 50, 0.75)) drop-shadow(0 18px 24px rgba(0, 0, 0, 0.5));
+}
+#cl-loader .title {
+  margin: 4px 0 0;
+  font-size: clamp(1.9rem, 6vw, 3.2rem);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  line-height: 1;
+  color: #fff;
+  text-shadow: 0 0 22px rgba(150, 240, 50, 0.65), 0 3px 0 #3d7a0e;
+}
+#cl-loader .sub {
+  margin: 0;
+  color: #c6f27e;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  font-size: clamp(0.78rem, 2.4vw, 0.95rem);
+}
+#cl-loader .hello {
+  margin: 10px 0 0;
+  max-width: 560px;
+  background: rgba(255, 255, 255, 0.09);
+  border: 1px solid rgba(190, 255, 90, 0.35);
+  border-radius: 16px;
+  padding: 12px 18px;
+  line-height: 1.55;
+  font-size: clamp(0.88rem, 2.6vw, 1rem);
+  backdrop-filter: blur(4px);
+}
+#cl-loader .hello strong {
+  color: #d8ff8f;
+}
+#cl-loader .bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+#cl-loader .tip {
+  min-height: 1.5em;
+  text-align: center;
+  font-weight: 600;
+  color: #e8fbc8;
+  font-size: clamp(0.85rem, 2.4vw, 1rem);
+  transition: opacity 0.35s ease;
+}
+#cl-loader .tip.swap {
+  opacity: 0;
+}
+#cl-loader .meter {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+#cl-loader .bar {
+  position: relative;
+  flex: 1;
+  height: 14px;
+  border-radius: 99px;
+  background: rgba(0, 0, 0, 0.5);
+  border: 2px solid rgba(190, 255, 90, 0.5);
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.6), 0 0 18px rgba(150, 240, 50, 0.25);
+  overflow: visible;
+}
+#cl-loader .fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 0%;
+  border-radius: 99px;
+  background: linear-gradient(90deg, #3f8a0b, #8fe022 60%, #d4ff6a);
+  background-size: 40px 100%;
+  box-shadow: 0 0 16px rgba(170, 255, 60, 0.8);
+}
+#cl-loader .fill::after {
+  content: "";
+  position: absolute;
+  right: -9px;
+  top: 50%;
+  width: 18px;
+  height: 18px;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  background: #f4ffd0;
+  box-shadow: 0 0 14px 6px rgba(190, 255, 90, 0.9);
+}
+#cl-loader .pct {
+  min-width: 3.4ch;
+  text-align: right;
+  font-weight: 800;
+  font-size: clamp(1.2rem, 4vw, 1.7rem);
+  font-variant-numeric: tabular-nums;
+  color: #fff;
+  text-shadow: 0 0 12px rgba(150, 240, 50, 0.8);
+}
+#cl-loader .state {
+  text-align: center;
+  font-size: 0.74rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #9fce5c;
+}
+@keyframes cl-spin {
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+@keyframes cl-float {
+  50% {
+    transform: translateY(-10px);
+  }
+}
+@keyframes cl-ring {
+  from {
+    transform: scale(0.85);
+    opacity: 0.9;
+  }
+  to {
+    transform: scale(1.35);
+    opacity: 0;
+  }
+}
+@keyframes cl-rise {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  12% {
+    opacity: 0.85;
+  }
+  100% {
+    transform: translateY(-115vh) rotate(300deg);
+    opacity: 0;
+  }
+}
+@media (max-height: 560px) {
+  #cl-loader .hello {
+    display: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  #cl-loader .rays,
+  #cl-loader .leaf,
+  #cl-loader .emblem,
+  #cl-loader .emblem::before,
+  #cl-loader .emblem::after {
+    animation: none;
+  }
+  #cl-loader .leaf {
+    display: none;
+  }
+}

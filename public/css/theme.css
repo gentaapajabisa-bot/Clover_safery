@@ -1,21 +1,21 @@
 /* Tema "Jeruk Lembut" — dimuat paling akhir di semua halaman, jadi menimpa aturan sebelumnya.
-   Palet: krem-peach untuk latar, oranye jeruk untuk aksen, cokelat hangat untuk teks.
+   Palet: krem-hijau muda untuk latar, lime green untuk aksen, hijau tua untuk teks.
    Warna teks tombol utama dijaga kontras ≥ 4,5:1 agar tetap terbaca. */
 
 :root {
-  --j-50: #fff8f1;
-  --j-100: #ffeedd;
-  --j-200: #ffdcb8;
-  --j-300: #ffc48a;
-  --j-400: #ffa94d;
-  --j-500: #f58a1f;
-  --j-600: #d9690c;
-  --j-700: #b84d09;
-  --j-800: #8a3806;
-  --j-ink: #3a1d0c;
-  --j-shadow: 0 12px 32px rgba(217, 105, 12, 0.14);
-  --j-shadow-sm: 0 4px 14px rgba(217, 105, 12, 0.1);
-  --j-btn: linear-gradient(135deg, #cf5e0a, #b14a08);
+  --j-50: #f2fcea;
+  --j-100: #e0f9cb;
+  --j-200: #bdf190;
+  --j-300: #8ae739;
+  --j-400: #70d31a;
+  --j-500: #63ba17;
+  --j-600: #529a13;
+  --j-700: #427c0f;
+  --j-800: #315c0b;
+  --j-ink: #182909;
+  --j-shadow: 0 12px 32px rgba(82, 154, 19, 0.14);
+  --j-shadow-sm: 0 4px 14px rgba(82, 154, 19, 0.1);
+  --j-btn: linear-gradient(135deg, #4c8f12, #3f770f);
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -39,9 +39,9 @@
 /* ---------- Latar & dekorasi ---------- */
 html:not([data-theme="dark"]) body {
   background:
-    radial-gradient(circle at 8% -4%, #ffe3c4 0, transparent 38%),
-    radial-gradient(circle at 96% 6%, #ffd7a8 0, transparent 30%),
-    linear-gradient(180deg, #fff6ec 0, #fffaf5 340px, #fff 100%) fixed;
+    radial-gradient(circle at 8% -4%, #cbf4a7 0, transparent 38%),
+    radial-gradient(circle at 96% 6%, #b2ef7d 0, transparent 30%),
+    linear-gradient(180deg, #effce3 0, #f6fdf0 340px, #fff 100%) fixed;
 }
 html:not([data-theme="dark"]) body.auth {
   background: #fff;
@@ -56,7 +56,7 @@ html:not([data-theme="dark"]) body.auth {
 .hist,
 .contact-card {
   border-radius: 20px;
-  border-color: #fbe0c6;
+  border-color: #c4f39b;
   box-shadow: var(--j-shadow-sm);
 }
 .steps a,
@@ -105,12 +105,12 @@ html body .btn-primary,
   background: var(--j-btn);
   border-color: transparent;
   color: #fff;
-  box-shadow: 0 8px 20px rgba(184, 77, 9, 0.28);
+  box-shadow: 0 8px 20px rgba(66, 124, 15, 0.28);
 }
 html body .btn-primary:hover,
 .btn-sm.primary:hover,
 .formcard .btn:hover {
-  background: linear-gradient(135deg, #b84d09, #8a3806);
+  background: linear-gradient(135deg, #427c0f, #315c0b);
   transform: translateY(-1px);
 }
 html body .hero2 .btn-gold,
@@ -126,7 +126,7 @@ html body .hero2 .btn-primary {
   border-radius: 14px;
 }
 .btn-sm.primary {
-  box-shadow: 0 6px 16px rgba(184, 77, 9, 0.25);
+  box-shadow: 0 6px 16px rgba(66, 124, 15, 0.25);
 }
 .logout:hover,
 .chip:hover {
@@ -145,10 +145,10 @@ html body .hero2 .btn-primary {
 html:not([data-theme="dark"]) .hero2 {
   background:
     radial-gradient(circle at 92% 12%, rgba(255, 255, 255, 0.55) 0, transparent 34%),
-    linear-gradient(135deg, #ffe6c9 0%, #ffcf9b 55%, #ffb877 100%);
+    linear-gradient(135deg, #d0f5b0 0%, #a2ec61 55%, #77df1c 100%);
   color: var(--j-ink);
   box-shadow: var(--j-shadow);
-  border: 1px solid #ffd2a3;
+  border: 1px solid #a9ed6d;
 }
 html:not([data-theme="dark"]) .hero2::after {
   border-color: rgba(255, 255, 255, 0.7);
@@ -158,17 +158,17 @@ html:not([data-theme="dark"]) .hero2 h1 {
   color: var(--j-ink);
 }
 html:not([data-theme="dark"]) .hero2 .lead {
-  color: #5b3015;
+  color: #27420f;
 }
 html:not([data-theme="dark"]) .pillars li::before,
 html:not([data-theme="dark"]) .art-points li::before {
   background: var(--j-600);
-  box-shadow: 0 0 0 4px rgba(217, 105, 12, 0.2);
+  box-shadow: 0 0 0 4px rgba(82, 154, 19, 0.2);
 }
 html:not([data-theme="dark"]) body .hero2 .btn-line,
 html:not([data-theme="dark"]) .hero2 .btn-line {
   background: rgba(255, 255, 255, 0.55);
-  border-color: rgba(138, 56, 6, 0.4);
+  border-color: rgba(49, 92, 11, 0.4);
   color: var(--j-800);
 }
 html:not([data-theme="dark"]) .hero2 .btn-line:hover {
@@ -180,14 +180,14 @@ html:not([data-theme="dark"]) .hero2 .btn-help {
   color: #a4182f;
 }
 html:not([data-theme="dark"]) .hero2 .art img {
-  filter: drop-shadow(0 16px 24px rgba(184, 77, 9, 0.35));
+  filter: drop-shadow(0 16px 24px rgba(66, 124, 15, 0.35));
 }
 
 /* ---------- Panel kiri halaman masuk (mode terang) ---------- */
 .split .art {
   background:
     radial-gradient(circle at 85% 8%, rgba(255, 255, 255, 0.55) 0, transparent 36%),
-    linear-gradient(150deg, #ffe6c9 0%, #ffcf9b 55%, #ffb06a 100%);
+    linear-gradient(150deg, #d0f5b0 0%, #a2ec61 55%, #74d91b 100%);
   color: var(--j-ink);
 }
 .split .art::before,
@@ -204,7 +204,7 @@ html:not([data-theme="dark"]) .hero2 .art img {
 .split .art .brand small,
 .art-body p,
 .art-help {
-  color: #5b3015;
+  color: #27420f;
 }
 .art-help a {
   color: var(--j-800);
@@ -214,23 +214,23 @@ html:not([data-theme="dark"]) .hero2 .art img {
   box-shadow: var(--j-shadow-sm);
 }
 .art-body img.emblem {
-  filter: drop-shadow(0 16px 22px rgba(184, 77, 9, 0.35));
+  filter: drop-shadow(0 16px 22px rgba(66, 124, 15, 0.35));
 }
 
 /* ---------- Topbar, sidebar, navigasi ---------- */
 .topbar {
   border-bottom: 3px solid transparent;
-  border-image: linear-gradient(90deg, #ffc48a, #f58a1f, #ffc48a) 1;
+  border-image: linear-gradient(90deg, #8ae739, #63ba17, #8ae739) 1;
   background: rgba(255, 255, 255, 0.92);
 }
 .clover,
 .logo {
-  background: linear-gradient(145deg, #ffb25e, #e0720f);
-  box-shadow: 0 8px 18px rgba(217, 105, 12, 0.3);
+  background: linear-gradient(145deg, #74da1b, #56a214);
+  box-shadow: 0 8px 18px rgba(82, 154, 19, 0.3);
 }
 .sidebar {
-  background: linear-gradient(180deg, #fff 0, #fff8f1 100%);
-  border-right-color: #fbe0c6;
+  background: linear-gradient(180deg, #fff 0, #f2fcea 100%);
+  border-right-color: #c4f39b;
 }
 .navitem {
   border-radius: 14px;
@@ -244,7 +244,7 @@ html:not([data-theme="dark"]) .hero2 .art img {
 .navitem.active {
   background: var(--j-btn);
   color: #fff;
-  box-shadow: 0 8px 18px rgba(184, 77, 9, 0.25);
+  box-shadow: 0 8px 18px rgba(66, 124, 15, 0.25);
 }
 .navitem.active:hover {
   transform: none;
@@ -255,7 +255,7 @@ html:not([data-theme="dark"]) .hero2 .art img {
   background: var(--j-50);
 }
 .avatar {
-  background: linear-gradient(145deg, #ffb25e, #d9690c);
+  background: linear-gradient(145deg, #74da1b, #529a13);
 }
 .badge {
   background: #e0442f;
@@ -263,9 +263,9 @@ html:not([data-theme="dark"]) .hero2 .art img {
 
 /* ---------- Banner & CTA ---------- */
 .learn-cta {
-  background: linear-gradient(120deg, #b84d09, #e0720f 70%, #f58a1f);
+  background: linear-gradient(120deg, #427c0f, #56a214 70%, #63ba17);
   border-radius: 24px;
-  box-shadow: 0 16px 36px rgba(184, 77, 9, 0.28);
+  box-shadow: 0 16px 36px rgba(66, 124, 15, 0.28);
   position: relative;
   overflow: hidden;
 }
@@ -287,12 +287,12 @@ html:not([data-theme="dark"]) .hero2 .art img {
 }
 .promise,
 .callout.hijau {
-  background: linear-gradient(135deg, #fff1e0, #ffe4c6);
+  background: linear-gradient(135deg, #e5fad3, #cdf4aa);
   border-color: var(--j-500);
 }
 .privacy-note {
-  background: #fff1e0;
-  border-color: #fbd3a8;
+  background: #e5fad3;
+  border-color: #a8ed6c;
 }
 
 /* ---------- Bagian Tanda Bahaya: banner & gambar ---------- */
@@ -308,7 +308,7 @@ html:not([data-theme="dark"]) .hero2 .art img {
 }
 .signs details {
   border-radius: 20px;
-  border: 1px solid #fbe0c6;
+  border: 1px solid #c4f39b;
   box-shadow: var(--j-shadow-sm);
   overflow: hidden;
   transition: box-shadow 0.18s ease, border-color 0.18s ease;
@@ -319,7 +319,7 @@ html:not([data-theme="dark"]) .hero2 .art img {
 .signs details[open] {
   border-color: var(--j-500);
   box-shadow: var(--j-shadow);
-  background: linear-gradient(180deg, #fff 0, #fff9f2 100%);
+  background: linear-gradient(180deg, #fff 0, #f4fded 100%);
 }
 .signs summary {
   display: flex;
@@ -368,12 +368,12 @@ html:not([data-theme="dark"]) .hero2 .art img {
 }
 .steps li .n,
 .steps a .n {
-  background: linear-gradient(145deg, #ffc48a, #f58a1f);
+  background: linear-gradient(145deg, #8ae739, #63ba17);
   color: #fff;
-  box-shadow: 0 4px 10px rgba(217, 105, 12, 0.3);
+  box-shadow: 0 4px 10px rgba(82, 154, 19, 0.3);
 }
 .tile .i {
-  background: linear-gradient(145deg, #ffeedd, #ffd9b0);
+  background: linear-gradient(145deg, #e0f9cb, #b7f085);
   border-radius: 14px;
 }
 .bubble.mine {
@@ -381,7 +381,7 @@ html:not([data-theme="dark"]) .hero2 .art img {
   border-color: transparent;
 }
 .pill {
-  background: #ffe9d2;
+  background: #d7f7bb;
   color: var(--j-700);
 }
 .pill.off {
@@ -394,7 +394,7 @@ html:not([data-theme="dark"]) .hero2 .art img {
 input[type="text"]:focus,
 textarea:focus {
   border-color: var(--j-500);
-  box-shadow: 0 0 0 4px rgba(245, 138, 31, 0.2);
+  box-shadow: 0 0 0 4px rgba(99, 186, 23, 0.2);
   outline: none;
 }
 :focus-visible {
@@ -404,14 +404,14 @@ table th {
   color: var(--j-700);
 }
 .empty {
-  color: #9a7a63;
+  color: #6e8858;
 }
 ::selection {
-  background: #ffd2a1;
+  background: #a8ed6c;
   color: var(--j-ink);
 }
 
-/* ---------- Materi: semua tombol berwarna oranye ---------- */
+/* ---------- Materi: semua tombol berwarna lime green ---------- */
 #app .btn:not(.btn-danger),
 #app .btn-pink,
 #app .btn-small:not(.btn-danger),
@@ -419,13 +419,13 @@ table th {
   background: var(--j-btn);
   border-color: transparent;
   color: #fff;
-  box-shadow: 0 6px 16px rgba(184, 77, 9, 0.25);
+  box-shadow: 0 6px 16px rgba(66, 124, 15, 0.25);
 }
 #app .btn:not(.btn-danger):hover,
 #app .btn-pink:hover,
 #app .btn-small:not(.btn-danger):hover,
 #app .acct-btn:hover {
-  background: linear-gradient(135deg, #b84d09, #8a3806);
+  background: linear-gradient(135deg, #427c0f, #315c0b);
   border-color: transparent;
   color: #fff;
   transform: translateY(-1px);

@@ -49,7 +49,7 @@
   height: 34px;
   border-radius: 50%;
   overflow: hidden;
-  background: linear-gradient(145deg, #f57a0f, #9b470c);
+  background: linear-gradient(145deg, #5eb016, #396b0d);
   color: #fff;
   font-weight: 800;
   font-size: 15px;
@@ -104,7 +104,7 @@
   color: #fff;
 }
 .btn-sm.primary:hover {
-  background: #9b470c;
+  background: #396b0d;
 }
 .btn-sm:disabled,
 .logout:disabled {
@@ -113,7 +113,7 @@
 }
 .btn-sm.danger,
 .logout.danger {
-  color: #a64e23;
+  color: #437418;
 }
 .row-actions {
   display: flex;
@@ -149,7 +149,7 @@
   resize: vertical;
 }
 .field input:disabled {
-  background: #f9f7f5;
+  background: #f6f8f4;
   color: var(--muted);
 }
 .counter {
@@ -239,7 +239,7 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  background: #fffcfa;
+  background: #fafef6;
 }
 .bubble {
   max-width: min(78%, 520px);
@@ -307,7 +307,7 @@
   width: 100%;
   padding: 13px 14px;
   border: 0;
-  border-bottom: 1px solid #f7f3f0;
+  border-bottom: 1px solid #f1f5ed;
   background: #fff;
   text-align: left;
   cursor: pointer;
@@ -441,7 +441,7 @@
 }
 .hist-body {
   padding: 4px 16px 16px;
-  border-top: 1px solid #f7f3f0;
+  border-top: 1px solid #f1f5ed;
   font-size: 14px;
   line-height: 1.6;
 }
@@ -459,7 +459,7 @@
   font-weight: 750;
 }
 .hist-body .no {
-  color: #a64e23;
+  color: #437418;
   font-weight: 750;
 }
 .hist-body .row-actions {

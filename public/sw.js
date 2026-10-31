@@ -1,6 +1,6 @@
 /* Service worker Clover Safety: halaman & aset dicache untuk pemakaian offline.
    Naikkan CACHE_VERSION setiap kali daftar atau isi aset berubah. */
-const CACHE_VERSION = "clover-safety-v15";
+const CACHE_VERSION = "clover-safety-v17";
 
 const PRECACHE = [
   "/",
@@ -24,6 +24,9 @@ const PRECACHE = [
   "/js/materi-guard.js",
   "/js/landing.js",
   "/js/materi/core.js",
+  "/js/progress.js",
+  "/js/loader.js",
+  "/css/loader.css",
   "/js/materi/local-auth.js",
   "/js/materi/state.js",
   "/js/materi/trusted-server.js",
@@ -37,7 +40,6 @@ const PRECACHE = [
   "/js/materi/events.js",
   "/js/materi/settings.js",
   "/js/materi/simulasi.js",
-  "/js/materi/kuis.js",
   "/js/materi/glosarium.js",
   "/js/materi/extra-routes.js",
   "/js/materi/extra-events.js",
