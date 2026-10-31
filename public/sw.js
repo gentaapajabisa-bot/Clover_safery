@@ -1,6 +1,6 @@
 /* Service worker Clover Safety: halaman & aset dicache untuk pemakaian offline.
    Naikkan CACHE_VERSION setiap kali daftar atau isi aset berubah. */
-const CACHE_VERSION = "clover-safety-v18";
+const CACHE_VERSION = "clover-safety-v19";
 
 const PRECACHE = [
   "/",
@@ -26,6 +26,7 @@ const PRECACHE = [
   "/js/materi/core.js",
   "/js/progress.js",
   "/js/loader.js",
+  "/audio/clover-theme.mp3",
   "/css/loader.css",
   "/js/materi/local-auth.js",
   "/js/materi/state.js",
