@@ -1,16 +1,26 @@
-/* Loading screen Clover Safety (suara sambutan bahasa Inggris + musik latar): tampil sekali per sesi browser. Halaman bantuan darurat tidak pernah ditahan. */
+/* Loading screen Clover Safety (suara sambutan bahasa Inggris + musik latar): tampil sekali per sesi browser.
+   Di halaman awal, loading screen jalan saat pengguna menekan Masuk / Buat akun, sehingga suara dan musik
+   langsung bisa diputar (sentuhan itulah yang diizinkan browser). Halaman bantuan darurat tidak pernah ditahan. */
 (function () {
   "use strict";
   var KEY = "clover_loader_seen";
   var root = document.documentElement;
-  try {
-    if (sessionStorage.getItem(KEY)) return;
-    sessionStorage.setItem(KEY, "1");
-  } catch (e) {
-    /* tanpa sessionStorage: tampilkan sekali di halaman ini saja */
+  function seen() {
+    try {
+      return !!sessionStorage.getItem(KEY);
+    } catch (e) {
+      return false;
+    }
   }
-  if (/#\/(bantuan|tentang)/.test(location.hash)) return;
+  function mark() {
+    try {
+      sessionStorage.setItem(KEY, "1");
+    } catch (e) {
+      /* tanpa sessionStorage: tampilkan sekali di halaman ini saja */
+    }
+  }
 
+  function start(afterClose) {
   var TIPS = [
     "It is okay to say “no” calmly.",
     "A secret that scares you does not have to be kept.",
@@ -321,6 +331,7 @@
       root.classList.remove("cl-loading");
       setTimeout(function () {
         if (el.parentNode) el.parentNode.removeChild(el);
+        if (afterClose) afterClose();
       }, 700);
     }, 280);
   }
@@ -344,4 +355,30 @@
   if (document.readyState === "complete") ready();
   else window.addEventListener("load", ready);
   skip.addEventListener("click", close);
+  }
+
+  var landing = /^\/(index(\.html)?)?$/.test(location.pathname);
+  if (landing) {
+    document.addEventListener("click", function (e) {
+      var a = e.target && e.target.closest ? e.target.closest("a[href]") : null;
+      if (!a || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      if (a.target && a.target !== "_self") return;
+      var path;
+      try {
+        path = new URL(a.href, location.href).pathname;
+      } catch (err) {
+        return;
+      }
+      if ((path !== "/login" && path !== "/register") || seen()) return;
+      e.preventDefault();
+      mark();
+      var dest = a.href;
+      start(function () {
+        location.href = dest;
+      });
+    });
+  } else if (!seen() && !/#\/(bantuan|tentang)/.test(location.hash)) {
+    mark();
+    start();
+  }
 })();
