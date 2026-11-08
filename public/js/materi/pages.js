@@ -5,23 +5,36 @@
    Halaman
    ========================================================= */
 function pageHome() {
-  const flow = [
-    ["tanda-bahaya", "#/tanda-bahaya", "Kenali tanda bahaya", "Pelajari pola perilaku yang perlu diwaspadai."],
-    ["privasi", "#/privasi", "Pahami privasi &amp; batasan", "Apa yang boleh dibagikan dan apa yang tidak."],
-    ["tindakan", "#/tindakan", "Latih tindakan aman", "Pilih langkah yang tepat lewat skenario."],
-    ["refleksi", "#/refleksi", "Refleksi", "Tuliskan apa yang sudah kamu pelajari."],
-    [null, "#/bantuan", "Akses bantuan", "Tahu ke mana dan kepada siapa meminta tolong."],
-  ];
   const nxt = Progress.next();
   const n = Progress.doneCount();
   const total = Progress.STEPS.length;
-  const state = (k) => {
-    if (!k) return ["open", "Selalu terbuka"];
-    if (Progress.isDone(k)) return ["done", "✓ Selesai"];
-    if (nxt && nxt.key === k) return ["now", "Berikutnya"];
-    return ["lock", "🔒 Terkunci"];
+  const xp = Progress.xp();
+  const maxXp = Progress.maxXp();
+  const descr = {
+    "tanda-bahaya": "Kenali pola perilaku yang perlu diwaspadai.",
+    privasi: "Pahami apa yang boleh dan tidak boleh dibagikan.",
+    tindakan: "Pilih langkah yang tepat lewat skenario.",
+    refleksi: "Tuliskan apa yang sudah kamu pelajari.",
   };
-  const startLabel = n === 0 ? "Mulai Belajar" : nxt ? "Lanjutkan Belajar" : "Ulangi Materi";
+  const node = (st, i) => {
+    const done = Progress.isDone(st.key);
+    const state = done ? "done" : nxt && nxt.key === st.key ? "now" : "lock";
+    const star = Progress.stars(st.key);
+    const stars = done ? "★".repeat(star) + "☆".repeat(3 - star) : "☆☆☆";
+    const tag = done ? `+${Progress.stepXp(st.key)} XP` : state === "now" ? "Level berikutnya" : "🔒 Terkunci";
+    return `<li class="q-node q-${state} ${i % 2 ? "q-r" : "q-l"}">
+      <a href="#/${st.key}">
+        <span class="q-orb" aria-hidden="true">${state === "lock" ? "🔒" : st.icon}${done ? '<i class="q-check">✓</i>' : ""}</span>
+        <span class="q-body">
+          <span class="q-lv">Level ${i + 1}</span>
+          <strong>${st.label}</strong>
+          <span class="d">${descr[st.key]}</span>
+          <span class="q-meta"><span class="q-stars" aria-label="${done ? star + " dari 3 bintang" : "Belum ada bintang"}">${stars}</span><span class="q-tag">${tag}</span></span>
+          ${done ? `<span class="q-badge">🏅 Lencana: ${st.badge}</span>` : ""}
+        </span>
+      </a></li>`;
+  };
+  const startLabel = n === 0 ? "Mulai Belajar" : nxt ? "Lanjutkan Belajar" : "Ulangi Petualangan";
   const startHref = nxt ? "#/" + nxt.key : "#/tanda-bahaya";
   return `
   <section class="hero2">
@@ -35,17 +48,19 @@ function pageHome() {
   <section class="sec" aria-labelledby="alur">
     <div class="sec-head">
       <h2 id="alur">Alur belajarmu</h2>
-      <p>Selesaikan langkah demi langkah: isi semua skor atau jawaban wajib di satu langkah untuk membuka langkah berikutnya.</p>
+      <p>Selesaikan level satu per satu. Isi semua skor atau jawaban wajib untuk membuka level berikutnya.</p>
     </div>
-    <div class="flow-prog" role="progressbar" aria-valuemin="0" aria-valuemax="${total}" aria-valuenow="${n}" aria-label="Langkah belajar yang sudah selesai"><i style="width:${(n / total) * 100}%"></i></div>
-    <p class="flow-count">${n} dari ${total} langkah belajar selesai</p>
-    <ol class="steps">
-      ${flow
-        .map((f, i) => {
-          const [st, txt] = state(f[0]);
-          return `<li class="st-${st}"><a href="${f[1]}"><span class="n" aria-hidden="true">${i + 1}</span><strong>${f[2]}</strong><span class="d">${f[3]}</span><span class="badge-st">${txt}</span></a></li>`;
-        })
-        .join("")}
+    <div class="hud" role="group" aria-label="Kemajuan petualangan">
+      <div class="hud-rank"><span class="hud-ico" aria-hidden="true">🍀</span><div><small>Pangkatmu</small><strong>${Progress.rank()}</strong></div></div>
+      <div class="hud-xp">
+        <div class="hud-row"><span>XP</span><b>${xp} / ${maxXp}</b></div>
+        <div class="flow-prog" role="progressbar" aria-valuemin="0" aria-valuemax="${maxXp}" aria-valuenow="${xp}" aria-label="XP"><i style="width:${(xp / maxXp) * 100}%"></i></div>
+      </div>
+      <div class="hud-lv"><small>Level selesai</small><strong>${n}/${total}</strong></div>
+    </div>
+    <ol class="quest">
+      ${Progress.STEPS.map(node).join("")}
+      <li class="q-node q-bonus q-l"><a href="#/bantuan"><span class="q-orb" aria-hidden="true">🆘</span><span class="q-body"><span class="q-lv">Pos Bantuan</span><strong>Akses bantuan</strong><span class="d">Tahu ke mana dan kepada siapa meminta tolong. Selalu terbuka.</span></span></a></li>
     </ol>
     <div class="btn-row start-row">
       ${routeBtn(startHref, startLabel, "btn btn-primary")}

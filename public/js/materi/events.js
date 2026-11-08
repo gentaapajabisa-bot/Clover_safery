@@ -164,6 +164,8 @@ document.addEventListener("change", (e) => {
   const t = e.target;
   if (t.matches("[data-rate]")) {
     const id = t.dataset.rate;
+    const stp = Progress.STEPS.find((x) => x.rate === id);
+    const wasDone = stp ? Progress.isDone(stp.key) : true;
     Progress.setRating(id, +t.dataset.i, +t.value);
     const c = $("#cnt-" + id);
     if (c) c.innerHTML = rateSummary(id);
@@ -173,7 +175,7 @@ document.addEventListener("change", (e) => {
       $("button", w).hidden = ok;
     });
     buildNav(CUR);
-    if (ok && c) toast("Bagian ini selesai. Langkah berikutnya sudah terbuka.");
+    if (ok && !wasDone && stp) levelUp(stp);
     return;
   }
   if (t.matches("[data-bd]")) {
@@ -253,6 +255,7 @@ document.addEventListener("submit", async (e) => {
     S.ref.done = true;
     Progress.markDone("refleksi");
     buildNav(CUR);
+    levelUp(Progress.STEPS.find((x) => x.key === "refleksi"));
     $("#ref-end").hidden = false;
     $("#ref-end").scrollIntoView({ behavior: "smooth", block: "center" });
     return;

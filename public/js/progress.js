@@ -4,10 +4,10 @@
    langkah sebelumnya selesai (semua skor terisi; refleksi: jawaban wajib terisi lalu "Selesai"). */
 const Progress = (() => {
   const STEPS = [
-    { key: "tanda-bahaya", rate: "signs", label: "Mengenali Tanda Bahaya", short: "Tanda Bahaya", total: 5 },
-    { key: "privasi", rate: "priv", label: "Privasi dan Batasan Diri", short: "Privasi & Batasan", total: 5 },
-    { key: "tindakan", rate: "act", label: "Tindakan yang Aman", short: "Tindakan Aman", total: 4 },
-    { key: "refleksi", rate: null, label: "Refleksi", short: "Refleksi", total: 0 },
+    { key: "tanda-bahaya", rate: "signs", label: "Mengenali Tanda Bahaya", short: "Tanda Bahaya", total: 5, icon: "🔍", badge: "Mata Waspada" },
+    { key: "privasi", rate: "priv", label: "Privasi dan Batasan Diri", short: "Privasi & Batasan", total: 5, icon: "🛡️", badge: "Perisai Privasi" },
+    { key: "tindakan", rate: "act", label: "Tindakan yang Aman", short: "Tindakan Aman", total: 4, icon: "🧭", badge: "Langkah Berani" },
+    { key: "refleksi", rate: null, label: "Refleksi", short: "Refleksi", total: 0, icon: "💭", badge: "Hati yang Jernih" },
   ];
   const mem = {};
   const storeKey = () => {
@@ -79,5 +79,26 @@ const Progress = (() => {
     return STEPS.slice(0, i).find((s) => !isDone(s.key)) || null;
   }
   const doneCount = () => STEPS.filter((s) => isDone(s.key)).length;
-  return { STEPS, step, ratings, setRating, rated, average, isDone, markDone, next, blocker, doneCount };
+
+  /* ---------- Gaya game: XP, bintang, pangkat ---------- */
+  const RANKS = ["Pemula Clover", "Penjelajah Clover", "Penjaga Clover", "Pelindung Clover", "Pahlawan Clover"];
+  /** XP satu level: 100 dasar + bonus dari skor rata-rata (maks 100); refleksi 150. */
+  function stepXp(key) {
+    const s = step(key);
+    if (!s || !isDone(key)) return 0;
+    return s.rate ? 100 + Math.round(average(s.rate, s.total) * 20) : 150;
+  }
+  const stepMaxXp = (key) => (step(key).rate ? 200 : 150);
+  const xp = () => STEPS.reduce((n, s) => n + stepXp(s.key), 0);
+  const maxXp = () => STEPS.reduce((n, s) => n + stepMaxXp(s.key), 0);
+  /** Bintang 1–3 dari skor rata-rata; 0 bila level belum selesai. */
+  function stars(key) {
+    const s = step(key);
+    if (!s || !isDone(key)) return 0;
+    if (!s.rate) return 3;
+    const a = average(s.rate, s.total);
+    return a >= 4.5 ? 3 : a >= 3 ? 2 : 1;
+  }
+  const rank = () => RANKS[doneCount()];
+  return { STEPS, RANKS, xp, maxXp, stepXp, stars, rank, step, ratings, setRating, rated, average, isDone, markDone, next, blocker, doneCount };
 })();

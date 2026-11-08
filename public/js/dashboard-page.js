@@ -48,9 +48,10 @@ function paintLearning() {
     total = Progress.STEPS.length,
     nxt = Progress.next();
   $("#learn-title").textContent = n === 0 ? "Mulai belajar" : nxt ? "Lanjutkan belajar" : "Semua langkah selesai 🎉";
+  const game = `Pangkat: ${Progress.rank()} · ${Progress.xp()} XP. `;
   $("#learn-text").textContent = nxt
-    ? `${n} dari ${total} langkah selesai. Berikutnya: ${nxt.label}. Selesaikan dulu untuk membuka langkah selanjutnya.`
-    : `${n} dari ${total} langkah selesai. Kamu boleh mengulang materi kapan saja.`;
+    ? `${game}${n} dari ${total} level selesai. Berikutnya: ${nxt.label}.`
+    : `${game}${n} dari ${total} level selesai. Kamu boleh mengulang materi kapan saja.`;
   const bar = $("#learn-prog");
   bar.setAttribute("aria-valuenow", String(n));
   $("i", bar).style.width = (n / total) * 100 + "%";

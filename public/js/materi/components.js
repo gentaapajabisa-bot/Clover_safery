@@ -41,3 +41,43 @@ function nextBtn(gate, href, label) {
 function routeBtn(href, label, cls = "btn") {
   return `<a class="${cls}" href="${href}">${label}</a>`;
 }
+
+/** Popup "Level selesai!" bergaya game: XP, bintang, lencana, konfeti, dan nada fanfare. */
+function levelUp(st) {
+  const old = document.getElementById("lvl-pop");
+  if (old) old.remove();
+  const i = Progress.STEPS.findIndex((x) => x.key === st.key);
+  const all = Progress.doneCount() === Progress.STEPS.length;
+  const star = Progress.stars(st.key);
+  const nxt = Progress.next();
+  const confetti = Array.from({ length: 26 }, (_, k) => `<i style="--x:${(k * 37) % 100}%;--d:${(k % 6) * 0.12}s;--c:${["#8fe022", "#f0b93a", "#ffffff", "#4d9c10"][k % 4]}"></i>`).join("");
+  const el = document.createElement("div");
+  el.id = "lvl-pop";
+  el.className = "lvl-pop";
+  el.setAttribute("role", "dialog");
+  el.setAttribute("aria-modal", "true");
+  el.setAttribute("aria-labelledby", "lvl-t");
+  el.innerHTML = `<div class="confetti" aria-hidden="true">${confetti}</div>
+    <div class="lvl-card">
+      <p class="lvl-k">${all ? "Petualangan selesai!" : "Level " + (i + 1) + " selesai!"}</p>
+      <div class="lvl-orb" aria-hidden="true">${st.icon}</div>
+      <h2 id="lvl-t">${all ? "Kamu resmi jadi " + Progress.rank() + "!" : "Kerja bagus!"}</h2>
+      <p class="lvl-stars" aria-label="${star} dari 3 bintang">${"★".repeat(star)}${"☆".repeat(3 - star)}</p>
+      <p><strong>+${Progress.stepXp(st.key)} XP</strong> · Lencana <strong>🏅 ${st.badge}</strong></p>
+      <p class="lvl-rank">Pangkatmu sekarang: <strong>${Progress.rank()}</strong> · Total ${Progress.xp()} XP</p>
+      <div class="btn-row" style="justify-content:center">
+        ${nxt ? `<a class="btn btn-primary" href="#/${nxt.key}" data-close-pop>Lanjut: Level ${Progress.STEPS.findIndex((x) => x.key === nxt.key) + 1}</a>` : `<a class="btn btn-primary" href="#/" data-close-pop>Lihat peta petualangan</a>`}
+        <button type="button" class="btn" data-close-pop>Tutup</button>
+      </div>
+    </div>`;
+  document.body.appendChild(el);
+  el.addEventListener("click", (e) => {
+    if (e.target.closest("[data-close-pop]") || e.target === el) el.remove();
+  });
+  el.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") el.remove();
+  });
+  const first = el.querySelector("a.btn");
+  if (first) first.focus();
+  if (window.Sfx) (all ? Sfx.level : Sfx.success)();
+}

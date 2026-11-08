@@ -1,4 +1,4 @@
-/* Loading screen Clover Safety (suara sambutan bahasa Inggris + musik latar): tampil sekali per sesi browser.
+/* Loading screen Clover Safety (suara sambutan bahasa Indonesia + musik latar): tampil sekali per sesi browser.
    Di halaman awal, loading screen jalan saat pengguna menekan Masuk / Buat akun, sehingga suara dan musik
    langsung bisa diputar (sentuhan itulah yang diizinkan browser). Halaman bantuan darurat tidak pernah ditahan. */
 (function () {
@@ -22,11 +22,11 @@
 
   function start(afterClose) {
   var TIPS = [
-    "It is okay to say “no” calmly.",
-    "A secret that scares you does not have to be kept.",
-    "A gift never means you owe anything.",
-    "You are not alone. A trusted adult is always there.",
-    "Need help? SAPA 129 is ready to listen.",
+    "Kamu boleh berkata “tidak” dengan tenang.",
+    "Rahasia yang membuatmu takut tidak perlu dijaga.",
+    "Hadiah tidak membuatmu berutang apa pun.",
+    "Kamu tidak sendirian. Selalu ada orang dewasa tepercaya.",
+    "Butuh bantuan? SAPA 129 siap mendengarkan.",
   ];
   var CLOVER =
     '<svg viewBox="0 0 64 64" aria-hidden="true"><g fill="#c9f56f"><path d="M32 30c-10-12-24-4-18 6 4 7 14 6 18-6z"/><path d="M32 30c10-12 24-4 18 6-4 7-14 6-18-6z"/><path d="M32 34c-12 8-8 22 2 20 8-2 9-12-2-20z"/><path d="M32 34c12 8 8 22-2 20-8-2-9-12 2-20z" opacity=".85"/></g></svg>';
@@ -41,7 +41,7 @@
   el.id = "cl-loader";
   el.setAttribute("role", "status");
   el.setAttribute("aria-live", "polite");
-  el.setAttribute("aria-label", "Loading Clover Safety");
+  el.setAttribute("aria-label", "Memuat Clover Safety");
   var leaves = "";
   for (var i = 0; i < 14; i++) {
     var s = 14 + ((i * 7) % 20);
@@ -51,16 +51,16 @@
   el.innerHTML =
     '<div class="rays"></div><div class="vignette"></div>' +
     leaves +
-    '<div class="top"><span>🍀 Clover Safety</span><span class="actions"><button type="button" class="snd" aria-pressed="true" aria-label="Sound on">🔊</button><button type="button" class="skip">Skip ›</button></span></div>' +
+    '<div class="top"><span>🍀 Clover Safety</span><span class="actions"><button type="button" class="snd" aria-pressed="true" aria-label="Suara menyala">🔊</button><button type="button" class="skip">Lewati ›</button></span></div>' +
     '<div class="stage">' +
     '<div class="emblem"><img src="/img/clover-shield.svg" alt="" width="260" height="300" /></div>' +
     '<h1 class="title" aria-label="Clover Safety">' + letters("Clover Safety") + "</h1>" +
-    '<p class="sub">Digital education &amp; protection</p>' +
+    '<p class="sub">Edukasi &amp; perlindungan digital</p>' +
     '<p class="hello"><strong class="h1t"></strong><span class="h2t"></span></p>' +
     "</div>" +
     '<div class="bottom"><p class="tip"></p>' +
     '<div class="meter"><div class="bar"><div class="fill"></div></div><div class="pct">0%</div></div>' +
-    '<p class="state">Loading…</p></div>';
+    '<p class="state">Memuat…</p></div>';
   root.classList.add("cl-loading");
   root.appendChild(el);
 
@@ -72,7 +72,7 @@
   var snd = el.querySelector(".snd");
   var hint = document.createElement("p");
   hint.className = "sound-hint";
-  hint.textContent = "🔊 Tap the screen for sound & music";
+  hint.textContent = "🔊 Ketuk layar untuk suara & musik";
   hint.hidden = true;
   el.querySelector(".bottom").appendChild(hint);
   var shown = 0;
@@ -87,7 +87,7 @@
     fill.style.width = v + "%";
     pct.textContent = n + "%";
     state.textContent =
-      n >= 100 ? "Ready!" : n > 80 ? "Almost there…" : n > 55 ? "Preparing your lessons…" : n > 25 ? "Loading the experience…" : "Saying hello…";
+      n >= 100 ? "Siap!" : n > 80 ? "Hampir selesai…" : n > 55 ? "Menyiapkan materi…" : n > 25 ? "Memuat tampilan…" : "Menyapa kamu…";
   }
   var ti = 0;
   function showTip() {
@@ -167,7 +167,7 @@
     muted = m;
     snd.textContent = m ? "🔇" : "🔊";
     snd.setAttribute("aria-pressed", String(!m));
-    snd.setAttribute("aria-label", m ? "Sound off" : "Sound on");
+    snd.setAttribute("aria-label", m ? "Suara mati" : "Suara menyala");
     try {
       localStorage.setItem("clover_sound", m ? "off" : "on");
     } catch (e) {
@@ -254,10 +254,10 @@
       synth.cancel();
       setTimeout(function () {
         if (closed || muted) return;
-        say("Welcome to Clover Safety!", "en-US", function () {
+        say("Selamat datang di Clover Safety!", "id-ID", function () {
           if (closed || muted) return;
           setTimeout(function () {
-            if (!closed && !muted) say("Hi, I'm Clover Safety. I'll be with you every step of the way.", "en-US");
+            if (!closed && !muted) say("Hai, aku Clover Safety. Aku akan menemanimu di setiap langkah.", "id-ID");
           }, 500);
         });
       }, 450);
@@ -299,8 +299,8 @@
   });
 
   /* ---------- Teks sapaan diketik pelan-pelan ---------- */
-  var HELLO1 = "Hi, I’m Clover Safety! 🍀 ";
-  var HELLO2 = "I’m a friend who will always be with you. You matter, you deserve respect, and you deserve protection.";
+  var HELLO1 = "Hai, perkenalkan aku Clover Safety! 🍀 ";
+  var HELLO2 = "Aku teman yang akan selalu menemanimu. Kamu berharga, kamu layak dihormati, dan kamu berhak mendapatkan perlindungan.";
   var h1t = el.querySelector(".h1t");
   var h2t = el.querySelector(".h2t");
   var typed = 0;
@@ -309,7 +309,7 @@
     if (typed <= HELLO1.length) h1t.textContent = HELLO1.slice(0, typed);
     else h2t.textContent = HELLO2.slice(0, typed - HELLO1.length);
     if (typed >= HELLO1.length + HELLO2.length) clearInterval(typer);
-  }, 42);
+  }, 36);
   var tipTimer = setInterval(showTip, 2200);
 
   function close() {
