@@ -1,5 +1,5 @@
 /* Menerapkan tema, ukuran huruf, dan kontras dari pengaturan lokal.
-   Kunci penyimpanan "pazzel_prefs" dipertahankan agar pengaturan lama tetap terbaca. */
+   Nama kunci penyimpanan lama dipertahankan agar pengaturan yang sudah tersimpan tetap terbaca. */
 (() => {
   const mq = window.matchMedia ? matchMedia("(prefers-color-scheme: dark)") : null;
 

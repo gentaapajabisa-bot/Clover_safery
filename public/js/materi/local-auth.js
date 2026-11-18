@@ -54,7 +54,7 @@ const Auth = {
   async register({ nickname, username, role, code, pw, pw2 }) {
     if (!this.cryptoOK())
       return {
-        err: "Browser ini tidak mendukung penyimpanan kata sandi yang aman. Buka Clover Safery lewat https:// atau gunakan browser terbaru.",
+        err: "Browser ini tidak mendukung penyimpanan kata sandi yang aman. Buka Clover Safety lewat https:// atau gunakan browser terbaru.",
       };
     nickname = nickname.trim();
     username = username.trim().toLowerCase();

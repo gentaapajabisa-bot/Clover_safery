@@ -16,13 +16,6 @@ document.addEventListener("click", async (e) => {
     Alarm.start();
     return;
   }
-  if (act === "myth") {
-    const i = +t.dataset.i;
-    S.myth[i] = !S.myth[i];
-    t.setAttribute("aria-expanded", String(!!S.myth[i]));
-    $("#myth-a-" + i).hidden = !S.myth[i];
-    return;
-  }
   if (act === "scn-tab") {
     S.scn = +t.dataset.i;
     paintScn();
@@ -115,9 +108,13 @@ document.addEventListener("click", async (e) => {
     toast("Kata sandi diatur ulang. Sampaikan langsung kepada pemilik akun.");
     return;
   }
+  if (act === "ref-save") {
+    await saveReflectionHistory(t);
+    return;
+  }
   if (act === "ref-copy") {
     const R = S.ref;
-    const lines = ["Refleksi Clover Safery (ditulis oleh saya sendiri)"];
+    const lines = ["Refleksi Clover Safety (ditulis oleh saya sendiri)"];
     const add = (l, v) => {
       if (v && String(v).trim()) lines.push(l + ": " + v);
     };
@@ -165,15 +162,20 @@ document.addEventListener("click", async (e) => {
 
 document.addEventListener("change", (e) => {
   const t = e.target;
-  if (t.matches("[data-cl]")) {
-    const id = t.dataset.cl,
-      v = +t.value;
-    const st = S.checks[id] || (S.checks[id] = []);
-    const i = st.indexOf(v);
-    if (t.checked && i < 0) st.push(v);
-    if (!t.checked && i >= 0) st.splice(i, 1);
+  if (t.matches("[data-rate]")) {
+    const id = t.dataset.rate;
+    const stp = Progress.STEPS.find((x) => x.rate === id);
+    const wasDone = stp ? Progress.isDone(stp.key) : true;
+    Progress.setRating(id, +t.dataset.i, +t.value);
     const c = $("#cnt-" + id);
-    if (c) c.textContent = counterText(id);
+    if (c) c.innerHTML = rateSummary(id);
+    const ok = Progress.rated(id, CL_TOTAL[id]) === CL_TOTAL[id];
+    $$(`.next-wrap[data-gate="${id}"]`).forEach((w) => {
+      $("a", w).hidden = !ok;
+      $("button", w).hidden = ok;
+    });
+    buildNav(CUR);
+    if (ok && !wasDone && stp) levelUp(stp);
     return;
   }
   if (t.matches("[data-bd]")) {
@@ -241,7 +243,19 @@ document.addEventListener("submit", async (e) => {
   const f = e.target;
   if (f.id === "ref-form") {
     e.preventDefault();
+    const need = [["q1", "pertanyaan 1"], ["q6", "pertanyaan 6"]].filter(([k]) => ($(`#r-${k}`).value || "").trim().length < 3);
+    const err = $("#ref-err");
+    if (need.length) {
+      err.hidden = false;
+      err.textContent = `Isi dulu ${need.map((n) => n[1]).join(" dan ")} (wajib) sebelum menyelesaikan refleksi.`;
+      $(`#r-${need[0][0]}`).focus();
+      return;
+    }
+    err.hidden = true;
     S.ref.done = true;
+    Progress.markDone("refleksi");
+    buildNav(CUR);
+    levelUp(Progress.STEPS.find((x) => x.key === "refleksi"));
     $("#ref-end").hidden = false;
     $("#ref-end").scrollIntoView({ behavior: "smooth", block: "center" });
     return;

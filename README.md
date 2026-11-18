@@ -1,21 +1,22 @@
-# Clover Safery
+# Clover Safety
 
-Media edukasi keselamatan digital (materi, simulasi chat, kuis, kamus, alarm tanda bahaya) dengan **login berbasis server**, **dashboard pengguna**, dan **panel admin**. Berjalan di **Vercel** (static + Functions) dengan database **TiDB Cloud**.
+Media edukasi keselamatan digital (materi, simulasi chat, glosarium, alarm tanda bahaya) dengan **login berbasis server**, **dashboard pengguna**, dan **panel admin**. Berjalan di **Vercel** (static + Functions) dengan database **TiDB Cloud**.
 
 ## Struktur proyek
 
 ```
 Clover_safery/
 ├── public/            # Seluruh file statis yang dilayani ke browser
-│   ├── index.html     #   materi edukasi (SPA berbasis hash-route)
+│   ├── index.html     #   halaman sambutan (tanpa isi materi) + landing.js
+│   ├── belajar.html   #   materi edukasi (SPA berbasis hash-route), dijaga materi-guard.js
 │   ├── login.html · register.html · dashboard.html · admin.html · profile.html
 │   ├── css/           #   styles.css, extra.css (materi) · auth.css (login/dashboard/admin)
 │   ├── js/            #   theme.js (tema) · common.js (helper bersama) · auth-form.js
 │   │   │              #   dashboard-page.js · admin-page.js
 │   │   └── materi/    #   materi edukasi, dimuat berurutan oleh index.html:
 │   │                  #     core · local-auth* · state · alarm · content · components · pages
-│   │                  #     pages-local-account* · router · events · settings · simulasi · kuis
-│   │                  #     kamus · extra-routes · extra-events · pwa
+│   │                  #     pages-local-account* · router · events · settings · simulasi
+│   │                  #     glosarium · extra-routes · extra-events · pwa
 │   ├── sw.js          #   service worker (offline)
 │   └── manifest.webmanifest, icon.*
 ├── api/               # Vercel Functions
@@ -36,6 +37,21 @@ Clover_safery/
 2. Buka **SQL Editor**, pilih database tujuan, lalu jalankan seluruh isi `sql/schema.sql`.
    Skema tidak memuat `CREATE DATABASE`/`USE` dan tidak memakai foreign key, supaya aman di semua versi TiDB.
 3. _(Opsional, TiDB v8.5+)_ jalankan `sql/foreign-keys.sql` untuk menambah foreign key.
+
+## Fitur akun: profil, kontak tepercaya, chat admin
+
+> **Wajib:** jalankan ulang seluruh `sql/schema.sql` di database yang sudah ada (aman, hanya `CREATE TABLE IF NOT EXISTS`). Tanpa tabel baru (`user_profiles`, `user_avatars`, `trusted_contacts`, `chat_messages`, `user_history`), login akan gagal karena sesi kini membaca `user_profiles`.
+
+| Jalur | Keterangan |
+| --- | --- |
+| `/profile` | Nama, telepon, bio, **foto profil** (dipotong persegi 256px di browser), ganti kata sandi |
+| `/kontak` | **Kontak tepercaya** — hanya pemilik yang bisa melihat/menambah/ubah/hapus (maks. 20); tidak ada endpoint admin |
+| `/riwayat` | **Riwayat** refleksi (lewat tombol “Simpan ke riwayat”); hanya pemilik yang bisa membaca, bisa dihapus |
+| `/chat` | Chat pengguna ↔ admin (hanya percakapan sendiri) |
+| `/admin-chat` | Admin melihat daftar percakapan dan membalas |
+| `/belajar#/bantuan` & alarm | Menampilkan kontak tepercaya akun (bila login) dengan tombol telepon |
+
+API baru: `api/profile.js`, `api/contacts.js`, `api/chat.js`, `api/admin/chat.js`, `api/history.js` (total **12 Functions — tepat di batas paket Hobby Vercel**; menambah endpoint lagi perlu digabung ke file yang ada). Foto divalidasi di server (tipe, ukuran, magic bytes) dan hanya bisa diambil pemilik atau admin. Chat memakai polling 5 detik, bukan realtime.
 
 ## Deploy ke Vercel
 
@@ -59,13 +75,16 @@ Akun baru selalu berperan `user`; tidak ada pilihan admin di halaman publik, dan
 
 | Jalur                                                      | Keterangan                        |
 | ---------------------------------------------------------- | --------------------------------- |
-| `/`                                                        | Materi edukasi (tanpa login)      |
+| `/`                                                        | Halaman sambutan (Masuk/Daftar)   |
+| `/belajar`                                                 | Materi edukasi (wajib login*)     |
 | `/login` · `/register`                                     | Masuk / daftar                    |
 | `/dashboard`                                               | Dashboard pengguna                |
 | `/admin`                                                   | Panel admin                       |
 | `POST /api/auth/register` · `login` · `logout`, `GET …/me` | Autentikasi & sesi                |
 | `GET /api/dashboard`                                       | Aktivitas & laporan milik sendiri |
 | `GET /api/admin/stats`, `GET/PATCH /api/admin/users`       | Khusus admin                      |
+
+> \* Alur: `/` → `/login` → `/dashboard` → `/belajar`. Rute `/belajar#/bantuan` dan `#/tentang` tetap terbuka tanpa login demi keselamatan (tombol alarm menuju halaman bantuan). Penjagaan `/belajar` dilakukan di sisi klien; file statisnya tetap bisa diunduh langsung, jadi ini pengatur alur, bukan pengaman data.
 
 ## Keamanan
 
