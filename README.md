@@ -7,12 +7,12 @@ Media edukasi keselamatan digital (materi, simulasi chat, kuis, kamus, alarm tan
 ```
 Clover_safery/
 ├── public/            # Seluruh file statis yang dilayani ke browser
-│   ├── index.html     #   materi edukasi (SPA berbasis hash-route)
+│   ├── materi.html    #   materi edukasi (/materi; "/" dialihkan ke /login) (SPA berbasis hash-route)
 │   ├── login.html · register.html · dashboard.html · admin.html · profile.html
 │   ├── css/           #   styles.css, extra.css (materi) · auth.css (login/dashboard/admin)
 │   ├── js/            #   theme.js (tema) · common.js (helper bersama) · auth-form.js
 │   │   │              #   dashboard-page.js · admin-page.js
-│   │   └── materi/    #   materi edukasi, dimuat berurutan oleh index.html:
+│   │   └── materi/    #   materi edukasi, dimuat berurutan oleh materi.html:
 │   │                  #     core · local-auth* · state · alarm · content · components · pages
 │   │                  #     pages-local-account* · router · events · settings · simulasi · kuis
 │   │                  #     kamus · extra-routes · extra-events · pwa
