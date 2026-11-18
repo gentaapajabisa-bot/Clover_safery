@@ -1,9 +1,9 @@
 /* Service worker Clover Safery: halaman & aset dicache untuk pemakaian offline.
    Naikkan CACHE_VERSION setiap kali daftar atau isi aset berubah. */
-const CACHE_VERSION = "clover-safery-v8";
+const CACHE_VERSION = "clover-safery-v5";
 
 const PRECACHE = [
-  "/materi",
+  "/",
   "/login",
   "/register",
   "/dashboard",
@@ -11,12 +11,6 @@ const PRECACHE = [
   "/css/styles.css",
   "/css/extra.css",
   "/css/auth.css",
-  "/css/loader.css",
-  "/js/loader.js",
-  "/media/bloom-poster.jpg",
-  "/media/bloom.mp4",
-  "/media/login-bg.jpg",
-  "/media/dashboard-bg-poster.jpg",
   "/js/theme.js",
   "/js/materi/core.js",
   "/js/materi/local-auth.js",
@@ -78,6 +72,6 @@ self.addEventListener("fetch", (event) => {
         }
         return res;
       })
-      .catch(() => caches.match(req).then((hit) => hit || caches.match("/login")))
+      .catch(() => caches.match(req).then((hit) => hit || caches.match("/")))
   );
 });
