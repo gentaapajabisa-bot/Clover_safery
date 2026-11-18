@@ -506,7 +506,7 @@ body.bg-photo::before {
   content: "";
   position: fixed;
   inset: 0;
-  background: linear-gradient(180deg, #ffffff40, #0b3b2630);
+  background: linear-gradient(180deg, #ffffff18, #0b3b2620);
   z-index: 0;
   pointer-events: none;
 }
@@ -515,17 +515,17 @@ body.bg-photo > * {
   z-index: 1;
 }
 body.bg-photo .topbar {
-  background: #ffffffb8;
+  background: #ffffff90;
 }
 body.bg-photo .intro {
-  background: #ffffffc4;
+  background: #ffffff99;
   backdrop-filter: blur(10px);
   border-radius: 26px;
   padding: 32px;
   box-shadow: var(--shadow);
 }
 body.bg-photo .panel {
-  background: #ffffffe6;
+  background: #ffffffd0;
   backdrop-filter: blur(10px);
 }
 
@@ -546,24 +546,24 @@ body.bg-video::before {
   content: "";
   position: fixed;
   inset: 0;
-  background: #ffffff33;
+  background: #ffffff10;
   z-index: -1;
   pointer-events: none;
 }
 body.bg-video .topbar {
-  background: #ffffffc4;
+  background: #ffffff99;
 }
 body.bg-video .sidebar {
-  background: #ffffffb8;
+  background: #ffffff90;
   backdrop-filter: blur(10px);
 }
 body.bg-video .stat,
 body.bg-video .box {
-  background: #ffffffd9;
+  background: #ffffffbb;
   backdrop-filter: blur(8px);
 }
 body.bg-video .welcome > div {
-  background: #ffffffc4;
+  background: #ffffff99;
   backdrop-filter: blur(10px);
   border-radius: 18px;
   padding: 16px 22px;
