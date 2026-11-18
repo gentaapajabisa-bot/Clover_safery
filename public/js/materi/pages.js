@@ -5,83 +5,67 @@
    Halaman
    ========================================================= */
 function pageHome() {
-  const nxt = Progress.next();
-  const n = Progress.doneCount();
-  const total = Progress.STEPS.length;
-  const xp = Progress.xp();
-  const maxXp = Progress.maxXp();
-  const descr = {
-    "tanda-bahaya": "Kenali pola perilaku yang perlu diwaspadai.",
-    privasi: "Pahami apa yang boleh dan tidak boleh dibagikan.",
-    tindakan: "Pilih langkah yang tepat lewat skenario.",
-    refleksi: "Tuliskan apa yang sudah kamu pelajari.",
-  };
-  const node = (st, i) => {
-    const done = Progress.isDone(st.key);
-    const state = done ? "done" : nxt && nxt.key === st.key ? "now" : "lock";
-    const star = Progress.stars(st.key);
-    const stars = done ? "★".repeat(star) + "☆".repeat(3 - star) : "☆☆☆";
-    const tag = done ? `+${Progress.stepXp(st.key)} XP` : state === "now" ? "Level berikutnya" : "🔒 Terkunci";
-    return `<li class="q-node q-${state} ${i % 2 ? "q-r" : "q-l"}">
-      <a href="#/${st.key}">
-        <span class="q-orb" aria-hidden="true">${state === "lock" ? "🔒" : st.icon}${done ? '<i class="q-check">✓</i>' : ""}</span>
-        <span class="q-body">
-          <span class="q-lv">Level ${i + 1}</span>
-          <strong>${st.label}</strong>
-          <span class="d">${descr[st.key]}</span>
-          <span class="q-meta"><span class="q-stars" aria-label="${done ? star + " dari 3 bintang" : "Belum ada bintang"}">${stars}</span><span class="q-tag">${tag}</span></span>
-          ${done ? `<span class="q-badge">🏅 Lencana: ${st.badge}</span>` : ""}
-        </span>
-      </a></li>`;
-  };
-  const startLabel = n === 0 ? "Mulai Belajar" : nxt ? "Lanjutkan Belajar" : "Ulangi Petualangan";
-  const startHref = nxt ? "#/" + nxt.key : "#/tanda-bahaya";
+  const me = Auth.current();
+  const flow = [
+    ["#/tanda-bahaya", "🔎", "Kenali tanda bahaya"],
+    ["#/privasi", "🔒", "Pahami privasi &amp; batasan"],
+    ["#/tindakan", "🧭", "Latih tindakan aman"],
+    ["#/refleksi", "💭", "Refleksi setelah puzzle"],
+    ["#/bantuan", "🤝", "Akses bantuan"],
+  ];
   return `
-  <section class="hero2">
-    <div>
-      <h1 tabindex="-1">Selamat Datang di Clover Safety!</h1>
-      <p class="lead">Belajar mengenali tanda bahaya, menjaga privasi, dan tahu cara meminta bantuan, dengan cara yang sederhana.</p>
+  <section class="hero">
+    <h1 tabindex="-1">Selamat Datang di Clover Safery!</h1>
+    <p class="lead">Selamat menyelesaikan puzzle Clover Safery! Setelah bermain puzzle, kamu dapat mempelajari tanda bahaya, memahami batas privasi, menentukan tindakan yang aman, dan melakukan refleksi. Jika kamu merasa tidak aman atau membutuhkan bantuan, kamu dapat langsung membuka menu bantuan.</p>
+    <p class="lead"><strong>Kenali Bahaya, Jaga Privasi, Tentukan Tindakan Aman, Berani Mencari Bantuan.</strong></p>
+    <div class="btn-row">
+      ${routeBtn("#/tanda-bahaya", "Mulai Belajar", "btn btn-primary")}
+      ${routeBtn("#/refleksi", "Refleksi Setelah Puzzle", "btn")}
+      ${routeBtn("#/bantuan", "Meminta Bantuan", "btn btn-pink")}
     </div>
-    <div class="art" aria-hidden="true"><img src="/img/clover-shield.svg" alt="" /></div>
   </section>
+  <div class="callout pink"><p><strong>Kamu berhak merasa aman, menjaga privasi, menetapkan batasan diri, dan meminta bantuan. Kamu tidak harus menghadapi situasi berbahaya sendirian.</strong></p></div>
 
-  <section class="sec" aria-labelledby="alur">
-    <div class="sec-head">
-      <h2 id="alur">Alur belajarmu</h2>
-      <p>Selesaikan level satu per satu. Isi semua skor atau jawaban wajib untuk membuka level berikutnya.</p>
-    </div>
-    <div class="hud" role="group" aria-label="Kemajuan petualangan">
-      <div class="hud-rank"><span class="hud-ico" aria-hidden="true">🍀</span><div><small>Pangkatmu</small><strong>${Progress.rank()}</strong></div></div>
-      <div class="hud-xp">
-        <div class="hud-row"><span>XP</span><b>${xp} / ${maxXp}</b></div>
-        <div class="flow-prog" role="progressbar" aria-valuemin="0" aria-valuemax="${maxXp}" aria-valuenow="${xp}" aria-label="XP"><i style="width:${(xp / maxXp) * 100}%"></i></div>
-      </div>
-      <div class="hud-lv"><small>Level selesai</small><strong>${n}/${total}</strong></div>
-    </div>
-    <ol class="quest">
-      ${Progress.STEPS.map(node).join("")}
-      <li class="q-node q-bonus q-l"><a href="#/bantuan"><span class="q-orb" aria-hidden="true">🆘</span><span class="q-body"><span class="q-lv">Pos Bantuan</span><strong>Akses bantuan</strong><span class="d">Tahu ke mana dan kepada siapa meminta tolong. Selalu terbuka.</span></span></a></li>
-    </ol>
-    <div class="btn-row start-row">
-      ${routeBtn(startHref, startLabel, "btn btn-primary")}
-    </div>
-  </section>
-  `;
+  <h2>Alur belajarmu</h2>
+  <div class="grid g3" role="list">
+    ${flow.map((f, i) => `<a class="card" role="listitem" href="${f[0]}" style="text-decoration:none;color:inherit"><div class="step-n" aria-hidden="true">${i + 1}</div><span class="ico" aria-hidden="true">${f[1]}</span><strong>${f[2]}</strong></a>`).join("")}
+  </div>
+
+  <div class="grid g2" style="margin-top:20px">
+    <section class="card">
+      <h3>🚨 Tentang tombol alarm</h3>
+      <p>Tombol merah <strong>ALARM TANDA BAHAYA</strong> ada di semua halaman. Saat ditekan, perangkatmu membunyikan sirene sampai kamu menekan <strong>HENTIKAN ALARM</strong>.</p>
+      <p>Alarm <strong>hanya berbunyi di perangkatmu</strong>. Alarm tidak otomatis menghubungi guru, orang tua, atau petugas. Jadi setelah menjauh ke tempat aman, tetap minta bantuan orang dewasa tepercaya.</p>
+    </section>
+    <section class="card">
+      <h3>👤 Akun (boleh dilewati)</h3>
+      ${
+        me
+          ? `<p>Halo, <strong>${esc(me.nickname)}</strong>! Kamu sedang masuk sebagai ${me.role === "guru" ? "Guru BK" : "siswa"}.</p>${routeBtn("/login", "Buka dashboard", "btn btn-primary")}`
+          : `<p>Kamu bisa masuk untuk melihat kemajuan belajar. <strong>Semua materi, alarm, dan bantuan bisa dipakai tanpa akun.</strong></p>${routeBtn("/login", "Masuk atau Daftar", "btn btn-primary")}`
+      }
+      <p class="hint" style="margin-top:10px">Jangan memakai nama lengkap sebagai nama pengguna.</p>
+    </section>
+  </div>`;
 }
 
 function pageSigns() {
   return `
   <h1 tabindex="-1">Mengenali Tanda Bahaya</h1>
-  <figure class="hero-fig"><img src="/img/tanda-bahaya-hero.svg" alt="Ilustrasi kaca pembesar menyorot tanda peringatan di samping perisai semanggi" width="760" height="240"></figure>
   <p class="lead">Beberapa pola perilaku perlu diwaspadai, baik saat bertemu langsung maupun di dunia maya. Ketuk setiap kartu untuk membaca penjelasannya.</p>
-  <div class="signs">
-    ${SIGNS.map((s, i) => `<details><summary><img class="sign-thumb" src="/img/signs/${SIGN_IMG[i][0]}.svg" alt="" width="88" height="60"><span>${esc(s[1])}</span></summary><div class="dbody sign-body"><figure><img src="/img/signs/${SIGN_IMG[i][0]}.svg" alt="${esc(SIGN_IMG[i][1])}" width="320" height="220" loading="lazy"></figure><p>${esc(s[2])}</p></div></details>`).join("")}
+  <div>
+    ${SIGNS.map((s) => `<details><summary><span aria-hidden="true" style="font-size:1.4rem">${s[0]}</span> ${esc(s[1])}</summary><div class="dbody"><p>${esc(s[2])}</p></div></details>`).join("")}
   </div>
   <div class="callout kuning"><p><strong>Penting:</strong> satu tanda saja tidak otomatis membuktikan terjadinya grooming. Namun setiap perasaan tidak aman atau tidak nyaman layak ditanggapi dengan serius, dan kamu boleh membicarakannya dengan orang dewasa tepercaya.</p></div>
 
+  <h2 style="margin-top:28px">Mitos atau fakta?</h2>
+  <p>Ketuk pernyataan untuk melihat penjelasannya. Tidak ada nilai atau skor.</p>
+  <div id="myth-root">
+    ${MYTHS.map((m, i) => `<div style="margin:10px 0"><button type="button" class="myth" data-act="myth" data-i="${i}" aria-expanded="${!!S.myth[i]}">${esc(m[0])}</button><div class="myth-ans" ${S.myth[i] ? "" : "hidden"} id="myth-a-${i}">${esc(m[1])}</div></div>`).join("")}
+  </div>
 
-  ${checklist("signs", "Skor Pemahaman: Mengenali Tanda Bahaya", CL_SIGNS)}
-  <div class="btn-row">${nextBtn("signs", "#/privasi", "Lanjut: Privasi dan Batasan Diri")}${routeBtn("#/bantuan", "Meminta Bantuan", "btn btn-pink")}</div>`;
+  ${checklist("signs", "Checklist Mengenali Tanda Bahaya", CL_SIGNS)}
+  <div class="btn-row">${routeBtn("#/privasi", "Lanjut: Privasi dan Batasan Diri", "btn btn-primary")}${routeBtn("#/bantuan", "Meminta Bantuan", "btn btn-pink")}</div>`;
 }
 
 function pagePrivacy() {
@@ -106,9 +90,13 @@ function pagePrivacy() {
     ).join("")}
   </div>
 
+  <h2>Tips pengaturan akun dan game</h2>
+  <details><summary>🔐 Akun dan kata sandi</summary><div class="dbody"><ul class="clean"><li>Gunakan kata sandi yang berbeda untuk tiap akun.</li><li>Jangan beri tahu kode OTP atau kode keamanan kepada siapa pun.</li><li>Keluar dari akun saat memakai perangkat bersama.</li></ul></div></details>
+  <details><summary>🌐 Profil media sosial dan game</summary><div class="dbody"><ul class="clean"><li>Atur akun menjadi privat jika memungkinkan.</li><li>Hindari memasang nama lengkap, nama sekolah, atau foto seragam di profil publik.</li><li>Terima permintaan pertemanan hanya dari orang yang kamu kenal.</li></ul></div></details>
+  <details><summary>📍 Lokasi dan kamera</summary><div class="dbody"><ul class="clean"><li>Matikan berbagi lokasi pada aplikasi yang tidak membutuhkannya.</li><li>Pikirkan dulu sebelum memberi izin kamera dan mikrofon kepada aplikasi.</li></ul></div></details>
 
-  ${checklist("priv", "Skor Pemahaman: Prinsip Privasi", CL_PRIV)}
-  <div class="btn-row">${nextBtn("priv", "#/tindakan", "Lanjut: Tindakan yang Aman")}${routeBtn("#/bantuan", "Meminta Bantuan", "btn btn-pink")}</div>`;
+  ${checklist("priv", "Checklist Prinsip Privasi", CL_PRIV)}
+  <div class="btn-row">${routeBtn("#/tindakan", "Lanjut: Tindakan yang Aman", "btn btn-primary")}${routeBtn("#/bantuan", "Meminta Bantuan", "btn btn-pink")}</div>`;
 }
 
 function pageAction() {
@@ -120,8 +108,8 @@ function pageAction() {
     <h3>Ingat selalu</h3>
     <ul class="clean">${SCN_EXPL.map((t) => `<li>${esc(t)}</li>`).join("")}</ul>
   </div>
-  ${checklist("act", "Skor Pemahaman: Tindakan Aman", CL_ACT)}
-  <div class="btn-row">${nextBtn("act", "#/refleksi", "Lanjut: Refleksi")}${routeBtn("#/bantuan", "Meminta Bantuan", "btn btn-pink")}</div>`;
+  ${checklist("act", "Checklist Tindakan Aman", CL_ACT)}
+  <div class="btn-row">${routeBtn("#/refleksi", "Lanjut: Refleksi Setelah Puzzle", "btn btn-primary")}${routeBtn("#/bantuan", "Meminta Bantuan", "btn btn-pink")}</div>`;
 }
 function paintScn(focusI) {
   const root = $("#scn-root");
@@ -197,16 +185,16 @@ function pageReflect() {
       )
       .join("");
   return `
-  <h1 tabindex="-1">Refleksi</h1>
-  <div class="callout"><p>Luangkan waktu sejenak untuk merefleksikan hal yang kamu pelajari. <strong>Tidak ada nilai benar atau salah.</strong> Pertanyaan 1 dan 6 wajib diisi agar refleksi bisa diselesaikan; pertanyaan lain boleh dilewati. </p></div>
-  <div class="callout kuning"><p>Jawabanmu <strong>tidak disimpan otomatis</strong> dan hilang saat halaman ditutup. Kamu bisa memilih <strong>“Simpan ke riwayat”</strong> setelah selesai; riwayat hanya bisa dilihat olehmu (tidak oleh admin). Jangan menulis nama lengkap, alamat, kata sandi, atau data pribadi lain.</p></div>
+  <h1 tabindex="-1">Refleksi Setelah Puzzle</h1>
+  <div class="callout"><p>Selamat menyelesaikan puzzle Clover Safery! Luangkan waktu sejenak untuk merefleksikan hal yang kamu pelajari. <strong>Tidak ada nilai benar atau salah.</strong> Kamu boleh melewati pertanyaan yang tidak ingin kamu jawab.</p></div>
+  <div class="callout kuning"><p>Jawabanmu <strong>tidak disimpan dan tidak dikirim</strong> ke mana pun; jawaban hilang saat halaman ditutup atau dimuat ulang. Jangan menulis nama lengkap, alamat, kata sandi, atau data pribadi lain.</p></div>
   <form id="ref-form" novalidate>
-    <div class="card" style="margin-bottom:14px"><h3>1. Apa pesan terpenting yang kamu dapatkan setelah belajar di Clover Safety? <span class="req">(wajib)</span></h3>${txt("q1", "Jawabanku")}</div>
+    <div class="card" style="margin-bottom:14px"><h3>1. Apa pesan terpenting yang kamu dapatkan setelah menyelesaikan puzzle?</h3>${txt("q1", "Jawabanku")}</div>
     <fieldset><legend>2. Tanda bahaya apa yang sekarang lebih kamu pahami?</legend>${grp("q2", q2, R.q2, "checkbox")}</fieldset>
     <fieldset><legend>3. Mengapa penting menjaga privasi dan batasan diri?</legend>${grp("q3", q3, [], "radio")}${txt("q3t", "Atau tulis dengan kata-katamu sendiri")}</fieldset>
     <fieldset><legend>4. Apa yang dapat kamu lakukan jika seseorang meminta sesuatu yang membuatmu tidak nyaman?</legend>${grp("q4", q4, R.q4, "checkbox")}</fieldset>
     <div class="card" style="margin-bottom:14px"><h3>5. Siapa yang dapat kamu hubungi jika merasa takut atau tidak aman?</h3>${txt("q5", "Jawabanku", "Cukup tulis perannya (misalnya “guru BK”, “ibu”), tanpa nomor atau alamat.")}</div>
-    <div class="card" style="margin-bottom:14px"><h3>6. Apa satu hal yang ingin kamu lakukan untuk menjaga keselamatan diri? <span class="req">(wajib)</span></h3>${txt("q6", "Jawabanku")}</div>
+    <div class="card" style="margin-bottom:14px"><h3>6. Apa satu hal yang ingin kamu lakukan untuk menjaga keselamatan diri?</h3>${txt("q6", "Jawabanku")}</div>
     <fieldset id="ref-opts"><legend>Bagaimana perasaanmu sekarang? (boleh pilih lebih dari satu)</legend>
       ${ropts.map((t, i) => `<label class="chk"><input type="checkbox" data-ropt="${i}" ${R.opts.includes(i) ? "checked" : ""}><span>${esc(t)}</span></label>`).join("")}
     </fieldset>
@@ -214,12 +202,10 @@ function pageReflect() {
       <p><strong>Terima kasih sudah jujur. Kamu tidak sendirian.</strong> Kamu bisa langsung melihat pilihan bantuan sekarang juga.</p>
       <div class="btn-row">${routeBtn("#/bantuan", "Buka Menu Meminta Bantuan", "btn btn-primary")}</div>
     </div>
-    <p class="msg-err" id="ref-err" role="alert" hidden></p>
     <div class="btn-row"><button type="submit" class="btn btn-primary">Selesai Refleksi</button><button type="button" class="btn" data-act="ref-copy">Salin jawabanku (jika ingin menunjukkan ke orang dewasa)</button></div>
   </form>
   <div id="ref-end" ${R.done ? "" : "hidden"}>
     <div class="callout hijau" style="margin-top:20px"><p><strong>Terima kasih telah melakukan refleksi.</strong> Kamu berhak merasa aman, menjaga privasi, menolak hal yang membuatmu tidak nyaman, dan mencari bantuan. Kamu tidak harus menghadapi situasi berbahaya sendirian.</p></div>
-    <div class="card" style="margin-top:14px"><h3>Simpan jawabanku</h3><p class="hint">Opsional. Jawaban masuk ke Riwayat akunmu dan hanya bisa dilihat olehmu.</p><div class="btn-row"><button type="button" class="btn btn-primary" data-act="ref-save">Simpan ke riwayat</button></div><p class="hint" id="ref-save-status" role="status"></p></div>
     <div class="btn-row">${routeBtn("#/tanda-bahaya", "Pelajari Lagi", "btn")}${routeBtn("#/", "Kembali ke Beranda", "btn")}${routeBtn("#/bantuan", "Aku Ingin Meminta Bantuan", "btn btn-pink")}</div>
   </div>`;
 }
@@ -236,7 +222,7 @@ const HELP_PANELS = {
   resmi: `<h3>Jalur pelaporan resmi</h3>
     <p><strong>SAPA 129</strong> adalah layanan pengaduan kekerasan terhadap perempuan dan anak dari Kementerian PPPA. Kamu bisa membuka laman resminya, atau didampingi orang dewasa tepercaya.</p>
     <div class="btn-row"><a class="btn btn-primary" href="${OFFICIAL_URL}" target="_blank" rel="noopener noreferrer">Buka laman resmi SAPA 129 ↗</a><a class="btn" href="tel:129">Telepon 129</a></div>
-    <p class="hint" style="margin-top:12px">Clover Safety tidak mengirim laporan apa pun. Laporan hanya terkirim jika kamu atau orang dewasa yang membantumu mengirimkannya sendiri lewat layanan resmi tersebut.</p>`,
+    <p class="hint" style="margin-top:12px">Clover Safery tidak mengirim laporan apa pun. Laporan hanya terkirim jika kamu atau orang dewasa yang membantumu mengirimkannya sendiri lewat layanan resmi tersebut.</p>`,
   bahaya: `<div class="callout merah"><h3 style="color:#8f0a12">Jika kamu merasa sedang dalam bahaya</h3>
     <ol style="padding-left:1.2em;margin:0 0 1em"><li>Jika memungkinkan, <strong>menjauhlah ke tempat yang aman</strong>.</li><li>Dekati <strong>orang dewasa tepercaya</strong> atau tempat yang <strong>aman dan ramai</strong> (kantor guru, pos satpam, toko, masjid/gereja).</li><li>Jika ada ancaman langsung, <strong>minta bantuan segera</strong> kepada orang di sekitar atau hubungi layanan darurat.</li></ol>
     <p>Kamu tidak perlu mengisi formulir atau menceritakan seluruh kejadian untuk mendapat bantuan.</p>
@@ -261,27 +247,26 @@ function pageHelp() {
   <h2 style="margin-top:28px">Kontak tepercaya</h2>
   <div class="grid g2">
     <div class="card"><ul class="clean" style="margin:0"><li>Guru BK atau wali kelas</li><li>Orang tua atau wali (jika aman untuk dihubungi)</li><li>Anggota keluarga dewasa atau orang dewasa tepercaya lainnya</li><li><strong>SAPA 129</strong> — bantuan terkait kekerasan terhadap perempuan dan anak di Indonesia (<a href="tel:129">129</a>; <a href="${OFFICIAL_URL}" target="_blank" rel="noopener noreferrer">laman resmi ↗</a>)</li></ul></div>
-    <div class="card" style="grid-column:1/-1"><h3>Kontak tepercayaku (tersimpan di akunmu)</h3><div id="srv-trusted"><p class="hint">Memuat…</p></div></div>
-    <div class="card"><h3>Catatan sementara</h3>
+    <div class="card"><h3>Peta orang tepercayaku</h3>
       <p class="hint">Catatan ini hanya ada di layar ini: tidak disimpan dan tidak dikirim. Tulis peran dan cara bertemunya saja (misalnya “Bu Sari — guru BK — ruang BK saat istirahat”).</p>
       ${S.trusted.map((t, i) => `<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:8px 0"><input type="text" aria-label="Orang tepercaya ${i + 1}: peran" data-tr="${i}" data-f="r" placeholder="Siapa / perannya" maxlength="40" value="${esc(t.r)}"><input type="text" aria-label="Orang tepercaya ${i + 1}: cara menemui" data-tr="${i}" data-f="c" placeholder="Cara menemui" maxlength="60" value="${esc(t.c)}"></div>`).join("")}
       <button type="button" class="btn btn-small" data-act="tr-copy">Salin daftar</button></div>
   </div>
-  <div class="callout biru"><p><strong>Catatan:</strong> Clover Safety tidak mengirim laporan, lokasi, atau pesan kepada siapa pun. Untuk mendapat pertolongan, hubungi orang atau layanan di atas secara langsung.</p></div>`;
+  <div class="callout biru"><p><strong>Catatan:</strong> Clover Safery tidak mengirim laporan, lokasi, atau pesan kepada siapa pun. Untuk mendapat pertolongan, hubungi orang atau layanan di atas secara langsung.</p></div>`;
 }
 
 function pageAbout() {
   return `
-  <h1 tabindex="-1">Tentang Clover Safety, Privasi, dan Batasan Fitur</h1>
-  <p class="lead">Clover Safety adalah media edukasi tentang pencegahan child grooming untuk siswa SMP.</p>
+  <h1 tabindex="-1">Tentang Clover Safery, Privasi, dan Batasan Fitur</h1>
+  <p class="lead">Clover Safery (Clover Safery) adalah media edukasi pendamping puzzle tentang pencegahan child grooming untuk siswa SMP.</p>
   <div class="grid g2">
     <section class="card"><h3>Data apa yang tersimpan?</h3>
-      <ul class="clean"><li><strong>Tanpa akun:</strong> tidak ada data pribadi yang disimpan. Hanya pengaturan tampilan (tema, ukuran huruf) yang diingat di perangkat ini.</li><li><strong>Dengan akun:</strong> hanya nama panggilan, nama pengguna, peran, sidik kata sandi (hash), dan daftar halaman materi yang sudah dibuka. Semuanya tersimpan <strong>di browser perangkat ini saja</strong>.</li><li><strong>Tidak pernah disimpan otomatis:</strong> centang checklist, pilihan skenario, atau isi “catatan sementara”. Jawaban kuis dan refleksi hanya masuk Riwayat bila kamu sudah login (kuis otomatis, refleksi lewat tombol “Simpan ke riwayat”).</li><li>Kontak tepercaya yang kamu simpan di halaman Kontak, serta profil dan pesan ke admin, tersimpan di server dan <strong>hanya bisa dibuka oleh akunmu</strong> (pesan juga bisa dibaca admin yang kamu hubungi).</li></ul></section>
+      <ul class="clean"><li><strong>Tanpa akun:</strong> tidak ada data pribadi yang disimpan. Hanya pengaturan tampilan (tema, ukuran huruf) yang diingat di perangkat ini.</li><li><strong>Dengan akun:</strong> hanya nama panggilan, nama pengguna, peran, sidik kata sandi (hash), dan daftar halaman materi yang sudah dibuka. Semuanya tersimpan <strong>di browser perangkat ini saja</strong>.</li><li><strong>Tidak pernah disimpan:</strong> jawaban refleksi, centang checklist, pilihan skenario, atau isi “peta orang tepercaya”.</li><li>Tidak ada data yang dikirim ke server mana pun.</li></ul></section>
     <section class="card"><h3>Batasan akun</h3>
       <ul class="clean"><li>Akun hanya berlaku di perangkat dan browser yang sama; tidak bisa dipakai di perangkat lain.</li><li>Membersihkan data browser akan menghapus akun.</li><li>Sesi login berakhir saat tab ditutup, agar aman di komputer bersama.</li><li>Karena tidak memakai server, ini bukan sistem keamanan tingkat lembaga. Peran Guru BK dibuka dengan kode yang bisa dilihat siapa pun yang membuka kode sumber.</li></ul></section>
     <section class="card"><h3>Batasan alarm</h3>
       <ul class="clean"><li>Alarm adalah sinyal suara lokal di perangkat ini.</li><li>Alarm tidak mengirim lokasi, pesan, atau panggilan ke siapa pun.</li><li>Volume mengikuti pengaturan perangkat; website tidak bisa melampaui batas itu.</li><li>Alarm tidak berbunyi otomatis; hanya setelah tombol ditekan.</li></ul></section>
-    <section class="card"><h3>Skor dan refleksi</h3><p>Hanya sarana belajar. Bukan tes, diagnosis, ataupun bukti bahwa seseorang mengalami grooming.</p></section>
+    <section class="card"><h3>Checklist dan refleksi</h3><p>Hanya sarana belajar. Bukan tes, diagnosis, ataupun bukti bahwa seseorang mengalami grooming.</p></section>
   </div>
   <div class="callout kuning"><p>Sebelum dipakai di sekolah, isi, alur bantuan, dan prosedur penanganan sebaiknya ditinjau bersama guru BK atau pihak yang kompeten dalam perlindungan anak.</p></div>`;
 }

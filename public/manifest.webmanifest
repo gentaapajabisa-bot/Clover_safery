@@ -1,12 +1,12 @@
 {
-  "name": "Clover Safety",
-  "short_name": "Clover Safety",
+  "name": "Clover Safery",
+  "short_name": "Clover Safery",
   "description": "Edukasi dan perlindungan digital",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#f4fded",
-  "theme_color": "#478510",
+  "background_color": "#f5fbf7",
+  "theme_color": "#147d54",
   "lang": "id",
   "icons": [
     {

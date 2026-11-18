@@ -36,15 +36,6 @@ const SIGNS = [
     "Mengatakan bahwa hanya dia yang mengerti kamu, atau membuatmu ragu pada orang-orang yang mendukungmu.",
   ],
 ];
-/* Ilustrasi tiap tanda bahaya (urutan sama dengan SIGNS): [nama berkas, teks alternatif]. */
-const SIGN_IMG = [
-  ["hadiah", "Kotak hadiah dengan label bertanda bintang dan tanya, artinya ada syarat tersembunyi"],
-  ["rahasia", "Gelembung chat dengan gembok dan wajah yang diminta diam"],
-  ["foto", "Ponsel berisi foto dengan tanda larangan di sampingnya"],
-  ["bertemu", "Penanda lokasi bertanda tanya di ujung jalan putus-putus pada malam hari"],
-  ["tekanan", "Gelembung pesan bergerigi dengan tanda seru dan wajah sedih tertekan"],
-  ["menjauh", "Satu orang terpisah dari kelompok keluarga dan teman"],
-];
 const CL_SIGNS = [
   "Saya dapat mengenali permintaan yang membuat saya tidak nyaman.",
   "Saya memahami bahwa hadiah tidak membuat seseorang berhak menuntut imbalan.",
@@ -66,7 +57,7 @@ const CL_ACT = [
   "Saya memahami bahwa keselamatan lebih penting daripada memenuhi permintaan orang lain.",
 ];
 const CL_GURU = [
-  "Isi, alur bantuan, dan teks privasi Clover Safety sudah ditinjau bersama pihak yang kompeten dalam perlindungan anak.",
+  "Isi, alur bantuan, dan teks privasi Clover Safery sudah ditinjau bersama pihak yang kompeten dalam perlindungan anak.",
   "Kode pendaftaran Guru BK pada file sudah diganti dan hanya diketahui penanggung jawab.",
   "Nomor dan tautan bantuan (SAPA 129, 112) sudah diperiksa ulang pada sumber resmi.",
   "Sudah ada prosedur tertulis di sekolah jika siswa mengungkapkan pengalaman berisiko (siapa menerima, siapa dilibatkan, kapan orang tua dihubungi, kapan dilaporkan).",
@@ -76,6 +67,21 @@ const CL_GURU = [
 ];
 const CL_TOTAL = { signs: CL_SIGNS.length, priv: CL_PRIV.length, act: CL_ACT.length, guru: CL_GURU.length };
 
+const MYTHS = [
+  [
+    "“Kalau sudah menerima hadiah, aku harus membalasnya.”",
+    "Tidak. Hadiah tidak membuatmu berutang foto, informasi, atau apa pun yang membuatmu tidak nyaman. Kamu boleh mengembalikan, mengabaikan, atau berhenti menerimanya.",
+  ],
+  [
+    "“Kalau aku sudah terlanjur mengirim sesuatu, aku pasti dimarahi dan tidak bisa dibantu.”",
+    "Tidak. Yang bersalah adalah orang yang menekan atau mengancam, bukan kamu. Bantuan tetap bisa diminta kapan saja, dan orang dewasa tepercaya ada untuk membantumu, bukan menyalahkanmu.",
+  ],
+  [
+    "“Orang yang baik dan perhatian padaku pasti tidak berbahaya.”",
+    "Perhatian bisa tulus, tetapi kadang dipakai untuk membangun kepercayaan sebelum meminta hal yang tidak pantas. Yang perlu diperhatikan adalah permintaannya: apakah membuatmu tidak nyaman, memintamu merahasiakan, atau menekanmu?",
+  ],
+  ["“Menolak itu tidak sopan.”", "Menolak dengan tenang itu hakmu. Orang yang menghargaimu akan menerima penolakanmu."],
+];
 const BOUNDARY = [
   [
     "Kata sandi dan kode keamanan",

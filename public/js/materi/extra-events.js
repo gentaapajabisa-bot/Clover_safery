@@ -1,5 +1,5 @@
 "use strict";
-/* Event klik/input untuk simulasi, glosarium, dan pengaturan. */
+/* Event klik/input untuk simulasi, kuis, kamus, dan pengaturan. */
 
 /* ---------- Interaksi ---------- */
 document.addEventListener("click", (e) => {
@@ -25,6 +25,24 @@ document.addEventListener("click", (e) => {
     paintSim();
     const b = $("#sim-root .opt, #sim-root [data-x=sim-reset]");
     if (b) b.focus({ preventScroll: true });
+  } else if (x === "quiz-pick") {
+    Q.sel = i;
+    if (i === QUIZ[Q.i][2]) Q.ok++;
+    paintQuiz();
+    const b = $("[data-x=quiz-next]");
+    if (b) b.focus();
+  } else if (x === "quiz-next") {
+    Q.i++;
+    Q.sel = null;
+    paintQuiz();
+    const h = $("#quiz-root .card h2, #quiz-root .callout");
+    if (h) {
+      h.setAttribute("tabindex", "-1");
+      h.focus();
+    }
+  } else if (x === "quiz-reset") {
+    Q = { i: 0, sel: null, ok: 0 };
+    paintQuiz();
   }
 });
 document.addEventListener("input", (e) => {

@@ -8,6 +8,7 @@ const S = {
   checks: {},
   scn: 0,
   picked: {},
+  myth: {},
   boundary: {},
   ref: { text: {}, opts: [], q2: [], q3: "", q4: [], done: false },
   help: null,
