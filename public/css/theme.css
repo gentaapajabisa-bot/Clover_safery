@@ -529,3 +529,79 @@ html:not([data-theme="dark"]) .art-points li::before {
 html[data-theme="dark"] .bg-scrim {
   background: rgba(8, 20, 4, 0.74);
 }
+
+/* ---------- Blend lebih halus: kaca bening di atas latar ---------- */
+/* Dashboard: bilah atas, menu samping, dan kartu menjadi kaca tipis sehingga video terasa menyatu */
+body.dash .topbar {
+  background: rgba(255, 255, 255, 0.42);
+  -webkit-backdrop-filter: blur(16px) saturate(1.3);
+  backdrop-filter: blur(16px) saturate(1.3);
+  border-bottom-color: rgba(255, 255, 255, 0.6);
+}
+body.dash .sidebar {
+  background: rgba(255, 255, 255, 0.3);
+  -webkit-backdrop-filter: blur(14px) saturate(1.3);
+  backdrop-filter: blur(14px) saturate(1.3);
+  border-right-color: rgba(255, 255, 255, 0.55);
+}
+body.dash .stat,
+body.dash .box,
+body.dash .card {
+  background: rgba(255, 255, 255, 0.55);
+  -webkit-backdrop-filter: blur(14px) saturate(1.3);
+  backdrop-filter: blur(14px) saturate(1.3);
+  border-color: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 10px 30px rgba(30, 70, 8, 0.12);
+}
+body.dash .learn-cta {
+  background: linear-gradient(135deg, rgba(47, 107, 11, 0.86), rgba(77, 156, 16, 0.78));
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+body.dash .bg-scrim {
+  background: linear-gradient(180deg, rgba(247, 255, 238, 0.26) 0%, rgba(240, 252, 225, 0.48) 100%);
+}
+html[data-theme="dark"] body.dash .topbar,
+html[data-theme="dark"] body.dash .sidebar,
+html[data-theme="dark"] body.dash .stat,
+html[data-theme="dark"] body.dash .box,
+html[data-theme="dark"] body.dash .card {
+  background: rgba(12, 28, 6, 0.55);
+}
+
+/* Halaman masuk / daftar: tidak ada sambungan antar panel; gelapkan lembut dari kiri-bawah ke kanan-atas satu lapis penuh */
+@media (min-width: 901px) {
+  html:not([data-theme="dark"]) body.auth::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background:
+      linear-gradient(90deg, rgba(8, 28, 3, 0.7) 0%, rgba(8, 28, 3, 0.38) 40%, rgba(8, 28, 3, 0.05) 70%, rgba(8, 28, 3, 0.18) 100%),
+      linear-gradient(0deg, rgba(8, 28, 3, 0.6) 0%, rgba(8, 28, 3, 0) 45%);
+  }
+  body.auth .split {
+    position: relative;
+    z-index: 1;
+  }
+  .split .art {
+    background: transparent;
+  }
+  .formcard {
+    background: rgba(255, 255, 255, 0.72);
+    -webkit-backdrop-filter: blur(18px) saturate(1.2);
+    backdrop-filter: blur(18px) saturate(1.2);
+    border: 1px solid rgba(255, 255, 255, 0.65);
+  }
+}
+body.dash .mainarea > .muted,
+body.dash .welcome .muted,
+body.dash .welcome p,
+body.dash .side-label {
+  color: #27420f;
+  text-shadow: 0 1px 6px rgba(255, 255, 255, 0.7);
+}
+body.dash .navitem:not(.active) {
+  color: #27420f;
+}
