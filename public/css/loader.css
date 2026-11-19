@@ -365,3 +365,55 @@ html.cl-loading body {
     animation: none;
   }
 }
+
+/* ---------- Video latar (bunga clover mekar), diperlambat pas dengan durasi loading ---------- */
+#cl-loader .vid {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  background: #0d2f1a;
+}
+#cl-loader.has-vid .rays,
+#cl-loader.has-vid .emblem {
+  display: none;
+}
+#cl-loader.has-vid .vignette {
+  z-index: 1;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0) 24%, rgba(0, 0, 0, 0) 40%, rgba(4, 16, 2, 0.9) 100%);
+}
+#cl-loader.has-vid .leaf {
+  z-index: 1;
+}
+#cl-loader.has-vid .stage {
+  justify-content: flex-end;
+  gap: 8px;
+}
+#cl-loader.has-vid .title,
+#cl-loader.has-vid .sub,
+#cl-loader.has-vid .hello,
+#cl-loader.has-vid .tip,
+#cl-loader.has-vid .state {
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.75);
+}
+#cl-loader.has-vid .title {
+  font-size: clamp(1.7rem, 5vw, 2.6rem);
+}
+#cl-loader.has-vid .hello {
+  background: rgba(4, 16, 2, 0.55);
+}
+/* layar lebar: video potret tampil utuh di tengah (rasio 9:16), tepinya memudar ke latar hijau */
+@media (min-aspect-ratio: 1/1) {
+  #cl-loader .vid {
+    inset: 0 auto 0 50%;
+    width: auto;
+    height: 100%;
+    aspect-ratio: 9 / 16;
+    transform: translateX(-50%);
+    object-fit: cover;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 28%, #000 72%, transparent 100%);
+    mask-image: linear-gradient(90deg, transparent 0%, #000 28%, #000 72%, transparent 100%);
+  }
+}

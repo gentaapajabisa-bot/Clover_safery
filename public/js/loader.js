@@ -49,6 +49,7 @@
       '<span class="leaf" style="--x:' + ((i * 37 + 8) % 96) + "%;--s:" + s + "px;--d:" + (7 + (i % 5) * 1.6) + "s;--t:" + ((i * 0.7) % 6) + 's">' + CLOVER + "</span>";
   }
   el.innerHTML =
+    '<video class="vid" src="/video/clover-bloom.mp4" poster="/img/clover-poster.jpg" muted playsinline autoplay preload="auto" aria-hidden="true" tabindex="-1"></video>' +
     '<div class="rays"></div><div class="vignette"></div>' +
     leaves +
     '<div class="top"><span>🍀 Clover Safety</span><span class="actions"><button type="button" class="snd" aria-pressed="true" aria-label="Suara menyala">🔊</button><button type="button" class="skip">Lewati ›</button></span></div>' +
@@ -61,9 +62,24 @@
     '<div class="bottom"><p class="tip"></p>' +
     '<div class="meter"><div class="bar"><div class="fill"></div></div><div class="pct">0%</div></div>' +
     '<p class="state">Memuat…</p></div>';
+  el.classList.add("has-vid");
   root.classList.add("cl-loading");
   root.appendChild(el);
 
+  var vid = el.querySelector(".vid");
+  function noVideo() {
+    el.classList.remove("has-vid");
+    if (vid && vid.parentNode) vid.parentNode.removeChild(vid);
+    vid = null;
+  }
+  vid.muted = true;
+  vid.addEventListener("error", noVideo);
+  try {
+    var vp = vid.play();
+    if (vp && vp.catch) vp.catch(noVideo);
+  } catch (e) {
+    noVideo();
+  }
   var fill = el.querySelector(".fill");
   var pct = el.querySelector(".pct");
   var state = el.querySelector(".state");
@@ -318,6 +334,7 @@
     clearInterval(tipTimer);
     clearInterval(tick);
     clearInterval(typer);
+    if (vid) vid.pause();
     paint(100);
     if (played && !muted && loaded) chime(true);
     if (synth) try { synth.cancel(); } catch (e) { /* abaikan */ }

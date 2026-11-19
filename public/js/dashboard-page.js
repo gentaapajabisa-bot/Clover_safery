@@ -58,3 +58,17 @@ function paintLearning() {
   $("#learn-link").setAttribute("href", nxt ? "/belajar#/" + nxt.key : "/belajar");
   $("#learn-link").textContent = n === 0 ? "Mulai belajar →" : nxt ? "Lanjutkan →" : "Buka materi →";
 }
+
+/** Video latar dashboard: berhenti bila pengguna memilih gerakan dikurangi atau mode hemat data. */
+(function () {
+  const v = document.querySelector(".bg-video");
+  if (!v) return;
+  const calm = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const saver = navigator.connection && navigator.connection.saveData;
+  if (calm || saver) {
+    v.removeAttribute("autoplay");
+    v.pause();
+    v.removeAttribute("src");
+    v.load();
+  }
+})();
