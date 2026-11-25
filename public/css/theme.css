@@ -653,3 +653,19 @@ body.materi #main details {
     display: none;
   }
 }
+
+/* Materi: menang atas aturan tema (html[data-theme] body) agar video latar tampil di mode terang maupun gelap */
+html body.materi,
+html[data-theme] body.materi {
+  background: #0b1530;
+}
+html body.materi header.top,
+html[data-theme] body.materi header.top {
+  background: rgba(255, 255, 255, 0.9);
+  border-bottom-color: rgba(255, 255, 255, 0.5);
+}
+html[data-theme="dark"] body.materi header.top {
+  background: rgba(10, 22, 8, 0.78);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+}
