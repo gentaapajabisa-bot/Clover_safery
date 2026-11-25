@@ -605,3 +605,51 @@ body.dash .side-label {
 body.dash .navitem:not(.active) {
   color: #27420f;
 }
+
+/* ---------- Materi (belajar): video latar malam berbintang, kaca bening ---------- */
+body.materi {
+  background: #0b1530;
+}
+body.materi .bg-scrim {
+  background: linear-gradient(180deg, rgba(8, 16, 38, 0.38) 0%, rgba(8, 16, 38, 0.62) 100%);
+}
+body.materi .top {
+  background: rgba(255, 255, 255, 0.78);
+  -webkit-backdrop-filter: blur(16px) saturate(1.3);
+  backdrop-filter: blur(16px) saturate(1.3);
+}
+body.materi #main {
+  position: relative;
+}
+body.materi .foot {
+  background: rgba(8, 16, 38, 0.5);
+  color: #e8f1ff;
+}
+body.materi .foot a {
+  color: #d8ff9a;
+}
+body.materi .sec-head h2,
+body.materi .sec-head p,
+body.materi #main > h1,
+body.materi #main > p {
+  color: #f4fbff;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.55);
+}
+body.materi .top {
+  background: rgba(255, 255, 255, 0.9);
+}
+/* kartu & panel isi materi: kaca terang agar teks tetap terbaca di atas video malam */
+body.materi #main .card,
+body.materi #main .box,
+body.materi #main .panel,
+body.materi #main .quest,
+body.materi #main .lesson,
+body.materi #main details {
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+@media (prefers-reduced-motion: reduce) {
+  body.materi .bg-video {
+    display: none;
+  }
+}

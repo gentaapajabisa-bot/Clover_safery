@@ -12,19 +12,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   try {
     const data = await api("/api/dashboard", null, "GET");
-    const activity = data.activity || [];
     const reports = data.reports || [];
-
-    $("#activity").innerHTML = activity.length
-      ? table(
-          [
-            ["Aktivitas", (a) => esc(a.action)],
-            ["Detail", (a) => esc(a.details || "-")],
-            ["Waktu", (a) => esc(fmtDate(a.created_at))],
-          ],
-          activity
-        )
-      : `<p class="empty">Belum ada aktivitas yang tercatat.</p>`;
 
     $("#reports").innerHTML = reports.length
       ? table(

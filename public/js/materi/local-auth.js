@@ -129,3 +129,18 @@ const Auth = {
     }
   },
 };
+
+
+/** Video latar materi: berhenti bila pengguna memilih gerakan dikurangi atau mode hemat data. */
+(function () {
+  var v = document.querySelector(".bg-video");
+  if (!v) return;
+  var calm = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var saver = navigator.connection && navigator.connection.saveData;
+  if (calm || saver) {
+    v.removeAttribute("autoplay");
+    v.pause();
+    v.removeAttribute("src");
+    v.load();
+  }
+})();
